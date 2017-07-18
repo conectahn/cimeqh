@@ -8,24 +8,7 @@
       if ($_SESSION["estado"]==1) {
         if ($_SESSION["rol"]==2) {
           $revisar = array();
-        /*
-          if(isset($_POST["btnRechazar"])){
-
-            $numeroId="";
-            $estadoCuenta=2;
-            $numeroId=$_POST["usuarioIdentidad"];
-            actualizarEstado($numeroId,$estadoCuenta);
-            }
-
-          if(isset($_POST["btnAceptar"])){
-            $respuesta="";
-            $numeroId="";
-            $estadoCuenta=1;
-            $numeroId=$_POST["usuarioIdentidad"];
-            $respuesta=actualizarEstado($numeroId,$estadoCuenta);
-            echo $respuesta;
-          }
-        */
+                
         //Agregar un comentario segun sea aprobada o rechazada la solicitud
 
           if (isset($_POST["btnComentarRecepcion"])) {

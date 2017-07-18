@@ -35,19 +35,19 @@
             $numeroId=$_POST["usuarioIdentidad"];
             $respuesta=actualizarEstado($numeroId,$estadoCuenta);
 
-           $mail = new PHPMailer;
+            $mail = new PHPMailer;
             $mail->SMTPDebug=2;
             $mail->isSMTP();
-             $mail->Host = 'chimera.lunarpages.com';
-             $mail->SMTPAuth = true;
-             $mail->Username = 'cimeqh@conectahn.org';
-             $mail->Password = 'conecta2017';
-             $mail->SMTPSecure = 'ssl';
-             $mail->Port = 465;
-             $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
-             $mail->addAddress($_POST["usuarioCorreo"], '');
+            $mail->Host = 'chimera.lunarpages.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'cimeqh@conectahn.org';
+            $mail->Password = 'conecta2017';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
+            $mail->addAddress($_POST["usuarioCorreo"], '');
              //$mail->addAddress('ellen@example.com');
-             $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
+            $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
              //$mail->addCC('cc@example.com');
              //$mail->addBCC('bcc@example.com');
              //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
