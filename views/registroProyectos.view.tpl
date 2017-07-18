@@ -120,14 +120,14 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Seleccione Zona del Proyecto</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="cmbProyectoDepartamento" id="cmbDepartamentoProyecto">
-                              <option value="">Seleccione Zona del proyecto</option>
-                              <option value="">Centro Sur Distrito Ciudad</option>
-                              <option value="">Centro Sur Area Regional</option>
-                              <option value="">Nor Occidente Distrito Ciudad</option>
-                              <option value="">Nor Occidente Area Regional</option>
-                              <option value="">Litoral Atlantico Distrito Ciudad</option>
-                              <option value="">Litoral Atlantico Area Regional</option>
+                          <select class="form-control" name="cmbRegion" id="cmbRegion">
+                              <option value="1">Seleccione Zona del proyecto</option>
+                              <option value="2">Centro Sur Distrito Ciudad</option>
+                              <option value="3">Centro Sur Area Regional</option>
+                              <option value="4">Nor Occidente Distrito Ciudad</option>
+                              <option value="5">Nor Occidente Area Regional</option>
+                              <option value="6">Litoral Atlantico Distrito Ciudad</option>
+                              <option value="7">Litoral Atlantico Area Regional</option>
                           </select>
                         </div>
                       </div>

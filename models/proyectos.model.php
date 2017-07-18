@@ -66,7 +66,43 @@
     }
 
 
+    function registrarProyecto($txtNombrePropietario,
+    $txtIdentidadPropietario,$txtDireccionPropietario,$txtEmailPropietario,
+    $txtTelefonoPropietario,$txtCelularPropietario,$txtProyectoNombre,
+    $txtLatitud,$txtLongitud,$txtDescripcionProyecto,$cmbDepartamentoProyecto,
+    $txtDireccionProyecto,$txtProyectoNombre,$tipos,$zonaUtm,$region){
+    $insertSQL = "
+        INSERT INTO `cimeqh`.`tblproyectos`
+      (`proyectoId`,`proyectoNombrePropietario`,`proyectoIdentidadPropietario`,
+        `proyectoCelularPropietario`,`proyectoEmailPropietario`,
+        `proyectoDireccionPropietario`,`proyectoTelefonoPropietario`,
+      `departamentoId`, `proyectoDescrpcion`,`proyectoLatitud`,`proyectoLongitud`,
+        `proyectoDireccion`, `usuarioIdentidad`,`proyectoNombre`,`tipoId`,
+      `regionProyecto`)
+        VALUES
+        (%d, '%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,%d);";
+          $insertSQL = sprintf($insertSQL,
+                               valstr($txtNombrePropietario),
+                               valstr($txtIdentidadPropietario),
+                               valstr($txtDireccionPropietario),
+                               valstr($txtCelularPropietario),
+                               valstr($txtEmailPropietario),
+                               valstr($txtTelefonoPropietario),
+                               $cmbDepartamentoProyecto,
+                               valstr($txtDescripcionProyecto),
+                               $txtLatitud,
+                               $txtLongitud,
+                               valstr($txtDireccionProyecto),
+                               $_SESSION["userName"],
+                               valstr($txtProyectoNombre),
+                               $tipos,
+                               $zonaUtm,
+                               $region);
+          return ejecutarNonQueryConErrores($insertSQL);
+        }
 
+
+/*
 function registrarProyecto($txtNombrePropietario,
 $txtIdentidadPropietario,
 $txtDireccionPropietario,
@@ -81,15 +117,16 @@ $cmbDepartamentoProyecto,
 $txtDireccionProyecto,
 $txtProyectoNombre,
 $tipos,
-$zonaUtm){
+$zonaUtm,
+$region){
 $insertSQL = "INSERT INTO `tblProyectos` (`proyectoNombrePropietario`,
 `proyectoIdentidadPropietario`,`proyectoCelularPropietario`,
 `proyectoEmailPropietario`,`proyectoDireccionPropietario`,
 `proyectoTelefonoPropietario`,`departamentoId`,
 `proyectoDescrpcion`,`proyectoLatitud`,`proyectoLongitud`,
 `proyectoDireccion`,`usuarioIdentidad`,`proyectoNombre`,
-`tipoId`,`zonaUtm`)
-values ('%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,'%s');";
+`tipoId`,`zonaUtm`,`usuarioRegion`)
+values ('%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,'%s',%d);";
       $insertSQL = sprintf($insertSQL,
                            valstr($txtNombrePropietario),
                            valstr($txtIdentidadPropietario),
@@ -105,7 +142,7 @@ values ('%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,'%s');";
                            $_SESSION["userName"],
                            valstr($txtProyectoNombre),
                            $tipos,
-                           $zonaUtm);
+                           $zonaUtm, $region);
       return ejecutarNonQueryConErrores($insertSQL);
-    }
+    }*/
  ?>
