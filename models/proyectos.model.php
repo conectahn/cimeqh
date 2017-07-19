@@ -75,21 +75,20 @@
         return $proyecto;
     }
 
-
     function registrarProyecto($txtNombrePropietario,
     $txtIdentidadPropietario,$txtDireccionPropietario,$txtEmailPropietario,
     $txtTelefonoPropietario,$txtCelularPropietario,$txtProyectoNombre,
     $txtLatitud,$txtLongitud,$txtDescripcionProyecto,$cmbDepartamentoProyecto,
-    $txtDireccionProyecto,$txtProyectoNombre,$tipos,$zonaUtm,$region){
+    $txtDireccionProyecto,$txtProyectoNombre,$tipos,$zonaUtm,$region,$fecha){
     $insertSQL = "INSERT INTO `cimeqh`.`tblproyectos`
       (`proyectoNombrePropietario`,`proyectoIdentidadPropietario`,
         `proyectoCelularPropietario`,`proyectoEmailPropietario`,
         `proyectoDireccionPropietario`,`proyectoTelefonoPropietario`,
       `departamentoId`, `proyectoDescrpcion`,`proyectoLatitud`,`proyectoLongitud`,
         `proyectoDireccion`, `usuarioIdentidad`,`proyectoNombre`,`tipoId`,
-      `regionProyecto`,`zonaUtm`)
+      `regionProyecto`,`zonaUtm`,fechaRegistro)
         VALUES
-        (%d, '%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,'%s');";
+        ('%s','%s','%s','%s','%s','%s','%s','%s',%f,%f,'%s','%s','%s',%d,%d,'%s',NOW());";
           $insertSQL = sprintf($insertSQL,
                                valstr($txtNombrePropietario),
                                valstr($txtIdentidadPropietario),

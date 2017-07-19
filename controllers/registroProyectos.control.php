@@ -33,6 +33,7 @@
             $proyecto["txtDescripcionProyecto"]=$_POST["txtDescripcionProyecto"];
             $proyecto["cmbProyectoTipo"]=$_POST["cmbProyectoTipo"];
             $proyecto["cmbRegion"]=$_POST["cmbRegion"];
+            $proyecto["fechahora"]=time();
             $respueta=registrarProyecto($proyecto["txtNombrePropietario"],
             $proyecto["txtIdentidadPropietario"],
             $proyecto["txtDireccionPropietario"],
@@ -48,7 +49,8 @@
             $proyecto["txtNombreProyecto"],
             $proyecto["cmbProyectoTipo"],
             $proyecto["txtUtmZona"],
-            $proyecto["cmbRegion"]);
+            $proyecto["cmbRegion"],
+            $proyecto["fechahora"]);
             print_r($respueta);
             redirectWithMessage("El proyecto ha sido agregado exitosamente $respueta","index.php?page=verProyectos");
             $location="Location:index.php?page=registroProyectos&error=".$respueta;
