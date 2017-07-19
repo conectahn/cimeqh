@@ -12,9 +12,9 @@ function registrarFactibilidad($voltajeId, $conexionId, $potencia, $crecmientoes
 `solicitudadFactibilidadCrecimientoEsperado`,
 `solicitudFactibilidadKva`,
 `estadoFactibilidadId`,
-`proyectoId`)
+`proyectoId`,`fechaSolicitud`)
 VALUES(
-%d, %d, %f, %f, %f, 4, %d);";
+%d, %d, %f, %f, %f, 4, %d, now());";
 $insertSQL = sprintf($insertSQL, $voltajeId, $conexionId, $potencia, $crecmientoesperado,$kva, $proyectoId);
 
 return ejecutarNonQueryConErrores($insertSQL);

@@ -9,9 +9,9 @@ function registrarDespeje($tiempo,$cuadrillas,$personal,$fecha,$aprobacionId){
 `solicitudDespejeCantidadPersonal`,
 `solicitudDespejeFecha`,
 `tblsolicitudaprobacion_solicitudAprobacionId`,
-`estadoDespejeId`)
+`estadoDespejeId`, fechaRegistro)
 VALUES
-(%d,%d,%d,'%s',%d,4);";
+(%d,%d,%d,'%s',%d,4,now());";
   $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);
 
 
