@@ -87,15 +87,15 @@ function borrarDocumentoAprobacion($documentoId,$direccion){
 function obtenerSolicitudAprobacionPorId($solicitudId){
     $proyecto = array();
     $sqlstr = "SELECT *
-from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa, tblestadoaprobacion as ea
+    from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa, tblestadoaprobacion as ea
  where p.proyectoId=sa.proyectoId
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
  and p.departamentoId=d.departamentoId
  and sa.solicitudAprobacionId=%d";
-    $sqlstr = sprintf($sqlstr, $solicitudId);
-    $proyecto = obtenerUnRegistro($sqlstr);
-    return $proyecto;
+ $sqlstr = sprintf($sqlstr, $solicitudId);
+ $proyecto = obtenerUnRegistro($sqlstr);
+ return $proyecto;
 }
 
 

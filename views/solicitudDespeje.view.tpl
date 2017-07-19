@@ -80,7 +80,7 @@
                                                   <label for="userfile">Documento</label>
                                                   <input id="userfile" type="file" name="userfile[]" class="form-control"  >
                                                 </div>
-                                            </div>                                             
+                                            </div>
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -91,8 +91,6 @@
                                           </div>
                                              </div>
                                              </div>
-                                              </div>
-                                           </div>
                     <input type="submit" id="btnSolicitarDespeje" name="btnSolicitarDespeje" class="btn btn-default" value="Solicitar Despeje">
                     </form>
         </div>

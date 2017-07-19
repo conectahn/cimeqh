@@ -27,13 +27,8 @@
 
               case 'UPD':
                 $respuesta=actualizarDespeje($_POST["txtTiempo"],$_POST["txtCuadrillas"],$_POST["txtCantidadPersonal"],$_POST["txtFecha"],$_POST["despejeId"]);
-
                 $header="Location:index.php?page=solicitudDespeje&respuesta=".$respuesta;
                 header($header);
-                break;
-
-              default:
-                # code...
                 break;
             }
             redirectWithMessage("La solicitud de despeje se realizo con exito.","?page=verMisSolicitudesDeDespeje");
@@ -43,15 +38,9 @@
           echo $fecha;
 
           if(isset($_GET["proyectoId"])){
-
             $proyectos=obtnerAprobacionPorId($_GET["proyectoId"]);
             if($proyectos){
-              if (isset($_GET["accion"])) {
-                $htmlDatos["accion"] = $_GET["accion"];
-              }
-              if (isset($_GET["despejeId"])) {
-                $htmlDatos["despejeId"] = $_GET["despejeId"];
-              }
+            /*  $htmlDatos["accion"] = $_GET["accion"];
               $htmlDatos["proyectoId"] = $proyectos["proyectoId"];
               $htmlDatos["proyectoNombre"] = $proyectos["proyectoNombre"];
               $htmlDatos["departamentoNombre"] = $proyectos["departamentoDescripcion"];
@@ -64,7 +53,7 @@
               $htmlDatos["proyectoIdentidadPropietario"] = $proyectos["proyectoIdentidadPropietario"];
               $htmlDatos["proyectoCelularPropietario"] = $proyectos["proyectoCelularPropietario"];
               $htmlDatos["proyectoDireccionPropietario"] = $proyectos["proyectoDireccionPropietario"];
-              $htmlDatos["proyectoTelefonoPropietario"] = $proyectos["proyectoTelefonoPropietario"];
+              $htmlDatos["proyectoTelefonoPropietario"] = $proyectos["proyectoTelefonoPropietario"];*/
               $htmlDatos["codigoAprobacion"] = $proyectos["codigoAprobacion"];
               $htmlDatos["solicitudAprobacionId"] = $proyectos["solicitudAprobacionId"];
               }
