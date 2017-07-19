@@ -11,8 +11,10 @@
         if ($_SESSION["rol"]==4) {
           $departamentos= array( );
           $proyecto = array( );
+          $region=array();
           $departamentos=obtenerDepartamentos();
           $tipos=obtenerTipoProyectos();
+          $region=obtenerRegion();
           $respueta="";
 
           if (isset($_POST["btnRegistrarProyecto"])) {
@@ -47,13 +49,15 @@
             $proyecto["cmbProyectoTipo"],
             $proyecto["txtUtmZona"],
             $proyecto["cmbRegion"]);
-            redirectWithMessage("El proyecto ha sido agregado exitosamente","index.php?page=verProyectos");
+            print_r($respueta);
+            redirectWithMessage("El proyecto ha sido agregado exitosamente $respueta","index.php?page=verProyectos");
             $location="Location:index.php?page=registroProyectos&error=".$respueta;
             redirectWithMessage("El proyecto se registro con exito.","?page=verProyectos");
             header($location);
+
           }
 
-          renderizar("registroProyectos",  array("departamentos"=>$departamentos, "tipos"=>$tipos));
+          renderizar("registroProyectos",  array("departamentos"=>$departamentos, "tipos"=>$tipos,"region"=>$region));
 
         }else {
           redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");

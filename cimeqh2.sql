@@ -59,7 +59,7 @@ CREATE TABLE `tbldepartamentos` (
 
 LOCK TABLES `tbldepartamentos` WRITE;
 /*!40000 ALTER TABLE `tbldepartamentos` DISABLE KEYS */;
-INSERT INTO `tbldepartamentos` VALUES (1,'Francisco Morazan'),(2,'Islas de la Bahia'),(3,'Comayagua'),(4,'Santa Barbara'),(5,'Gracias a Dios'),(6,'Lempira'),(7,'Valle'),(8,'Atlantida'),(9,'Cortes');
+INSERT INTO `tbldepartamentos` VALUES (1,'Francisco Morazan'),(2,'Islas de la Bahia'),(3,'Cortes'),(4,'Atlantida'),(5,'Yoro'),(6,'Colón'),(7,'Comayagua'),(8,'Valle'),(9,'Choluteca'),(10,'Olancho'),(11,'La Paz'),(12,'El Paraíso'),(13,'Ocotepeque'),(14,'Copán'),(15,'Santa Bárbara'),(16,'Intibucá'),(17,'Gracias a Dios'),(18,'Lempira');
 /*!40000 ALTER TABLE `tbldepartamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,6 +264,7 @@ CREATE TABLE `tblproyectos` (
   `proyectoNombre` varchar(200) CHARACTER SET latin1 NOT NULL,
   `tipoId` int(11) NOT NULL,
   `regionProyecto` int(11) DEFAULT NULL,
+  `zonaUtm` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`proyectoId`),
   KEY `usuarioIdentidad_idx` (`usuarioIdentidad`),
   KEY `departamentoId_idx` (`departamentoId`),
@@ -273,7 +274,7 @@ CREATE TABLE `tblproyectos` (
   CONSTRAINT `proyectoRegion` FOREIGN KEY (`regionProyecto`) REFERENCES `tblregion` (`idRegion`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tipoId` FOREIGN KEY (`tipoId`) REFERENCES `tbltipoproyectos` (`tipoId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `usuarioIdentidad` FOREIGN KEY (`usuarioIdentidad`) REFERENCES `tblusuarios` (`usuarioIdentidad`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +283,7 @@ CREATE TABLE `tblproyectos` (
 
 LOCK TABLES `tblproyectos` WRITE;
 /*!40000 ALTER TABLE `tblproyectos` DISABLE KEYS */;
-INSERT INTO `tblproyectos` VALUES (7,'dfdf','0801199503315','96425295','luis@hotmail.com','dfdfdf','96425292',1,'cdccxc',67,88,'dfdfdfdf','0801199503314','CIMEQH',6,NULL),(8,'asasas','99525656330','4555','sdsdsd@ddsd.com','asasasas','545',1,'dsdsdsd',95,66,'sddddsd','0801199503314','EEH',5,NULL),(9,'Diana Reyes','0801199306645','5454','dfdfdfd@hotmail.es','dd','96425292',1,'sdsd',66,77,'sdsds','0801199503314','SANAA',6,NULL),(10,'Jose Manuel Lezama','0801199308528','99999999','melito@superrito.com','Hato del medio','22222222',1,'descripcion',85,958,'hato del medio','0801-1995','Comer',5,1);
+INSERT INTO `tblproyectos` VALUES (7,'dfdf','0801199503315','96425295','luis@hotmail.com','dfdfdf','96425292',1,'cdccxc',67,88,'dfdfdfdf','0801199503314','CIMEQH',6,NULL,NULL),(8,'asasas','99525656330','4555','sdsdsd@ddsd.com','asasasas','545',1,'dsdsdsd',95,66,'sddddsd','0801199503314','EEH',5,NULL,NULL),(9,'Diana Reyes','0801199306645','5454','dfdfdfd@hotmail.es','dd','96425292',1,'sdsd',66,77,'sdsds','0801199503314','SANAA',6,NULL,NULL),(10,'Jose Manuel Lezama','0801199308528','99999999','melito@superrito.com','Hato del medio','22222222',1,'descripcion',85,958,'hato del medio','0801-1995','Comer',5,1,NULL),(11,'0','0255856854889','33333333','a@algo.com','Comayagüela','22222222',1,'0',474719,1557380,'0.000000','0801-1995','Conexion de lineas de alta tension',5,1,'16P');
 /*!40000 ALTER TABLE `tblproyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,7 +323,7 @@ CREATE TABLE `tblroles` (
   `rolId` int(11) NOT NULL AUTO_INCREMENT,
   `rolDescripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`rolId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -331,7 +332,7 @@ CREATE TABLE `tblroles` (
 
 LOCK TABLES `tblroles` WRITE;
 /*!40000 ALTER TABLE `tblroles` DISABLE KEYS */;
-INSERT INTO `tblroles` VALUES (1,'cimeqh'),(2,'enee'),(3,'publico'),(4,'Ingeniero');
+INSERT INTO `tblroles` VALUES (1,'Cimeqh Administrador'),(2,'ENEE Administrador'),(3,'Publico'),(4,'Ingeniero'),(5,'Cimeqh Tegucigalpa'),(6,'Cimeqh San Pedro Sula'),(7,'Cimeqh La Ceiba'),(8,'Enee Tegucigalpa Supervisor'),(9,'Enee Tegucigalpa Aprobacion'),(10,'Enee San Pedro Sula Supervisor'),(11,'Enee San Pedro Sula Aprobacion'),(12,'Enee La Ceiba Supervisor'),(13,'Enee La Ceiba Aprobacion');
 /*!40000 ALTER TABLE `tblroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,7 +567,7 @@ CREATE TABLE `tblusuarios` (
 
 LOCK TABLES `tblusuarios` WRITE;
 /*!40000 ALTER TABLE `tblusuarios` DISABLE KEYS */;
-INSERT INTO `tblusuarios` VALUES ('0801-1993-08222','Juan','Carlos','Izaguirre ','Lopez','1212132123','9642-3311','2245-6875','Mexico City','f49bf7b34270784b2ac3d7d2949cc3d9',1,1,'j@superrito.com',1498258339,NULL,NULL,'',1),('0801-1995','Jose','Carlos','Medina ','Fernandez','132','9916-1420','22456875','tiloarque','e3d718f8a5bb6e555cf341c66395f201',1,4,'luispaz@superrito.com',1498682657,'',0,NULL,NULL),('0801199503314','Luis','Eduardo','Paz','Reyes','21548164','96425292','22308090','Portal del Bosque','76b98197d40a35db050f88c51c18c157',4,4,'luispaz@superrito.com',1498148000,'asddsas',0,NULL,NULL),('0801200003221','Luis','Fernando','Paz','Reyes','445454','84545454','54545854','dsdsds','2063278b6068554c955918b841b1091b',4,4,'luispaz@superrito.com',1498256640,'csawe',0,NULL,NULL),('1111111111111','Hades','Poseidon','Neptuno','Ravana','525','99999999','22222222','Olimpo asgardiano 3 planeta','442443c17c35942d3b1113972231be1f',4,4,'a@b.com',1499272677,NULL,NULL,NULL,NULL),('123','Zeeus','Poseidon','Ravana','Kukulkan','321','8856-9632','224-5689','Olimpo tercera casa del Zodiaco','3ab5d8ffbae1ff8d5ac01d9cce5eebf7',1,2,'luispaz@superrito.com',1498754099,'',123132000,NULL,NULL),('2222222222222','Jose','Manuel','Lezama','Melito','465','99999999','22222222','ok google','b5ed8fce79005b6818fade8b814af5d0',4,4,'ba@superrito.com',1499273055,NULL,NULL,'',NULL),('3333333333333','asdas','Luis','xyz','Lopez','786','99668888','','kjklji','0eb7df1de72244c53fdd9f820a3ab871',4,4,'a@superrito.com',1499273157,NULL,NULL,'2iosqe440',NULL);
+INSERT INTO `tblusuarios` VALUES ('0801-1993-08222','Juan','Carlos','Izaguirre ','Lopez','1212132123','9642-3311','2245-6875','Mexico City','f49bf7b34270784b2ac3d7d2949cc3d9',1,1,'j@superrito.com',1498258339,NULL,NULL,'',1),('0801-1995','Jose','Carlos','Medina ','Fernandez','132','9916-1420','22456875','tiloarque','e3d718f8a5bb6e555cf341c66395f201',1,4,'luispaz@superrito.com',1498682657,'',0,NULL,NULL),('0801199503314','Luis','Eduardo','Paz','Reyes','21548164','96425292','22308090','Portal del Bosque','76b98197d40a35db050f88c51c18c157',4,4,'luispaz@superrito.com',1498148000,'asddsas',0,NULL,NULL),('0801200003221','Luis','Fernando','Paz','Reyes','445454','84545454','54545854','dsdsds','2063278b6068554c955918b841b1091b',4,4,'luispaz@superrito.com',1498256640,'csawe',0,NULL,NULL),('1111111111111','Hades','Poseidon','Neptuno','Ravana','525','99999999','22222222','Olimpo asgardiano 3 planeta','442443c17c35942d3b1113972231be1f',4,4,'a@b.com',1499272677,NULL,NULL,NULL,NULL),('123','Zeeus','Poseidon','Ravana','Kukulkan','321','8856-9632','224-5689','Olimpo tercera casa del Zodiaco','3ab5d8ffbae1ff8d5ac01d9cce5eebf7',1,2,'luispaz@superrito.com',1498754099,'',123132000,NULL,NULL),('2222222222222','Jose','Manuel','Lezama','Melito','465','99999999','22222222','ok google','b5ed8fce79005b6818fade8b814af5d0',4,4,'ba@superrito.com',1499273055,NULL,NULL,'',NULL),('3333333333333','asdas','Luis','xyz','Lopez','786','99668888','','kjklji','0eb7df1de72244c53fdd9f820a3ab871',4,4,'a@superrito.com',1499273157,NULL,NULL,'2iosqe440',NULL),('7777777777777','Jose','Alexandre','Gutember','Fernandez','654','88888888','11111111','vivo bajo el puente y vos?','a593c018727025bf395012914ebbb6e1',4,4,'prueba@superrito.com',1500413750,NULL,NULL,NULL,NULL),('8552255494654','Vulcan','Mercurio','Nox','Ravana','123','89898898','46546545','Marte ','48d0f83b059cb7fa1795028138f4147e',4,4,'prueba@superrito.com',1500414142,NULL,NULL,NULL,NULL),('8888888888855','Ash','Brock','Misty','Ketchum','6542','65446564','65464546','Pueblo Paleta','d279787166f350ab2eb5ff69586505a2',4,4,'prueba@superrito.com',1500414061,NULL,NULL,NULL,NULL),('9636963696369','Laronny','Alexandra','Velazquez','Palma','8972','56566546','32321132','Villa Olimpica','f49bfdf407508ac02bdab87c6cf8b049',4,4,'prueba@superrito.com',1500413996,NULL,NULL,NULL,NULL),('9874563210000','Neptuno','Carlos','Poseidon','Lopez','13216521','99789788','65464546','Atlantida','e2d981cc4a9db1bff3d9d058cb666891',4,4,'prueba@superrito.com',1500414458,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tblusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -603,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-18 14:43:14
+-- Dump completed on 2017-07-19 10:10:04

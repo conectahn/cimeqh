@@ -57,6 +57,16 @@
     return $departamentos;
     }
 
+    function obtenerRegion(){
+    $region = array();
+    $sqlstr = "SELECT * FROM cimeqh.tblregion;";
+    $sqlstr = sprintf($sqlstr, $_SESSION["userName"]);
+    $region = obtenerRegistros($sqlstr);
+    return $region;
+    }
+
+
+
     function obtnerProyectosPorId($proyectoId){
         $proyecto = array();
         $sqlstr = "select * from tblproyectos as p, tbldepartamentos as d where d.departamentoId=p.departamentoId and p.proyectoId=%d;";
@@ -71,22 +81,21 @@
     $txtTelefonoPropietario,$txtCelularPropietario,$txtProyectoNombre,
     $txtLatitud,$txtLongitud,$txtDescripcionProyecto,$cmbDepartamentoProyecto,
     $txtDireccionProyecto,$txtProyectoNombre,$tipos,$zonaUtm,$region){
-    $insertSQL = "
-        INSERT INTO `cimeqh`.`tblproyectos`
-      (`proyectoId`,`proyectoNombrePropietario`,`proyectoIdentidadPropietario`,
+    $insertSQL = "INSERT INTO `cimeqh`.`tblproyectos`
+      (`proyectoNombrePropietario`,`proyectoIdentidadPropietario`,
         `proyectoCelularPropietario`,`proyectoEmailPropietario`,
         `proyectoDireccionPropietario`,`proyectoTelefonoPropietario`,
       `departamentoId`, `proyectoDescrpcion`,`proyectoLatitud`,`proyectoLongitud`,
         `proyectoDireccion`, `usuarioIdentidad`,`proyectoNombre`,`tipoId`,
-      `regionProyecto`)
+      `regionProyecto`,`zonaUtm`)
         VALUES
-        (%d, '%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,%d);";
+        (%d, '%s','%s','%s','%s','%s','%s',%d,'%s',%f,%f,'%s','%s','%s',%d,'%s');";
           $insertSQL = sprintf($insertSQL,
                                valstr($txtNombrePropietario),
                                valstr($txtIdentidadPropietario),
-                               valstr($txtDireccionPropietario),
                                valstr($txtCelularPropietario),
                                valstr($txtEmailPropietario),
+                               valstr($txtDireccionProyecto),
                                valstr($txtTelefonoPropietario),
                                $cmbDepartamentoProyecto,
                                valstr($txtDescripcionProyecto),
@@ -96,8 +105,8 @@
                                $_SESSION["userName"],
                                valstr($txtProyectoNombre),
                                $tipos,
-                               $zonaUtm,
-                               $region);
+                               $region,
+                               $zonaUtm);
           return ejecutarNonQueryConErrores($insertSQL);
         }
 
