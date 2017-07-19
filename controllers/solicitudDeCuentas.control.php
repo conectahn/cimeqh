@@ -36,7 +36,7 @@
             $respuesta=actualizarEstado($numeroId,$estadoCuenta);
 
             $mail = new PHPMailer;
-            $mail->SMTPDebug=2;
+            $mail->SMTPDebug=0;
             $mail->isSMTP();
             $mail->Host = 'chimera.lunarpages.com';
             $mail->SMTPAuth = true;

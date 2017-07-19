@@ -4,10 +4,9 @@ require_once("libs/dao.php");
 
 function registrarRecepcion($aprobacionId){
   $insertSQL = "INSERT INTO `tblsolicitudrecepcion`
-(`solicitudRecepcioEstado`,
-`solicitudAprobacionId`)
+(`solicitudRecepcioEstado`,`solicitudAprobacionId`,`fechaRegistroSolicitud`)
 VALUES
-(4,%d);";
+(4,%d,now());";
   $insertSQL = sprintf($insertSQL,$aprobacionId);
 
   if (ejecutarNonQuery($insertSQL)) {
