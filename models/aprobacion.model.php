@@ -6,10 +6,11 @@ function registrarAprobacion($monto, $costo, $proyectoId){
 (`solicitudAaprobacionMontoEstimado`,
 `solicitudAprobacionCosto`,
 `estadoSolicitudAprobacion`,
-`proyectoId`)
+`proyectoId`,
+`fechaRegistroSolicitud`)
 VALUES
-(%f,%f,4,%d);";
-  $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
+(%f,%f,4,%d,now());";
+$insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
 
   if(ejecutarNonQuery($insertSQL)){
             $ultimoID=getLastInserId();

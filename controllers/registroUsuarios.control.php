@@ -31,7 +31,7 @@ require_once("clases/class.phpmaileroauthgoogle.php");
       $usuarios["txtCorreo"]=$_POST["txtCorreo"];
       //envio del correo al momento de registrar usuarios
       $mail = new PHPMailer;
-      $mail->SMTPDebug=2;
+      $mail->SMTPDebug=0;
       $mail->isSMTP();
       $mail->Host = 'chimera.lunarpages.com';
       $mail->SMTPAuth = true;
