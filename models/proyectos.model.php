@@ -99,7 +99,7 @@
                                $cmbDepartamentoProyecto,
                                valstr($txtDescripcionProyecto),
                                $txtLatitud,
-                               $txtLongitud,//asd
+                               $txtLongitud,//a
                                valstr($txtDireccionProyecto),
                                $_SESSION["userName"],
                                valstr($txtProyectoNombre),
