@@ -2,6 +2,12 @@
 
 require_once("libs/template_engine.php");
 require_once("models/usuarios.model.php");
+require_once("clases/PHPMailerAutoload.php");
+require_once("clases/class.phpmailer.php");
+require_once("clases/class.phpmaileroauth.php");
+require_once("clases/class.smtp.php");
+require_once("clases/class.pop3.php");
+require_once("clases/class.phpmaileroauthgoogle.php");
 
   function run(){
     $usuarios=array();
@@ -23,6 +29,28 @@ require_once("models/usuarios.model.php");
       $usuarios["txtContrasena"]=$_POST["txtContrasena"];
       $usuarios["txtContrasenaConfirmacion"]=$_POST["txtContrasenaConfirmacion"];
       $usuarios["txtCorreo"]=$_POST["txtCorreo"];
+      //envio del correo al momento de registrar usuarios
+      $mail = new PHPMailer;
+      $mail->SMTPDebug=2;
+      $mail->isSMTP();
+      $mail->Host = 'chimera.lunarpages.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'cimeqh@conectahn.org';
+      $mail->Password = 'conecta2017';
+      $mail->SMTPSecure = 'ssl';
+      $mail->Port = 465;
+      $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
+      $mail->addAddress($usuarios["txtCorreo"], '');
+      $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $asunto = 'Alerta de creación de cuenta.';
+      $mail->Subject = "=?ISO-8859-1?B?".base64_encode($asunto)."=?=";
+      $mail->Body    = "Su cuenta ha sido creada y se encuntra en proceso de verificación por el Cimeqh, será notificado cuando pase de este proceso mediante un nuevo correo.";
+      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+      if(!$mail->send()) {
+      } else {
+
+      }
       $rolId = 4;
       $estadoCuenta = 4;
       $resultado = 0;
@@ -69,7 +97,7 @@ $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $
     }
 
 
-    echo $respueta;     
+    echo $respueta;
     redirectWithMessage("Su cuenta ya existe verifique su correo para enterarse si esta ha sido verificada por el CIMEQH.","?page=login");
     header($location);
 
