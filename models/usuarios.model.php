@@ -152,14 +152,14 @@
 
 
   function insertUsuario($userId, $userPrimernombre, $userSegundonombre, $primerApellido, $segundoApellido,
-  $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,$fecha){
+  $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email){
 
   $strsql = "INSERT INTO `tblusuarios`
   (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
   `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
   `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,`usuarioFechaIngreso`)
   VALUES
-  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',%d);";
+  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now());";
         $strsql = sprintf($strsql,
         valstr($userId),
         valstr($userPrimernombre),
@@ -173,8 +173,7 @@
         valstr($userPassword),
         $estadoCuenta,
         $rolId,
-        valstr($email),
-        $fecha);
+        valstr($email));
         ejecutarNonQueryConErrores($strsql);
 
     }
