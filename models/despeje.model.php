@@ -3,9 +3,7 @@
 require_once("libs/dao.php");
 
 function registrarDespeje($tiempo,$cuadrillas,$personal,$fecha,$aprobacionId){
-  $insertSQL = "INSERT INTO `cimeqh`.`tblsolicituddespeje`
-(`solicitudDespejeHoras`,`solicitudDespejeCuadrillas`,`solicitudDespejeCantidadPersonal`,`solicitudDespejeFecha`,`tblsolicitudaprobacion_solicitudAprobacionId`,`estadoDespejeId`,`fechaRegistro`)VALUES(%d,%d,%d,'%s',%d,4,now());";
-  $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);
+  $insertSQL = "INSERT INTO `cimeqh`.`tblsolicituddespeje`(`solicitudDespejeHoras`,`solicitudDespejeCuadrillas`,`solicitudDespejeCantidadPersonal`,`solicitudDespejeFecha`,`tblsolicitudaprobacion_solicitudAprobacionId`,`estadoDespejeId`,`fechaRegistro`)VALUES(%d,%d,%d,'%s',%d,4,now());";  $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);
     return  ejecutarNonQueryConErrores($insertSQL);
 }
 function actualizarDespeje($tiempo,$cuadrillas,$personal,$fecha,$despejeId){  $insertSQL = "UPDATE `tblsolicituddespeje`SET`solicitudDespejeHoras` =%d,`solicitudDespejeCuadrillas` = %d,`solicitudDespejeCantidadPersonal` = %d,`solicitudDespejeFecha` = '%s',`estadoDespejeId` = 4,`comentarioDespeje` = ''WHERE `solicitudDespejeId` = %d;";

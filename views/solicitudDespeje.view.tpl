@@ -46,6 +46,7 @@
                       <input type="hidden" name="solicitudAprobacionId" id="solicitudAprobacionId" value="{{solicitudAprobacionId}}">
                       <input type="hidden" name="accion" id="accion" value="{{accion}}">
                       <input type="hidden" name="despejeId" id="despejeId" value="{{despejeId}}">
+                      <input type="hidden" name="proyectoId" id="proyectoId" value="{{proyectoId}}">
                          <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
@@ -86,20 +87,20 @@
                                                 <div class="form-group">
                                             <div class="input-group date">
                                               <label for="txtFecha">Fecha del Despeje</label>
-                                              <input type="text" id="txtFecha" name="txtFecha" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                              <input type="date" id="txtFecha" name="txtFecha" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                             </div>
                                           </div>
                                              </div>
                                              </div>
-                    <input type="submit" id="btnSolicitarDespeje" name="btnSolicitarDespeje" class="btn btn-default" value="Solicitar Despeje">
-                    </form>
+                  <input type="submit" id="btnSolicitarDespeje" name="btnSolicitarDespeje" class="btn btn-default" value="Solicitar Despeje">
+            </form>
         </div>
       </div>
     </div>
 </div>
 </div>
 <script type="text/javascript">
-var date = new Date();
+/*var date = new Date();
 date.setDate(date.getDate());
 $('#txtFecha').datepicker({
     startDate: date,
@@ -109,7 +110,7 @@ $('#txtFecha').datepicker({
     todayHighlight: true,
     format: "yy/mm/dd"
 });
-
+*/
 $(document).ready(function() {
 
 
