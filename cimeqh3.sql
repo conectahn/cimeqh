@@ -79,7 +79,7 @@ CREATE TABLE `tbldocumentosaprobacion` (
   KEY `solicitudAprobacionId_idx` (`solicitudAprobacionId`),
   KEY `fksolicitudAprobacionId_idx` (`solicitudAprobacionId`),
   CONSTRAINT `fksolicitudAprobacionId` FOREIGN KEY (`solicitudAprobacionId`) REFERENCES `tblsolicitudaprobacion` (`solicitudAprobacionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,6 +353,7 @@ CREATE TABLE `tblsolicitudaprobacion` (
   `codigoAprobacion` varchar(150) DEFAULT NULL,
   `comentarioAprobacion` varchar(600) DEFAULT NULL,
   `solicitudAprobacionFecha` datetime DEFAULT NULL,
+  `fechaRegistroSolicitud` datetime DEFAULT NULL,
   PRIMARY KEY (`solicitudAprobacionId`),
   KEY `fkProyectoId_idx` (`proyectoId`),
   KEY `estadoAprobacion_idx` (`estadoSolicitudAprobacion`),
@@ -367,7 +368,7 @@ CREATE TABLE `tblsolicitudaprobacion` (
 
 LOCK TABLES `tblsolicitudaprobacion` WRITE;
 /*!40000 ALTER TABLE `tblsolicitudaprobacion` DISABLE KEYS */;
-INSERT INTO `tblsolicitudaprobacion` VALUES (89,800000,700,2,7,'a82dhxaq1moryjz12h','perfecto yes','2017-07-04 00:00:00'),(90,777777,700,3,8,'a82dhxaq1horyk1s2i','mal','2017-07-04 00:00:00'),(91,5244550,1960,2,10,'osl6fh2j','perfecto yes','2017-07-04 00:00:00');
+INSERT INTO `tblsolicitudaprobacion` VALUES (89,800000,700,2,7,'a82dhxaq1moryjz12h','perfecto yes','2017-07-04 00:00:00',NULL),(90,777777,700,3,8,'a82dhxaq1horyk1s2i','mal','2017-07-04 00:00:00',NULL),(91,5244550,1960,2,10,'osl6fh2j','perfecto yes','2017-07-04 00:00:00',NULL);
 /*!40000 ALTER TABLE `tblsolicitudaprobacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,7 +437,7 @@ CREATE TABLE `tblsolicitudfactibilidad` (
   CONSTRAINT `estadoFactibilidadId` FOREIGN KEY (`estadoFactibilidadId`) REFERENCES `tblestadofactibilidad` (`estadoFactibilidadId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `proyectoId` FOREIGN KEY (`proyectoId`) REFERENCES `tblproyectos` (`proyectoId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `voltajeId` FOREIGN KEY (`voltajeId`) REFERENCES `tblvoltajes` (`voltajeId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -445,7 +446,7 @@ CREATE TABLE `tblsolicitudfactibilidad` (
 
 LOCK TABLES `tblsolicitudfactibilidad` WRITE;
 /*!40000 ALTER TABLE `tblsolicitudfactibilidad` DISABLE KEYS */;
-INSERT INTO `tblsolicitudfactibilidad` VALUES (10,1,2,800,22,11,4,7,'ok',NULL,NULL,NULL),(11,2,1,1231,42,52,1,10,'ok',NULL,NULL,NULL),(12,1,1,58,6,12,4,13,NULL,NULL,NULL,'2017-07-19 14:58:36');
+INSERT INTO `tblsolicitudfactibilidad` VALUES (10,1,2,800,22,11,4,7,'ok',NULL,NULL,NULL),(11,2,1,1231,42,52,1,10,'ok',NULL,NULL,NULL),(12,1,1,58,6,12,4,13,NULL,NULL,NULL,'2017-07-19 14:58:36'),(13,2,2,321,645,978,4,8,NULL,NULL,NULL,'2017-07-20 15:13:57'),(14,1,2,38.5,5,25,4,12,NULL,NULL,NULL,'2017-07-20 15:17:23'),(15,2,2,123,58,24,4,9,NULL,NULL,NULL,'2017-07-20 15:17:46'),(16,1,1,32,12,123,4,11,NULL,NULL,NULL,'2017-07-20 15:18:08');
 /*!40000 ALTER TABLE `tblsolicitudfactibilidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,6 +462,7 @@ CREATE TABLE `tblsolicitudrecepcion` (
   `solicitudRecepcioEstado` int(11) NOT NULL,
   `solicitudAprobacionId` int(11) NOT NULL,
   `comentario` varchar(600) DEFAULT NULL,
+  `fechaRegistroSolicitud` datetime DEFAULT NULL,
   PRIMARY KEY (`solicitudRecepcioId`),
   KEY `fk_tblSolicitudRecpcion_tblsolicitudaprobacion1_idx` (`solicitudAprobacionId`),
   KEY `estadoRecepcionId_idx` (`solicitudRecepcioEstado`),
@@ -475,7 +477,7 @@ CREATE TABLE `tblsolicitudrecepcion` (
 
 LOCK TABLES `tblsolicitudrecepcion` WRITE;
 /*!40000 ALTER TABLE `tblsolicitudrecepcion` DISABLE KEYS */;
-INSERT INTO `tblsolicitudrecepcion` VALUES (4,1,89,'excelente Luis sigue asi'),(5,3,90,'nel'),(6,2,89,'ok'),(7,1,89,'');
+INSERT INTO `tblsolicitudrecepcion` VALUES (4,1,89,'excelente Luis sigue asi',NULL),(5,3,90,'nel',NULL),(6,2,89,'ok',NULL),(7,1,89,'',NULL);
 /*!40000 ALTER TABLE `tblsolicitudrecepcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -607,4 +609,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-20 15:11:44
+-- Dump completed on 2017-07-20 16:02:54
