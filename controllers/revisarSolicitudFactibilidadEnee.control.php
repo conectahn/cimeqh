@@ -5,23 +5,72 @@
   require_once("models/multiUpload.model.php");
 
   function run(){
-    $revisar = array();
-    $usuario=array();
+
     if (mw_estaLogueado()) {
-
-//revisa primero si el usuario esta activo en este caso activo es igual a 1
       if ($_SESSION["estado"]==1) {
-################################################################################
-//revisa el rol al que el usuario pertenece si es 5 = enee supervisor pasa
-################################################################################
-        if($_SESSION["rol"]==5){
+        $revisar = array();
+        $usuarios = array();
+        switch ($_SESSION["rol"]) {
 
+#######################################################################
+//En caso de que el usuario de la enee sea supervisor entrara en esta
+//case rol=2 significa enee supervisor
+#######################################################################
+
+          case '2':
           if(isset($_POST["btnRechazar"])){
+
             $numeroId="";
             $estadoCuenta=2;
             $numeroId=$_POST["usuarioIdentidad"];
             actualizarEstado($numeroId,$estadoCuenta);
             }
+
+          if(isset($_POST["btnAceptar"])){
+            $respuesta="";
+            $numeroId="";
+            $estadoCuenta=1;
+            $numeroId=$_POST["usuarioIdentidad"];
+            $respuesta=actualizarEstado($numeroId,$estadoCuenta);
+            echo $respuesta;
+          }
+
+        //Agregar un comentario segun sea aprobada o rechazada la solicitud
+
+          if (isset($_POST["btnComentarFactibilidad"])) {
+            if ($_POST["tipo"]=="rechazo") {
+            agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],3);
+          }elseif ($_POST["tipo"]=="aceptado") {
+
+            agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],2);
+
+            $files = $_FILES['userfile']['name'];
+
+            //creamos una nueva instancia de la clase multiupload
+            $upload = new Multiupload();
+            //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
+            $isUpload = $upload->upFiles($files,$_POST["factibilidadId"],"factibilidad");
+          }
+          }
+
+
+          $revisar=verSolicitudesFactbilidadEnee();
+          renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+            break;
+
+#######################################################################
+//En caso de que el usuario de la enee sea supervisor entrara en esta
+//case rol=2 significa enee supervisor
+#######################################################################
+
+            case '5':
+            if(isset($_POST["btnRechazar"])){
+
+              $numeroId="";
+              $estadoCuenta=2;
+              $numeroId=$_POST["usuarioIdentidad"];
+              actualizarEstado($numeroId,$estadoCuenta);
+              }
 
             if(isset($_POST["btnAceptar"])){
               $respuesta="";
@@ -32,56 +81,49 @@
               echo $respuesta;
             }
 
-//agregar comentario en caso de ser aceptada o rechazada una aprobacion
-if (isset($_POST["btnComentarFactibilidad"])) {
-  if ($_POST["tipo"]=="rechazo") {
-  agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],3);
-}elseif ($_POST["tipo"]=="aceptado") {
+          //Agregar un comentario segun sea aprobada o rechazada la solicitud
 
-  agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],2);
+            if (isset($_POST["btnComentarFactibilidad"])) {
+              if ($_POST["tipo"]=="rechazo") {
+              agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],3);
+            }elseif ($_POST["tipo"]=="aceptado") {
 
-  $files = $_FILES['userfile']['name'];
+              agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],2);
 
-  //creamos una nueva instancia de la clase multiupload
-  $upload = new Multiupload();
-  //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
-  $isUpload = $upload->upFiles($files,$_POST["factibilidadId"],"factibilidad");
-}
-}
+              $files = $_FILES['userfile']['name'];
 
-#################################################################
-//se realiza un query para obtener la region del usuatio logueado
-$usuario=obtenerUsuariosPorId($_SESSION["userName"]);
-//se llama el query para ver las solicitudes de
-//factibilidad enee segun la region a la que pretenece
-$revisar=verSolicitudesFactbilidadEneeSup($usuario["usuarioRegion"]);
-renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
-
-
-        }
-
-################################################################################
-//revisa el rol al que el usuario pertenece si es 6 = enee aprobadora pasa
-################################################################################
-
-        if($_SESSION["rol"]==6){
-          if(isset($_POST["btnRechazar"])){
-            $numeroId="";
-            $estadoCuenta=2;
-            $numeroId=$_POST["usuarioIdentidad"];
-            actualizarEstado($numeroId,$estadoCuenta);
+              //creamos una nueva instancia de la clase multiupload
+              $upload = new Multiupload();
+              //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
+              $isUpload = $upload->upFiles($files,$_POST["factibilidadId"],"factibilidad");
+            }
             }
 
-            if(isset($_POST["btnAceptar"])){
-              $respuesta="";
-              $numeroId="";
-              $estadoCuenta=1;
-              $numeroId=$_POST["usuarioIdentidad"];
-              $respuesta=actualizarEstado($numeroId,$estadoCuenta);
-              echo $respuesta;
-            }
+            $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
+            $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
+            renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
 
-//Agregar un comentario segun sea aprobada o rechazada la solicitud
+              break;
+
+              case '6':
+              if(isset($_POST["btnRechazar"])){
+
+                $numeroId="";
+                $estadoCuenta=2;
+                $numeroId=$_POST["usuarioIdentidad"];
+                actualizarEstado($numeroId,$estadoCuenta);
+                }
+
+              if(isset($_POST["btnAceptar"])){
+                $respuesta="";
+                $numeroId="";
+                $estadoCuenta=1;
+                $numeroId=$_POST["usuarioIdentidad"];
+                $respuesta=actualizarEstado($numeroId,$estadoCuenta);
+                echo $respuesta;
+              }
+
+              //Agregar un comentario segun sea aprobada o rechazada la solicitud
 
               if (isset($_POST["btnComentarFactibilidad"])) {
                 if ($_POST["tipo"]=="rechazo") {
@@ -99,20 +141,18 @@ renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layo
               }
               }
 
-//se llama el query para ver las solicitudes de factibilidad enee
+              $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
+              $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
               $revisar=verSolicitudesFactbilidadEnee();
               renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+              break;
 
-
+          default:
+            redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
+            break;
         }
 
-################################################################################
-//revisa el rol al que el usuario pertenece si es 2 = enee superusuario pasa
-################################################################################
-
-
-        if ($_SESSION["rol"]==2) {
-
+        /*if ($_SESSION["rol"]==2) {
           if(isset($_POST["btnRechazar"])){
 
             $numeroId="";
@@ -152,9 +192,10 @@ renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layo
           $revisar=verSolicitudesFactbilidadEnee();
           renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
 
-        }else {
+        }aqui termina el if
+        else {
           redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
-        }
+        }*/
       }else if ($_SESSION["estado"]==4) {
           redirectWithMessage("Su cuenta todavia no ha sido verificada por el CIMEQH.","?page=login");
       }elseif ($_SESSION["estado"]==3) {
