@@ -7,7 +7,7 @@ function registrarAprobacion($monto, $costo, $proyectoId){
 `solicitudAprobacionCosto`,
 `estadoSolicitudAprobacion`,
 `proyectoId`,
-`fechaRegistroSolicitud`)
+`solicitudAprobacionFecha`)
 VALUES
 (%f,%f,4,%d,now());";
 $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
