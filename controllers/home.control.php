@@ -10,8 +10,46 @@
 
     if (mw_estaLogueado()) {
       if ($_SESSION["estado"]==1) {
-        if ($_SESSION["rol"]==4||$_SESSION["rol"]==1 || $_SESSION["rol"]==2) {
+        if ($_SESSION["rol"]==1 || $_SESSION["rol"]==2 || $_SESSION["rol"]==3
+        ||  $_SESSION["rol"]==4 || $_SESSION["rol"]==5
+        || $_SESSION["rol"]==6) {
+          switch ($_SESSION["rol"]) {
+            case '1':
+              renderizar("home", array(),"layoutCimeqh.view.tpl");
+              echo $_SESSION["rol"];
+              break;
 
+              case '2':
+                renderizar("home",array(),"layoutEnee.view.tpl");
+                echo $_SESSION["rol"];
+                break;
+
+                case '3':
+                  renderizar("home", array(),"layoutCimeqhAprobacion.view.tpl");
+                  echo $_SESSION["rol"];
+                  break;
+
+
+                  case '4':
+                    renderizar("home",array());
+                    echo $_SESSION["rol"];
+                    break;
+
+                    case '5':
+                      renderizar("home",array(),"layoutEnee.view.tpl");
+                      echo $_SESSION["rol"];
+                      break;
+
+                      case '6':
+                        renderizar("home",array(),"layoutEnee.view.tpl");
+                        echo $_SESSION["rol"];
+                        break;
+
+            default:
+              redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
+              break;
+          }
+/*
           if ($_SESSION["rol"]==1) {
               renderizar("home",array(),"layoutCimeqh.view.tpl");
                 echo $_SESSION["rol"];
@@ -19,8 +57,7 @@
             renderizar("home",array(),"layoutEnee.view.tpl");
           }else {
             renderizar("home",array());
-          }
-
+          }*/
         }else {
           redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
         }

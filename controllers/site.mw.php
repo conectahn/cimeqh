@@ -5,7 +5,7 @@ function site_init(){
   if (mw_estaLogueado()) {
     addToContext("page_title","Simple MVC Example");
     addToContext($_SESSION["nombre"],"nombre");
-    addToContext($_SESSION["apellido"],"apellido");
+    addToContext($_SESSION["apellido"],"apellido");    
   }
   //Page title del sitio
   addToContext("prueba","CIMEQH");
