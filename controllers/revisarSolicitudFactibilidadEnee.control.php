@@ -38,10 +38,16 @@
         //Agregar un comentario segun sea aprobada o rechazada la solicitud
 
           if (isset($_POST["btnComentarFactibilidad"])) {
+            //en caso que la factibilidad sea rechazada se ejecutara este codigo
+            //que es un update al estado de la factibilidad en este caso 3 ya que 3 es
+            //igual a rechazado
             if ($_POST["tipo"]=="rechazo") {
             agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],3);
+            //en caso que la factibilidad sea aceptada se ejecutara este codigo
+            //que es un update al estado de la factibilidad en este caso 2 ya que 2 es
+            //igual a aceptado
           }elseif ($_POST["tipo"]=="aceptado") {
-
+//Esta linea ejecuta el query de insert para agregar el comentario en la base de datos
             agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],2);
 
             $files = $_FILES['userfile']['name'];
@@ -53,8 +59,20 @@
           }
           }
 
-
+          ###################################################################
+          //Se ingresa el query necesario para poder ver los proyectos en este cas
+          //todos los proyectos de la enee ya que este es super usuario
+          ###################################################################
           $revisar=verSolicitudesFactbilidadEnee();
+          ###################################################################
+          /*
+          Esta es la funcion final del case la cual sirve para mostrar la vista
+          que requerimos en estos momentos en este caso "revisarSolicitudFactibilidadEnee"
+          adicionalmente se le envia el arreglo con los datos que necesita "array(solicitud)"
+          el ultimo punto en renderizar es que se le pasa el layaout o barra lateral que
+          deseamos mostrar para este caso es layoutEnee
+          */
+          ###################################################################
           renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
             break;
 
@@ -99,8 +117,25 @@
             }
             }
 
+            ###################################################################
+            //Se busca la region a la que pertenece el usuario logueado para
+            //poder diferenciarlo de las diferentes regiones
+            ###################################################################
             $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
+            ###################################################################
+            //Se ingresa el query necesario para poder ver los proyectos que pertenecen a la misma
+            //region del usuario logueado
+            ###################################################################
             $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
+            ###################################################################
+            /*
+            Esta es la funcion final del case la cual sirve para mostrar la vista
+            que requerimos en estos momentos en este caso "revisarSolicitudFactibilidadEnee"
+            adicionalmente se le envia el arreglo con los datos que necesita "array(solicitud)"
+            el ultimo punto en renderizar es que se le pasa el layaout o barra lateral que
+            deseamos mostrar para este caso es layoutEnee
+            */
+            ###################################################################
             renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
 
               break;
@@ -141,9 +176,25 @@
               }
               }
 
+###################################################################
+//Se busca la region a la que pertenece el usuario logueado para
+//poder diferenciarlo de las diferentes regiones
+###################################################################
               $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
+###################################################################
+//Se ingresa el query necesario para poder ver los proyectos que pertenecen a la misma
+//region del usuario logueado
+###################################################################
               $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
-              $revisar=verSolicitudesFactbilidadEnee();
+###################################################################
+/*
+Esta es la funcion final del case la cual sirve para mostrar la vista
+que requerimos en estos momentos en este caso "revisarSolicitudFactibilidadEnee"
+adicionalmente se le envia el arreglo con los datos que necesita "array(solicitud)"
+el ultimo punto en renderizar es que se le pasa el layaout o barra lateral que
+deseamos mostrar para este caso es layoutEnee
+*/
+###################################################################
               renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
               break;
 
