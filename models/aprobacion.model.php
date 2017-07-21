@@ -7,7 +7,7 @@ function registrarAprobacion($monto, $costo, $proyectoId){
 `solicitudAprobacionCosto`,
 `estadoSolicitudAprobacion`,
 `proyectoId`,
-`solicitudAprobacionFecha`)
+`fechaRegistroSolicitud`)
 VALUES
 (%f,%f,4,%d,now());";
 $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
@@ -141,6 +141,20 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
  and p.departamentoId=d.departamentoId
  and ea.estadoAprobacionId=4";
+    $solicitudes = obtenerRegistros($sqlstr);
+    return $solicitudes;
+}
+
+function verSolicitudesAprobacionCimeqh($region){
+    $solicitudes = array();
+    $sqlstr = "SELECT *
+    from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
+    tblestadoaprobacion as ea, tblregion as reg
+    where p.proyectoId=sa.proyectoId
+    and p.usuarioIdentidad=u.usuarioIdentidad
+    and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
+    and p.departamentoId=d.departamentoId
+    and ea.estadoAprobacionId=4 and p.regionProyecto=$region and p.regionProyecto=reg.idRegion";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
