@@ -13,11 +13,11 @@
           $respuesta="";
           $htmlDatos = array( );
 
-          /*if (isset($_POST["btnSolicitarAprobacion"])) {
+          if (isset($_POST["btnSolicitarAprobacion"])) {
             $respuesta = registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
-          }
 
-            /*switch ($_POST["accion"]) {
+
+            switch ($_POST["accion"]) {
               case 'INS':
                 $respuesta=registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
 
@@ -59,7 +59,7 @@
             }
 
 
-          }*/
+          }
 
           if(isset($_GET["proyectoId"])){
 
