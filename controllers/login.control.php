@@ -61,7 +61,7 @@
         $cadena = base_convert(rand(1,99),10,36).base_convert(time(), 10, 36).base_convert($last_inserted_id, 10, 36);
         $token = $cadena;
         $mensaje=generarToken($token,$user["usuarioIdentidad"]);
-        $link = 'http://localhost/colegiodeingenieros/index.php?page=restablecerPass&id='.$user["usuarioIdentidad"].'&token='.$token;
+        $link = 'http://localhost/cimeqh/index.php?page=restablecerPass&id='.$user["usuarioIdentidad"].'&token='.$token;
 
         $mail = new PHPMailer;
          $mail->SMTPDebug=0;
