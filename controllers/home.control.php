@@ -20,7 +20,7 @@
               break;
 
               case '2':
-                renderizar("home",array(),"layoutEnee.view.tpl");
+                renderizar("home",array(),"layoutEneeAdmin.view.tpl");
                 echo $_SESSION["rol"];
                 break;
 

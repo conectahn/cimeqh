@@ -178,4 +178,51 @@
 
     }
 
+    function insertUsuarioEnee($userId, $userPrimernombre, $userSegundonombre, $primerApellido, $segundoApellido,
+    $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,
+    $region){
+
+    $strsql = "INSERT INTO `tblusuarios`
+    (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
+    `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
+    `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,`usuarioFechaIngreso`,
+    `usuarioFechaIngreso`,`usuarioRegion`)
+    VALUES
+    ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now(),%d);";
+          $strsql = sprintf($strsql,
+          valstr($userId),
+          valstr($userPrimernombre),
+          valstr($userSegundonombre),
+          valstr($primerApellido),
+          valstr($segundoApellido),
+          valstr($numeroColegiacion),
+          valstr($userCelular),
+          valstr($userTelefono),
+          valstr($userDireccion),
+          valstr($userPassword),
+          $estadoCuenta,
+          $rolId,
+          valstr($email),
+          $region);
+          ejecutarNonQueryConErrores($strsql);
+
+      }
+
+
+
+    function obtenerRegiones(){
+          $usuario = array();
+          $sqlstr = sprintf("SELECT * FROM cimeqh.tblregion;");
+          $usuario = obtenerRegistros($sqlstr);
+          return $usuario;
+    }
+
+    function obtenerRolesEnee(){
+          $usuario = array();
+          $sqlstr = sprintf("SELECT * FROM tblroles where rolId in (5,6);");
+          $usuario = obtenerRegistros($sqlstr);
+          return $usuario;
+    }
+
+
 ?>
