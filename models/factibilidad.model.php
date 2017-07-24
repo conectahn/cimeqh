@@ -83,6 +83,27 @@ function verSolicitudesFactbilidad(){
     return $solicitudFactibilidad;
 }
 
+function verSolicitudesFactbilidadReg($region){
+    $solicitudFactibilidad = array();
+    $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
+        proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
+        proyectoIdentidadPropietario, proyectoTelefonoPropietario, proyectoCelularPropietario,
+        proyectoEmailPropietario, proyectoDireccionPropietario,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' '
+        ,usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',
+        usuarioNumeroColegiacion, usuarioTelefono, usuarioCelular, voltajeDescripcion, conexionDescripcion,
+        solicitudFactibilidadPotencia, solicitudadFactibilidadCrecimientoEsperado, solicitudFactibilidadKva,
+        estadoFactibilidadDescripcion, reg.regionDescripcion
+        FROM tblsolicitudfactibilidad tblsf, tblconexiones tblc, tblvoltajes tblv, tbldepartamentos tbld,
+        tblproyectos tblp, tblusuarios tblu,  tblestadofactibilidad, tblregion reg
+        where tblsf.proyectoId=tblp.proyectoId and tblsf.conexionId=tblc.conexionId
+        and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
+        and tbld.departamentoId=tblp.departamentoId
+        and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
+        and tblsf.estadoFactibilidadId=4 and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";
+    $solicitudFactibilidad = obtenerRegistros($sqlstr);
+    return $solicitudFactibilidad;
+}
+
 
 function verSolicitudesFactbilidadEneeSup($region){
     $solicitudFactibilidad = array();
