@@ -172,6 +172,20 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
     return $solicitudes;
 }
 
+function verSolicitudesAprobacionEneeReg($region){
+    $solicitudes = array();
+    $sqlstr = "SELECT *
+  from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
+  tblestadoaprobacion as ea, tblregion as reg
+ where p.proyectoId=sa.proyectoId
+ and p.usuarioIdentidad=u.usuarioIdentidad
+ and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
+ and p.departamentoId=d.departamentoId
+ and ea.estadoAprobacionId=1 and reg.idRegion=p.regionProyecto and reg.idRegion=$region;";
+ $solicitudes = obtenerRegistros($sqlstr);
+ return $solicitudes;
+}
+
 function agregarComentarioAprobacion($solicitudId, $comentario, $estado){
   $sqlstr="UPDATE `tblsolicitudaprobacion`
 SET
