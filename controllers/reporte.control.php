@@ -10,7 +10,19 @@
   function run(){
     if (mw_estaLogueado()) {
       if ($_SESSION["estado"]==1) {
-        if ($_SESSION["rol"]==4) {
+        switch( $_SESSION["rol"] ){
+
+            case 1:
+            // CIMEQH superusuario
+            $respuesta="";
+            $htmlDatos = array( );
+            $fecha="";
+            //echo 'Reportes de TODO CIMEQH';
+
+            renderizar("reporte",  $htmlDatos, "layoutCimeqh.view.tpl");
+            break;
+        }
+        /*if ($_SESSION["rol"]==4) {
           $respuesta="";
           $htmlDatos = array( );
           $fecha="";
@@ -73,7 +85,7 @@
           renderizar("reporte",  $htmlDatos);
         }else {
           redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
-        }
+        }*/
       }else if ($_SESSION["estado"]==4) {
           redirectWithMessage("Su cuenta todavia no ha sido verificada por el CIMEQH.","?page=login");
       }elseif ($_SESSION["estado"]==3) {

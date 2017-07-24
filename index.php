@@ -27,6 +27,9 @@
             require_once("controllers/revisarSolicitudRecepcionEnee.control.php");
             break;
 
+        case "reporte":
+          require_once("controllers/reporte.control.php");
+          break;
         case "landingPage":
             //llamar al controlador
             require_once("controllers/landingPage.control.php");

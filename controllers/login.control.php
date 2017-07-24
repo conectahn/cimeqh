@@ -111,7 +111,11 @@
                    "mostrarErrores" => (count($errores)>0),
                    "errores" => $errores);
     echo $mensaje;
-    renderizar("login", $datos,'layoutSinSesion.view.tpl');
+    if( !mw_estaLogueado() ){ // Pagina de login no deberia aparecer si usuario esta loggeado
+        renderizar("login", $datos,'layoutSinSesion.view.tpl');
+    }else{
+        renderizar("home",array());
+    }
 
   }
 

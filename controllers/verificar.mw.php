@@ -18,11 +18,11 @@
         if($logueado){
             $_SESSION["userLogged"] = true;
             $_SESSION["userName"] = $usuario;
-            $_SESSION["rol"] = $rol;
-            $_SESSION["estado"] = $estado;
+            $_SESSION["rol"] = $rol;    // 1 = cimeqh, 2 = enee, 3 = public, 4 = ingeniero (consultar tblroles en mysql)
+            $_SESSION["estado"] = $estado;  // Aprobado, denegado, suspendido o en revision la cuenta
             $_SESSION["nombre"] = $nombre;
             $_SESSION["apellido"] = $apellido;
-            $_SESSION["comentario"] = $comentario;
+            $_SESSION["comentario"] = $comentario; // Comentario
         }else{
             $_SESSION["userLogged"] = false;
             $_SESSION["userName"] = "";
