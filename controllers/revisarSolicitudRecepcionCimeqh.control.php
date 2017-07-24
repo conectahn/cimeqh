@@ -62,7 +62,7 @@
               if ($_POST["tipo"]=="rechazo") {
               agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["txtcomentario"],3);
             }elseif ($_POST["tipo"]=="aceptado") {
-              agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["txtcomentario"],1);
+              agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["txtcomentario"],1);
             }
             }
 
