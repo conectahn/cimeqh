@@ -43,7 +43,7 @@
   }
 
 
-    renderizar("pagarMora",  $htmlDatos,"layoutStripe.view.tpl");
+    renderizar("pagarMora",  $htmlDatos);
   }
 
 

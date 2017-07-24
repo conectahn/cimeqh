@@ -94,7 +94,7 @@
 
 
 
-    renderizar("pagarAprobacion",   $htmlDatos,"layoutStripe.view.tpl");
+    renderizar("pagarAprobacion",   $htmlDatos);
   }
 
 
