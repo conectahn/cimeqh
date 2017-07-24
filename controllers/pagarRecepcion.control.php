@@ -91,7 +91,7 @@
   }
 
 
-    renderizar("pagarRecepcion",  $htmlDatos,"layoutStripe.view.tpl");
+    renderizar("pagarRecepcion",  $htmlDatos);
   }
 
 

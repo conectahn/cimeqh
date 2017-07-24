@@ -45,7 +45,7 @@
         }
   }
 
-    renderizar("pagarDespeje",  $htmlDatos,"layoutStripe.view.tpl");
+    renderizar("pagarDespeje",  $htmlDatos);
   }
 
   run();
