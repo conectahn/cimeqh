@@ -36,7 +36,7 @@
           }
 
 
-          $revisar=obtenerSolicitudRecepcion();
+          $revisar=obtenerSolicitudRecepcionAdmin();
           renderizar("revisarSolicitudRecepcionCimeqh",array('solicitud'=>$revisar),"layoutCimeqh.view.tpl");
             break;
 
@@ -67,7 +67,7 @@
             }
 
             $usuario=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=obtenerSolicitudRecepcion($usuario["usuarioRegion"]);
+            $revisar=obtenerSolicitudRecepcion($usuario["usuarioRegion"],1);
             renderizar("revisarSolicitudRecepcionCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
             break;
 
