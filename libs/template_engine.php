@@ -1,10 +1,38 @@
 <?php
     //Función que renderiza una vista con sus respectivos datos, si no se le especifica un layout toma uno por defecto
-    function renderizar($vista, $datos, $layoutFile = "layout.view.tpl"){
+    function renderizar($vista, $datos, $layoutFile = ""){
         if(!is_array($datos)){
             http_response_code(404);
             die("Error de renderizador: datos no es un arreglo");
         }
+
+        if ( $layoutFile == "" ){ //If default value
+          if( mw_estaLogueado() ){ // Are we logged in?
+
+                switch( $_SESSION["rol"] ){
+                  case 1:
+                    $layoutFile = "layoutCimeqh.view.tpl"; // CIMEQH administrador
+                    break;
+                  case 2:
+                    $layoutFile = "layoutEnee.view.tpl"; // ENEE administrador
+                    break;
+                  case 3:
+                    $layoutFile = "layoutCimeqhAprobacion.view.tpl"; // CIMEQH normal
+                    break;
+                  case 4:
+                    $layoutFile = "layout.view.tpl"; // Ingeniero
+                    break;
+                  case 5:
+                    $layoutFile = "layoutEnee.view.tpl"; // ENEE supervisor
+                    break;
+                  case 6:
+                    $layoutFile = "layoutEnee.view.tpl"; // ENEE Aprobacion
+                    break;
+                }
+          }else{ // Not logged in
+              $layoutFile = "layoutPublico.view.tpl";
+          }
+       }
 
         //union de los dos arreglos
         global $global_context;
