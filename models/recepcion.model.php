@@ -30,7 +30,7 @@ function borrarRecepcion($recepcionId){
    }
 }
 
-function obtenerSolicitudRecepcion(){
+function obtenerSolicitudRecepcionAdmin(){
     $solicitudes = array();
     $sqlstr = "select solicitudRecepcioId,solicitudRecepcioEstado,tblr.solicitudAprobacionId,tblp.proyectoNombre, tbld.departamentoDescripcion,tblp.proyectoDireccion, tblp.proyectoDescrpcion ,
 tblp.proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,proyectoIdentidadPropietario,
@@ -45,7 +45,7 @@ and tblr.solicitudAprobacionId=tbla.solicitudAprobacionId and tblp.proyectoId=tb
 and solicitudRecepcioEstado=1;";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
-}
+}//obtener solicitudes para los usuarios de cimeqh por regionesfunction obtenerSolicitudRecepcion($region){  $solicitudes = array();  $sqlstr = "select solicitudRecepcioId,solicitudRecepcioEstado,tblr.solicitudAprobacionId,tblp.proyectoNombre, tbld.departamentoDescripcion,tblp.proyectoDireccion,  tblp.proyectoDescrpcion,tblp.proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,  proyectoIdentidadPropietario,proyectoDireccionPropietario,proyectoEmailPropietario,  proyectoTelefonoPropietario,  concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' ',  usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',tblu.usuarioNumeroColegiacion,  tblu.usuarioCelular,tblu.usuarioTelefono, tblre.estadoRecepcionDescripcion, reg.regionDescripcion  from tblestadorecepcion tblre,tblsolicitudrecepcion tblr, tblusuarios tblu  ,tblsolicitudaprobacion tbla, tblproyectos tblp, tbldepartamentos tbld, tblregion as reg  where tblr.solicitudRecepcioEstado=tblre.estadoRecepcionId and tbld.departamentoId=tblp.departamentoId and tblu.usuarioIdentidad=tblp.usuarioIdentidad  and tblr.solicitudAprobacionId=tbla.solicitudAprobacionId and tblp.proyectoId=tbla.proyectoId  and solicitudRecepcioEstado=1 and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";  $solicitudes = obtenerRegistros($sqlstr);}
 
 
 function obtenerUnDocumentoRecepcion($solicitudId){
