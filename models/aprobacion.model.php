@@ -140,7 +140,7 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
  and p.departamentoId=d.departamentoId
- and ea.estadoAprobacionId=4";
+ and ea.estadoAprobacionId IN (4,1);";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
