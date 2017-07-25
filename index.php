@@ -195,6 +195,10 @@
             require_once("controllers/aprobacionProyectos.control.php");
             break;
 
+            case "registroUsuariosCimeqh":
+              require_once("controllers/registroUsuariosCimeqh.control.php");
+              break;
+
             case "solicitudDespeje":
                 //llamar al controlador
                 require_once("controllers/solicitudDespeje.control.php");
