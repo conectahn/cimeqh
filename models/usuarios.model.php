@@ -224,5 +224,21 @@
           return $usuario;
     }
 
+    function obtenerRolesCimeqh()
+    {
+      $usuario = array();
+      $sqlstr = sprintf("SELECT * FROM tblroles where rolId in (1,3);");
+      $usuario = obtenerRegistros($sqlstr);
+      return $usuario;
+    }
+
+    function obtenerRegionesCimeqh()
+    {
+      $usuario = array();
+      $sqlrt = sprintf("SELECT * FROM tblregion where idRegion in (1,3,5);");
+      $usuario = obtenerRegistros($sqlrt);
+      return $usuario;
+    }
+
 
 ?>

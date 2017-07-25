@@ -90,6 +90,7 @@
                         <ul class="nav child_menu">
                         <li><a href="index.php?page=solicitudDeCuentas">Revisar Solicitudes de Cuentas</a></li>
                         <li><a href="index.php?page=verUsuarios">Modificar Usuarios</a></li>
+                        <li><a href="index.php?page=registroUsuariosCimeqh">Registrar nuevo Usuario</a></li>
                         </ul>
                         </li>
                         <li><a href="index.php?page=revisarSolicitudFactibilidadCimeqh"><i class="fa fa-list-alt"></i>Revisar Solicitudes de Factibilidad de Proyectos</a>
