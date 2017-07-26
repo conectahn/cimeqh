@@ -151,17 +151,18 @@
     }
 
 
-  function insertUsuario($userId, $userPrimernombre, $userSegundonombre, $primerApellido, $segundoApellido,
-  $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email){
-
-  $strsql = "INSERT INTO `tblusuarios`
-  (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
-  `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
-  `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,`usuarioFechaIngreso`)
-  VALUES
-  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now());";
+  function insertUsuario($userId, $userPrimernombre, $userSegundonombre,
+  $primerApellido, $segundoApellido,$numeroColegiacion, $userCelular,
+  $userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,
+  $fecha){
+$strsql = "INSERT INTO `cimeqh`.`tblusuarios`
+(`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
+`usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
+`usuarioDireccion`,`usuarioContrasenia`,`estadoCuentaId`,`rolId`,`usuarioCorreo`,
+`usuarioFechaIngreso`,`fechaRegistro`)
+VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,now());";
         $strsql = sprintf($strsql,
-        valstr($userId),//456465
+        valstr($userId),
         valstr($userPrimernombre),
         valstr($userSegundonombre),
         valstr($primerApellido),
@@ -173,41 +174,30 @@
         valstr($userPassword),
         $estadoCuenta,
         $rolId,
-        valstr($email));
+        valstr($email),
+        $fecha);
         ejecutarNonQueryConErrores($strsql);
 
     }
 
-    function insertUsuarioEnee($userId, $userPrimernombre, $userSegundonombre, $primerApellido, $segundoApellido,
-    $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,
-    $region){
-
-    $strsql = "INSERT INTO `tblusuarios`
-    (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
-    `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
-    `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,
-    `usuarioFechaIngreso`,`usuarioRegion`)
-    VALUES
-    ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now(),%d);";
-          $strsql = sprintf($strsql,
-          valstr($userId),
-          valstr($userPrimernombre),
-          valstr($userSegundonombre),
-          valstr($primerApellido),
-          valstr($segundoApellido),
-          valstr($numeroColegiacion),
-          valstr($userCelular),
-          valstr($userTelefono),
-          valstr($userDireccion),
-          valstr($userPassword),
-          $estadoCuenta,
-          $rolId,
-          valstr($email),
-          $region);
+    function insertUsuarioEnee($userId, $userPrimernombre, $userSegundonombre,
+    $primerApellido, $segundoApellido,$numeroColegiacion, $userCelular,
+    $userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,
+    $fecha,$region){
+          $strsql = "INSERT INTO `cimeqh`.`tblusuarios`
+          (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
+          `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
+          `usuarioDireccion`,`usuarioContrasenia`,`estadoCuentaId`,`rolId`,`usuarioCorreo`,
+          `usuarioFechaIngreso`,`usuarioRegion`,`fechaRegistro`)
+          VALUES  ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d,now());";
+          $strsql = sprintf($strsql,valstr($userId),valstr($userPrimernombre),
+          valstr($userSegundonombre),valstr($primerApellido),
+          valstr($segundoApellido),valstr($numeroColegiacion),
+          valstr($userCelular),valstr($userTelefono),
+          valstr($userDireccion),valstr($userPassword),
+          $estadoCuenta,$rolId,valstr($email),$fecha,$region);
           ejecutarNonQueryConErrores($strsql);
-
       }
-
 
 
     function obtenerRegiones(){
