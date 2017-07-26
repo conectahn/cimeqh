@@ -67,7 +67,7 @@
             }
 
             $usuario=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=obtenerSolicitudRecepcion($usuario["usuarioRegion"],1);
+            $revisar=obtenerSolicitudRecepcionENEEReg($usuario["usuarioRegion"],1);
             renderizar("revisarSolicitudRecepcionCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
             break;
 
