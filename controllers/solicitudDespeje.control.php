@@ -19,9 +19,19 @@
             switch ($_POST["accion"]) {
               case 'INS':
                 $respuesta=registrarDespeje($_POST["txtTiempo"],$_POST["txtCuadrillas"],$_POST["txtCantidadPersonal"],$_POST["txtFecha"],$_POST["solicitudAprobacionId"]);
-                $respuesta=$_POST["txtFecha"];
-                $header="Location:index.php?page=solicitudDespeje&respuesta=".$respuesta;
-                header($header);
+                //$respuesta=$_POST["txtFecha"];
+                $files = $_FILES['userfile']['name'];
+                $upload = new Multiupload();
+                //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
+                $isUpload = $upload->upFiles($files,$respuesta,"despeje");
+                 //llamamos a la funcion upFiles y le pasamos el array de campos file del formulari
+                if ($isUpload===FALSE) {
+                   borrarAprobacion($respuesta);
+                   $alerta=redirectWithMessage("Error al subir el archivo ","index.php?page=verMisSolicitudesDeAprobacion");
+                }else {
+                  $header="Location:index.php?page=verMisSolicitudesDeAprobacion";
+                  header($header);
+                 }
                 break;
 
               case 'UPD':
