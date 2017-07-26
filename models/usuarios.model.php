@@ -161,7 +161,7 @@
   VALUES
   ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now());";
         $strsql = sprintf($strsql,
-        valstr($userId),
+        valstr($userId),//456465
         valstr($userPrimernombre),
         valstr($userSegundonombre),
         valstr($primerApellido),
@@ -185,7 +185,7 @@
     $strsql = "INSERT INTO `tblusuarios`
     (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
     `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
-    `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,`usuarioFechaIngreso`,
+    `usuarioDireccion`,`usuarioContrasenia`, estadoCuentaId, rolId, `usuarioCorreo`,
     `usuarioFechaIngreso`,`usuarioRegion`)
     VALUES
     ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s',now(),%d);";
