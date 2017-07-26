@@ -27,13 +27,13 @@
                 //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
                 $isUpload = $upload->upFiles($files,$respuesta,"despeje");
                  //llamamos a la funcion upFiles y le pasamos el array de campos file del formulari
-                if ($isUpload===FALSE) {
+               if ($isUpload===FALSE) {
                    borrarAprobacion($respuesta);
                    $alerta=redirectWithMessage("Error al subir el archivo ","index.php?page=verMisSolicitudesDeAprobacion");
                 }else {
                   $header="Location:index.php?page=verMisSolicitudesDeAprobacion";
                   header($header);
-                 }
+                }
                 break;
 
               case 'UPD':
@@ -47,7 +47,7 @@
                 # code...
                 break;
             }
-            redirectWithMessage("La solicitud de despeje se realizo con exito.","?page=verMisSolicitudesDeDespeje");
+            //redirectWithMessage("La solicitud de despeje se realizo con exito.","?page=verMisSolicitudesDeDespeje");
 
 
           }

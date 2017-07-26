@@ -73,14 +73,14 @@ class Multiupload
                             break;
 
                             case 'despeje':
-                              $strsql = "UPDATE `cimeqh`.`tblsolicituddespeje`
-                              SET `rutaArchivo` = '%s',
-                              `nombreArchivo` = '%s'
-                              WHERE `tblsolicitudaprobacion_solicitudAprobacionId` =%d;";
-                              $strsql = sprintf($strsql, $direccion,$nombreArchivo,$Id);
-                              $resultado=0;
-                              $resultado=  ejecutarNonQuery($strsql);
-                              echo "subida correctamente";
+                            $strsql = "UPDATE tblsolicituddespeje SET
+                            rutaArchivo = '%s',
+                            nombreArchivo = '%s'
+                            WHERE solicitudDespejeId = %d;";
+                            $strsql = sprintf($strsql,  $direccion, $nombreArchivo,$Id);
+                            $resultado=0;
+                            $resultado=  ejecutarNonQuery($strsql);
+                            //echo "subida correctamente";
                               break;
 
                         default:

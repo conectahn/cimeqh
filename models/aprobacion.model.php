@@ -148,13 +148,13 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
 function verSolicitudesAprobacionCimeqh($region){
     $solicitudes = array();
     $sqlstr = "SELECT *
-    from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
-    tblestadoaprobacion as ea, tblregion as reg
-    where p.proyectoId=sa.proyectoId
-    and p.usuarioIdentidad=u.usuarioIdentidad
-    and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
-    and p.departamentoId=d.departamentoId
-    and ea.estadoAprobacionId=4 and p.regionProyecto=$region and p.regionProyecto=reg.idRegion";
+from cimeqh.tblproyectos as p, cimeqh.tblusuarios as u, cimeqh.tbldepartamentos as d, cimeqh.tblsolicitudaprobacion as sa, cimeqh.tblestadoaprobacion as ea
+ where p.proyectoId=sa.proyectoId
+ and p.usuarioIdentidad=u.usuarioIdentidad
+ and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
+ and p.departamentoId=d.departamentoId
+ and ea.estadoAprobacionId IN (4,1)
+ and p.regionProyecto = $region;";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
