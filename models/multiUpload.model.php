@@ -64,12 +64,24 @@ class Multiupload
                           break;
 
                           case 'recepcion':
-                            $strsql = "INSERT INTO `tbldocumentosrecepcion`(`documentoRecepcionDireccion`,`solicitudRecepcionId`,`documentoNombre`) VALUES('%s',%d,'%s');";
+                            $strsql = "INSERT INTO `tbldocumentosrecepcion`(`documentoRecepcionDireccion`,`solicitudRecepcionId`,`documentoNombre`)
+                            VALUES('%s',%d,'%s');";
                             $strsql = sprintf($strsql,  $direccion, $Id,$nombreArchivo);
                             $resultado=0;
                             $resultado=  ejecutarNonQuery($strsql);
                             echo "subida correctamente";
                             break;
+
+                            case 'despeje':
+                              $strsql = "UPDATE `cimeqh`.`tblsolicituddespeje`
+                              SET `rutaArchivo` = '%s',
+                              `nombreArchivo` = '%s'
+                              WHERE `tblsolicitudaprobacion_solicitudAprobacionId` =%d;";
+                              $strsql = sprintf($strsql, $direccion,$nombreArchivo,$Id);
+                              $resultado=0;
+                              $resultado=  ejecutarNonQuery($strsql);
+                              echo "subida correctamente";
+                              break;
 
                         default:
                           # code...
