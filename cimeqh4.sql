@@ -79,7 +79,7 @@ CREATE TABLE `tbldocumentosaprobacion` (
   KEY `solicitudAprobacionId_idx` (`solicitudAprobacionId`),
   KEY `fksolicitudAprobacionId_idx` (`solicitudAprobacionId`),
   CONSTRAINT `fksolicitudAprobacionId` FOREIGN KEY (`solicitudAprobacionId`) REFERENCES `tblsolicitudaprobacion` (`solicitudAprobacionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +397,7 @@ CREATE TABLE `tblsolicituddespeje` (
   KEY `estadoId_idx` (`estadoDespejeId`),
   CONSTRAINT `estadoId` FOREIGN KEY (`estadoDespejeId`) REFERENCES `tblestadodespeje` (`estadoDespejeId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_tblsolicituddespeje_tblsolicitudaprobacion1` FOREIGN KEY (`tblsolicitudaprobacion_solicitudAprobacionId`) REFERENCES `tblsolicitudaprobacion` (`solicitudAprobacionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -406,7 +406,7 @@ CREATE TABLE `tblsolicituddespeje` (
 
 LOCK TABLES `tblsolicituddespeje` WRITE;
 /*!40000 ALTER TABLE `tblsolicituddespeje` DISABLE KEYS */;
-INSERT INTO `tblsolicituddespeje` VALUES (14,8,8,2,'2017-07-19 00:00:00',0,91,2,'12','2017-07-20 13:23:48',NULL,NULL),(15,12,12,12,'2017-07-29 00:00:00',0,92,2,'1212','2017-07-21 11:02:23',NULL,NULL);
+INSERT INTO `tblsolicituddespeje` VALUES (14,8,8,2,'2017-07-19 00:00:00',0,91,2,'12','2017-07-20 13:23:48',NULL,NULL),(15,12,12,12,'2017-07-29 00:00:00',0,92,2,'1212','2017-07-21 11:02:23',NULL,NULL),(16,12,12,12,'2017-07-27 00:00:00',0,93,4,NULL,'2017-07-26 09:37:01',NULL,NULL),(17,12,12,12,'2017-07-27 00:00:00',0,93,4,NULL,'2017-07-26 09:38:24',NULL,NULL),(18,12,12,12,'2017-07-27 00:00:00',0,93,4,NULL,'2017-07-26 09:39:29',NULL,NULL),(23,12,12,12,'2017-07-27 00:00:00',0,94,4,NULL,'2017-07-26 09:45:44',NULL,NULL);
 /*!40000 ALTER TABLE `tblsolicituddespeje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -553,11 +553,11 @@ CREATE TABLE `tblusuarios` (
   `estadoCuentaId` int(11) NOT NULL,
   `rolId` int(11) NOT NULL,
   `usuarioCorreo` varchar(100) NOT NULL,
-  `usuarioFechaIngreso` int(11) NOT NULL,
   `usuarioComentario` varchar(600) CHARACTER SET utf8 DEFAULT NULL,
   `usuarioMora` float DEFAULT NULL,
   `usuarioToken` varchar(100) DEFAULT NULL,
   `usuarioRegion` int(11) DEFAULT NULL,
+  `usuarioFechaIngreso` datetime DEFAULT NULL,
   PRIMARY KEY (`usuarioIdentidad`),
   KEY `rolId_idx` (`rolId`),
   KEY `estadoCuentaId_idx` (`estadoCuentaId`),
@@ -574,7 +574,7 @@ CREATE TABLE `tblusuarios` (
 
 LOCK TABLES `tblusuarios` WRITE;
 /*!40000 ALTER TABLE `tblusuarios` DISABLE KEYS */;
-INSERT INTO `tblusuarios` VALUES ('0801-1995','Jose','Carlos','Medina ','Fernandez','132','9916-1420','22456875','tiloarque','e3d718f8a5bb6e555cf341c66395f201',1,4,'prueba@superrito.com',1498682657,'',0,NULL,NULL),('0801199308222','Juan','Carlos','Izaguirre ','Lopez','1212132123','9642-3311','2245-6875','Mexico City','f49bf7b34270784b2ac3d7d2949cc3d9',1,3,'prueba@superrito.com',1498258339,NULL,NULL,'',1),('0801199503314','Luis','Eduardo','Paz','Reyes','21548164','96425292','22308090','Portal del Bosque','76b98197d40a35db050f88c51c18c157',1,3,'prueba@superrito.com',1498148000,'asddsas',0,NULL,6),('0801200003221','Luis','Fernando','Paz','Reyes','445454','84545454','54545854','dsdsds','2063278b6068554c955918b841b1091b',1,4,'prueba@superrito.com',1498256640,'csawe',0,NULL,NULL),('1111111111111','Hades','Poseidon','Neptuno','Ravana','525','99999999','22222222','Olimpo asgardiano 3 planeta','442443c17c35942d3b1113972231be1f',1,5,'prueba@superrito.com',1499272677,NULL,NULL,NULL,1),('3333333333333','asdas','Luis','xyz','Lopez','786','99668888','','kjklji','0eb7df1de72244c53fdd9f820a3ab871',1,6,'prueba@superrito.com',1499273157,NULL,NULL,'2iosqe440',3),('5555555555555','Zeus','felipe','argueta','suarez','55555','96425292','22308090','olimpo','9952409ed8b7868c338e05c58960b14d',1,5,'prueba@superrito.com',1500414160,NULL,NULL,NULL,6),('8552255494654','Vulcan','Mercurio','Nox','Ravana','123','89898898','46546545','Marte ','48d0f83b059cb7fa1795028138f4147e',1,2,'prueba@superrito.com',1500414142,NULL,NULL,NULL,NULL),('cimeqh','Jose','Alexandre','Gutember','Fernandez','654','88888888','11111111','vivo bajo el puente y vos?','a593c018727025bf395012914ebbb6e1',1,1,'prueba@superrito.com',1500413750,NULL,NULL,NULL,NULL),('cimeqh2','Ash','Brock','Misty','Ketchum','6542','65446564','65464546','Pueblo Paleta','d279787166f350ab2eb5ff69586505a2',1,3,'prueba@superrito.com',1500414061,NULL,NULL,NULL,2),('enee','Zeeus','Poseidon','Ravana','Kukulkan','321','8856-9632','224-5689','Olimpo tercera casa del Zodiaco','3ab5d8ffbae1ff8d5ac01d9cce5eebf7',1,2,'prueba@superrito.com',1498754099,'',123132000,NULL,6),('enee2','Laronny','Alexandra','Velazquez','Palma','8972','56566546','32321132','Villa Olimpica','f49bfdf407508ac02bdab87c6cf8b049',1,6,'prueba@superrito.com',1500413996,NULL,NULL,NULL,1),('enee3','Neptuno','Carlos','Poseidon','Lopez','13216521','99789788','65464546','Atlantida','e2d981cc4a9db1bff3d9d058cb666891',1,5,'prueba@superrito.com',1500414458,NULL,NULL,NULL,1),('jose','Jose','Manuel','Lezama','Melito','465','99999999','22222222','ok google','b5ed8fce79005b6818fade8b814af5d0',1,4,'prueba@superrito.com',1499273055,NULL,NULL,'',NULL);
+INSERT INTO `tblusuarios` VALUES ('0801-1995','Jose','Carlos','Medina ','Fernandez','132','9916-1420','22456875','tiloarque','e3d718f8a5bb6e555cf341c66395f201',1,4,'prueba@superrito.com','',0,NULL,NULL,'2017-07-26 10:08:38'),('0801199308222','Juan','Carlos','Izaguirre ','Lopez','1212132123','9642-3311','2245-6875','Mexico City','f49bf7b34270784b2ac3d7d2949cc3d9',1,3,'prueba@superrito.com',NULL,NULL,'',1,'2017-07-26 10:08:38'),('0801199503314','Luis','Eduardo','Paz','Reyes','21548164','96425292','22308090','Portal del Bosque','76b98197d40a35db050f88c51c18c157',1,3,'prueba@superrito.com','asddsas',0,NULL,6,'2017-07-26 10:08:38'),('0801200003221','Luis','Fernando','Paz','Reyes','445454','84545454','54545854','dsdsds','2063278b6068554c955918b841b1091b',1,4,'prueba@superrito.com','csawe',0,NULL,NULL,'2017-07-26 10:08:38'),('1111111111111','Hades','Poseidon','Neptuno','Ravana','525','99999999','22222222','Olimpo asgardiano 3 planeta','442443c17c35942d3b1113972231be1f',1,5,'prueba@superrito.com',NULL,NULL,NULL,1,'2017-07-26 10:08:38'),('3333333333333','asdas','Luis','xyz','Lopez','786','99668888','','kjklji','0eb7df1de72244c53fdd9f820a3ab871',1,6,'prueba@superrito.com',NULL,NULL,'2iosqe440',3,'2017-07-26 10:08:38'),('4444444444449','prueba','registro','usuario','paz','12345678','96425292','22308090','sasasa','085460efc04ac5938f46428844322d76',4,4,'prueba@superrito.com',NULL,NULL,NULL,NULL,'2017-07-26 10:08:09'),('5555555555555','Zeus','felipe','argueta','suarez','55555','96425292','22308090','olimpo','9952409ed8b7868c338e05c58960b14d',1,5,'prueba@superrito.com',NULL,NULL,NULL,6,'2017-07-26 10:08:38'),('8552255494654','Vulcan','Mercurio','Nox','Ravana','123','89898898','46546545','Marte ','48d0f83b059cb7fa1795028138f4147e',1,2,'prueba@superrito.com',NULL,NULL,NULL,NULL,'2017-07-26 10:08:38'),('cimeqh','Jose','Alexandre','Gutember','Fernandez','654','88888888','11111111','vivo bajo el puente y vos?','a593c018727025bf395012914ebbb6e1',1,1,'prueba@superrito.com',NULL,NULL,NULL,NULL,'2017-07-26 10:08:38'),('cimeqh2','Ash','Brock','Misty','Ketchum','6542','65446564','65464546','Pueblo Paleta','d279787166f350ab2eb5ff69586505a2',1,3,'prueba@superrito.com',NULL,NULL,NULL,2,'2017-07-26 10:08:38'),('enee','Zeeus','Poseidon','Ravana','Kukulkan','321','8856-9632','224-5689','Olimpo tercera casa del Zodiaco','3ab5d8ffbae1ff8d5ac01d9cce5eebf7',1,2,'prueba@superrito.com','',123132000,NULL,6,'2017-07-26 10:08:38'),('enee2','Laronny','Alexandra','Velazquez','Palma','8972','56566546','32321132','Villa Olimpica','f49bfdf407508ac02bdab87c6cf8b049',1,6,'prueba@superrito.com',NULL,NULL,NULL,1,'2017-07-26 10:08:38'),('enee3','Neptuno','Carlos','Poseidon','Lopez','13216521','99789788','65464546','Atlantida','e2d981cc4a9db1bff3d9d058cb666891',1,5,'prueba@superrito.com',NULL,NULL,NULL,1,'2017-07-26 10:08:38'),('jose','Jose','Manuel','Lezama','Melito','465','99999999','22222222','ok google','b5ed8fce79005b6818fade8b814af5d0',1,4,'prueba@superrito.com',NULL,NULL,'',NULL,'2017-07-26 10:08:38');
 /*!40000 ALTER TABLE `tblusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -611,4 +611,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-26  9:29:05
+-- Dump completed on 2017-07-26 10:10:05
