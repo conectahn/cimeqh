@@ -38,7 +38,7 @@
             $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
             $revisar=verSolicitudesAprobacionCimeqh($usuarios["usuarioRegion"]);
             //$documentos=verSolicitudesArchivos($revisar[""]);
-            renderizar("revisarSolicitudAprobacionCimeqh",array('solicitud'=>$revisar),"layoutCimeqh.view.tpl");
+            renderizar("revisarSolicitudAprobacionCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
               break;
 
           default:
