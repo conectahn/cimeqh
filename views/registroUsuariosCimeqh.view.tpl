@@ -26,7 +26,7 @@
                 <div class="x_content">
                   <br>
 
-                    <form id="defaultForm"  class="form-horizontal form-label-left" method="post">
+                    <form action="?page=registroUsuariosCimeqh" method="post">
 
                          <div class="row">
                                               <div class="col-md-6">

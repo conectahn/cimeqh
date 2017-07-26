@@ -34,28 +34,6 @@ require_once("clases/class.phpmaileroauthgoogle.php");
       $usuarios["rol"]=$_POST["cmbRol"];
       $usuarios["region"]=$_POST["cmbRegion"];
       $respueta=$usuarios["txtContrasena"];
-      //envio del correo al momento de registrar usuarios
-      $mail = new PHPMailer;
-      $mail->SMTPDebug=0;
-      $mail->isSMTP();
-      $mail->Host = 'chimera.lunarpages.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'cimeqh@conectahn.org';
-      $mail->Password = 'conecta2017';
-      $mail->SMTPSecure = 'ssl';
-      $mail->Port = 465;
-      $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
-      $mail->addAddress($usuarios["txtCorreo"], '');
-      $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
-      $mail->isHTML(true);                                  // Set email format to HTML
-      $asunto = 'Alerta de creación de cuenta.';
-      $mail->Subject = "=?ISO-8859-1?B?".base64_encode($asunto)."=?=";
-      $mail->Body    = "Se ha creado una cuenta en su nombre para nuestra plataforma favor ingrese a la plataforma y siga los pasos<br> de recuperacion de contraseña para cambiarla, su contraseña provicional es:  $respueta";
-      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-      if(!$mail->send()) {
-      } else {
-
-      }
       $estadoCuenta = 1;
       $resultado = 0;
 /*
@@ -83,7 +61,7 @@ $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $
 
     if($user["mail"]=="" || $user["id"]=="")
     {
-      $respueta = insertUsuarioEnee($usuarios["txtNumeroId"],
+      insertUsuarioEnee($usuarios["txtNumeroId"],
       $usuarios["txtPrimerNombre"],
       $usuarios["txtSegundoNombre"],
       $usuarios["txtPrimerApellido"],
@@ -98,7 +76,27 @@ $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $
       $usuarios["txtCorreo"],
       $fchingreso,
       $usuarios["region"]);
+      //envio del correo al momento de registrar usuarios
+      $mail = new PHPMailer;
+      $mail->SMTPDebug=0;
+      $mail->isSMTP();
+      $mail->Host = 'chimera.lunarpages.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'cimeqh@conectahn.org';
+      $mail->Password = 'conecta2017';
+      $mail->SMTPSecure = 'ssl';
+      $mail->Port = 465;
+      $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
+      $mail->addAddress($usuarios["txtCorreo"], '');
+      $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $asunto = 'Alerta de creación de cuenta.';
+      $mail->Subject = "=?ISO-8859-1?B?".base64_encode($asunto)."=?=";
+      $mail->Body    = "Se ha creado una cuenta en su nombre para nuestra plataforma favor ingrese a la plataforma y siga los pasos<br> de recuperacion de contraseña para cambiarla su contraseña provicional es:  $respueta";
+      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+      if($mail->send()) {
       redirectWithMessage("Su cuenta ha sido creada, esta debe ser verificada por el CIMEQH, se le notificara mediante un correo cuando su cuenta este activa.","?page=login");
+      }
     }
 
 
@@ -114,9 +112,9 @@ $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $
 
     }
 
-    $regiones=obtenerRegionesCimeqh();
-    $roles=obtenerRolesCimeqh();
-    renderizar("registroUsuariosCimeqh",array('datos' =>$htmlData, 'regiones'=>$regiones, 'roles'=>$roles),'layoutCimeqh.view.tpl');
+    $regiones=obtenerRegiones();
+    $roles=obtenerRolesEnee();
+    renderizar("registroUsuariosCimeqh",array('datos' =>$htmlData, 'regiones'=>$regiones, 'roles'=>$roles),'layoutEneeAdmin.view.tpl');
   }
   run();
 ?>
