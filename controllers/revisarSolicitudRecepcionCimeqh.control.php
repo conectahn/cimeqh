@@ -7,9 +7,10 @@
 
     if (mw_estaLogueado()) {
       if ($_SESSION["estado"]==1) {
+        $revisar = array();
         switch ($_SESSION["rol"]) {
+
           case '1':
-          $revisar = array();
           if(isset($_POST["btnAceptar"])){
             $respuesta="";
             $numeroId="";
@@ -41,22 +42,14 @@
             break;
 
             case '3':
-            if(isset($_POST["btnRechazar"])){
-
-              $numeroId="";
-              $estadoCuenta=2;
-              $numeroId=$_POST["usuarioIdentidad"];
-              actualizarEstado($numeroId,$estadoCuenta);
+              if(isset($_POST["btnAceptar"])){
+                $respuesta="";
+                $numeroId="";
+                $estadoCuenta=1;
+                $numeroId=$_POST["usuarioIdentidad"];
+                $respuesta=actualizarEstado($numeroId,$estadoCuenta);
+                echo $respuesta;
               }
-
-            if(isset($_POST["btnAceptar"])){
-              $respuesta="";
-              $numeroId="";
-              $estadoCuenta=1;
-              $numeroId=$_POST["usuarioIdentidad"];
-              $respuesta=actualizarEstado($numeroId,$estadoCuenta);
-              echo $respuesta;
-            }
 
             if (isset($_POST["btnComentarFactibilidad"])) {
               if ($_POST["tipo"]=="rechazo") {
@@ -66,8 +59,23 @@
             }
             }
 
+            if (isset($_POST["btnComentarRecepcion"])) {
+              if ($_POST["tipo"]=="rechazo") {
+              agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["comentario"],3);
+            }elseif ($_POST["tipo"]=="aceptado") {
+              agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["comentario"],1);
+            }
+            }
+
+            /*if(isset($_POST["btnRechazar"])){
+              $numeroId="";
+              $estadoCuenta=3;
+              $numeroId=$_POST["usuarioIdentidad"];
+              actualizarEstado($numeroId,$estadoCuenta);
+            }*/
+
             $usuario=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=obtenerSolicitudRecepcionENEEReg($usuario["usuarioRegion"],1);
+            $revisar=obtenerSolicitudRecepcionCimeqhReg($usuario["usuarioRegion"]);
             renderizar("revisarSolicitudRecepcionCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
             break;
 
