@@ -45,7 +45,7 @@
           }
 
 
-          $revisar=verSolicitudesFactbilidad();
+          $revisar=verSolicitudesFactbilidadAdminCimeqh();
           renderizar("revisarSolicitudFactibilidadCimeqh",array('solicitud'=>$revisar),"layoutCimeqh.view.tpl");
           break;
 
@@ -83,7 +83,7 @@
             }
 
             $usuario=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=verSolicitudesFactbilidadReg($usuario["usuarioRegion"]);
+            $revisar=verSolicitudesFactbilidadRegCimeqh($usuario["usuarioRegion"]);
             renderizar("revisarSolicitudFactibilidadCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
             break;
 

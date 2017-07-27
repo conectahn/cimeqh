@@ -63,7 +63,7 @@
           //Se ingresa el query necesario para poder ver los proyectos en este cas
           //todos los proyectos de la enee ya que este es super usuario
           ###################################################################
-          $revisar=verSolicitudesFactbilidadEnee();
+          $revisar=verSolicitudesFactbilidadEneeAdmin();
           ###################################################################
           /*
           Esta es la funcion final del case la cual sirve para mostrar la vista
@@ -106,7 +106,7 @@
               agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],3);
             }elseif ($_POST["tipo"]=="aceptado") {
 
-              agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],2);
+              agregarComentarioFactibilidad($_POST["codigoProyecto"],$_POST["comentario"],5);
 
               $files = $_FILES['userfile']['name'];
 
@@ -126,7 +126,7 @@
             //Se ingresa el query necesario para poder ver los proyectos que pertenecen a la misma
             //region del usuario logueado
             ###################################################################
-            $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
+            $revisar=verSolicitudesFactbilidadEneeSupervisor($usuarios["usuarioRegion"]);
             ###################################################################
             /*
             Esta es la funcion final del case la cual sirve para mostrar la vista
@@ -185,7 +185,7 @@
 //Se ingresa el query necesario para poder ver los proyectos que pertenecen a la misma
 //region del usuario logueado
 ###################################################################
-              $revisar=verSolicitudesFactbilidadEneeSup($usuarios["usuarioRegion"]);
+              $revisar=verSolicitudesFactbilidadEneeAprobacion($usuarios["usuarioRegion"]);
 ###################################################################
 /*
 Esta es la funcion final del case la cual sirve para mostrar la vista

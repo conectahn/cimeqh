@@ -1,6 +1,7 @@
 <?php
   require_once("libs/template_engine.php");
   require_once("models/despeje.model.php");
+  require_once("models/usuarios.model.php");
 
   function run(){
 
@@ -43,7 +44,7 @@ rol 3= cimeqh normal
     }
     }
 
-    $revisar=verSolicitudesDespeje();
+    $revisar=verSolicitudesDespejeAdminCimeqh();
     renderizar("revisarSolicitudDespejeCimeqh",array('solicitud'=>$revisar),"layoutCimeqh.view.tpl");
     break;
 
@@ -74,8 +75,8 @@ rol 3= cimeqh normal
         agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],1);
       }
       }
-
-      $revisar=verSolicitudesDespeje();
+      $usuario=obtenerUsuariosPorId($_SESSION["userName"]);
+      $revisar=verSolicitudesDespejeRegCimeqh($usuario["usuarioRegion"]);
       renderizar("revisarSolicitudDespejeCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
       break;
 
