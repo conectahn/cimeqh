@@ -21,15 +21,18 @@
           </ul>
           <div class="clearfix"></div>
         </div>
-        <a href="temp/{{codigoAprobacion}}.png" download="qrcode">
-        <div class="x_content">
+        <a href="temp/a{{codigoAprobacion}}.png" download="qrcode">
           <h1>Descargue el Siguiente Codigo QR y el Timbre Electronico</h1>
-          <img src="temp/{{codigoAprobacion}}.png" height="300px" width="300px">
+        <div class="x_content col-lg-4 col-lg-offset-4">
+
+          <img src="temp/a{{codigoAprobacion}}" height="330" width="210">
         </div>
       </div>
-      <button type="button" class="btn btn-warning btn-lg">Descargar Codigo QR</button>
-      <a href="index.php?page=verMisSolicitudesDeAprobacion&codigo={{codigoAprobacion}}"  <button type="submit" id="btnQr" name="btnQr" class="btn btn-success btn-lg">Regresar</button></a>
-      </a>
+      <div class="col-lg-12" align="right">
+        <button type="button" class="btn btn-warning btn-lg">Descargar Codigo QR</button>
+        <a href="index.php?page=verMisSolicitudesDeAprobacion&codigo={{codigoAprobacion}}"  <button type="submit" id="btnQr" name="btnQr" class="btn btn-success btn-lg">Regresar</button></a>
+        </a>
+      </div>
     </div>
   </div>
 </div>
