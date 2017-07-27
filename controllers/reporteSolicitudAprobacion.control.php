@@ -49,7 +49,7 @@
     //traemos todas las imagenes que queremos unir,es posible unir dos o mas imagenes siempre y cuando tengan la misma extension en este caso .png
     $a = imagecreatefrompng("images/timbre.png");
     $b = imagecreatefrompng("temp/$codigoAprobacion.png");
-    $c = imagecreatefrompng("images/borde2.png");
+    $c = imagecreatefrompng("images/borde.png");
     //se procede a hacer la copia de las imagenes a la imagen destino con la funcion imagecopy(ImagenDestino,imagenCopiar,posx1,posy1,posx2,posy2,ancho,alto)
     //las posiciones 1 y 2 son usadas para ubicar la imagen a copiar en la imagen final
 
@@ -62,7 +62,7 @@
     imagedestroy($a);
     imagedestroy($b);
     imagedestroy($c);
-    imagedestroy($dest_image);
+    imagedestroy($dest_image);//dsds
   }
   run();
 ?>
