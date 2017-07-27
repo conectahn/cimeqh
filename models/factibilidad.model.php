@@ -62,7 +62,7 @@ $solicitudFactibilidad = obtenerUnRegistro($sqlstr);
 return $solicitudFactibilidad;
 }
 
-function verSolicitudesFactbilidad(){
+function verSolicitudesFactbilidadAdminCimeqh(){
     $solicitudFactibilidad = array();
     $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
     proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
@@ -78,12 +78,12 @@ function verSolicitudesFactbilidad(){
     and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
     and tbld.departamentoId=tblp.departamentoId
     and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-    and tblsf.estadoFactibilidadId=4;";
+    and tblsf.estadoFactibilidadId IN (1,4);";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
 
-function verSolicitudesFactbilidadReg($region){
+function verSolicitudesFactbilidadRegCimeqh($region){
     $solicitudFactibilidad = array();
     $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
         proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
@@ -99,7 +99,7 @@ function verSolicitudesFactbilidadReg($region){
         and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
         and tbld.departamentoId=tblp.departamentoId
         and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-        and tblsf.estadoFactibilidadId=4 and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";
+        and tblsf.estadoFactibilidadId IN (1,4) and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
