@@ -29,7 +29,7 @@ en caso que sea enee admin
     }
 
 
-    $revisar=verSolicitudesAprobacionEnee();
+    $revisar=verSolicitudesAprobacionEneeAdmin();
     //$documentos=verSolicitudesArchivos($revisar[""]);
     renderizar("revisarSolicitudAprobacionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
     break;
@@ -45,12 +45,12 @@ en caso que sea enee admin
       if ($_POST["tipo"]=="rechazo") {
       $error=agregarComentarioAprobacion($_POST["codigoProyecto"],$_POST["comentario"],3);
     }elseif ($_POST["tipo"]=="aceptado") {
-      agregarComentarioAprobacion($_POST["codigoProyecto"],$_POST["comentario"],2);
+      agregarComentarioAprobacion($_POST["codigoProyecto"],$_POST["comentario"],5);
     }
     }
 
     $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
-    $revisar=verSolicitudesAprobacionEneeReg($usuarios["usuarioRegion"]);
+    $revisar=verSolicitudesAprobacionEneeRegRevision($usuarios["usuarioRegion"]);
     //$documentos=verSolicitudesArchivos($revisar[""]);
     renderizar("revisarSolicitudAprobacionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
     break;
@@ -69,7 +69,7 @@ en caso que sea enee admin
   }
 
   $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
-  $revisar=verSolicitudesAprobacionEneeReg($usuarios["usuarioRegion"]);
+  $revisar=verSolicitudesAprobacionEneeRegAprobacion($usuarios["usuarioRegion"]);
   //$documentos=verSolicitudesArchivos($revisar[""]);
   renderizar("revisarSolicitudAprobacionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
     break;

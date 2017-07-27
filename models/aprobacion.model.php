@@ -132,7 +132,7 @@ function obtenerSolicitudAprobacion(){
     return $solicitudes;
 }
 
-function verSolicitudesAprobacion(){
+function verSolicitudesAprobacionAdminCimeqh(){
     $solicitudes = array();
     $sqlstr = "SELECT *
 from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa, tblestadoaprobacion as ea
@@ -145,7 +145,7 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
     return $solicitudes;
 }
 
-function verSolicitudesAprobacionCimeqh($region){
+function verSolicitudesAprobacionRegCimeqh($region){
     $solicitudes = array();
     $sqlstr = "SELECT *
 from cimeqh.tblproyectos as p, cimeqh.tblusuarios as u, cimeqh.tbldepartamentos as d, cimeqh.tblsolicitudaprobacion as sa, cimeqh.tblestadoaprobacion as ea
@@ -159,7 +159,7 @@ from cimeqh.tblproyectos as p, cimeqh.tblusuarios as u, cimeqh.tbldepartamentos 
     return $solicitudes;
 }
 
-function verSolicitudesAprobacionEnee(){
+function verSolicitudesAprobacionEneeAdmin(){
     $solicitudes = array();
     $sqlstr = "SELECT *
 from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa, tblestadoaprobacion as ea
@@ -167,12 +167,12 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
  and p.departamentoId=d.departamentoId
- and ea.estadoAprobacionId=1;";
+ and ea.estadoAprobacionId IN (1,2);";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
 
-function verSolicitudesAprobacionEneeReg($region){
+function verSolicitudesAprobacionEneeRegRevision($region){
     $solicitudes = array();
     $sqlstr = "SELECT *
   from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
@@ -181,7 +181,21 @@ function verSolicitudesAprobacionEneeReg($region){
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
  and p.departamentoId=d.departamentoId
- and ea.estadoAprobacionId=1 and reg.idRegion=p.regionProyecto and reg.idRegion=$region;";
+ and ea.estadoAprobacionId IN (1,5,2) and reg.idRegion=p.regionProyecto and reg.idRegion=$region;";
+ $solicitudes = obtenerRegistros($sqlstr);
+ return $solicitudes;
+}
+
+function verSolicitudesAprobacionEneeRegAprobacion($region){
+    $solicitudes = array();
+    $sqlstr = "SELECT *
+  from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
+  tblestadoaprobacion as ea, tblregion as reg
+ where p.proyectoId=sa.proyectoId
+ and p.usuarioIdentidad=u.usuarioIdentidad
+ and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
+ and p.departamentoId=d.departamentoId
+ and ea.estadoAprobacionId IN (5,2) and reg.idRegion=p.regionProyecto and reg.idRegion=$region;";
  $solicitudes = obtenerRegistros($sqlstr);
  return $solicitudes;
 }

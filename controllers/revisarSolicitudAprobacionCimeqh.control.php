@@ -22,7 +22,7 @@
             }
             }
 
-            $revisar=verSolicitudesAprobacion();
+            $revisar=verSolicitudesAprobacionAdminCimeqh();
             //$documentos=verSolicitudesArchivos($revisar[""]);
             renderizar("revisarSolicitudAprobacionCimeqh",array('solicitud'=>$revisar),"layoutCimeqh.view.tpl");
             break;
@@ -36,7 +36,7 @@
             }
             }
             $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=verSolicitudesAprobacionCimeqh($usuarios["usuarioRegion"]);
+            $revisar=verSolicitudesAprobacionRegCimeqh($usuarios["usuarioRegion"]);
             //$documentos=verSolicitudesArchivos($revisar[""]);
             renderizar("revisarSolicitudAprobacionCimeqh",array('solicitud'=>$revisar),"layoutCimeqhAprobacion.view.tpl");
               break;
