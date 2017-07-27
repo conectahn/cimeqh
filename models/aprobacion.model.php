@@ -14,7 +14,8 @@ $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
 
   if(ejecutarNonQuery($insertSQL)){
             $ultimoID=getLastInserId();
-            $codigo = /*base_convert($_SESSION["userName"],10,36).*/base_convert(time(), 10, 36).base_convert(getLastInserId(), 10, 36);
+            $rand_num = rand(10000,99999); // Random integer number between 10,000 and 99,999
+            $codigo = /*base_convert($_SESSION["userName"],10,36).*/base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
             $codigo= (string)$codigo;
             $insertSQL2 = "UPDATE `tblsolicitudaprobacion`
             SET `codigoAprobacion` = '%s'
@@ -148,13 +149,13 @@ from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudapr
 function verSolicitudesAprobacionCimeqh($region){
     $solicitudes = array();
     $sqlstr = "SELECT *
-from cimeqh.tblproyectos as p, cimeqh.tblusuarios as u, cimeqh.tbldepartamentos as d, cimeqh.tblsolicitudaprobacion as sa, cimeqh.tblestadoaprobacion as ea
- where p.proyectoId=sa.proyectoId
- and p.usuarioIdentidad=u.usuarioIdentidad
- and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
- and p.departamentoId=d.departamentoId
- and ea.estadoAprobacionId IN (4,1)
- and p.regionProyecto = $region;";
+    from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
+    tblestadoaprobacion as ea, tblregion as reg
+    where p.proyectoId=sa.proyectoId
+    and p.usuarioIdentidad=u.usuarioIdentidad
+    and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
+    and p.departamentoId=d.departamentoId
+    and ea.estadoAprobacionId=4 and p.regionProyecto=$region and p.regionProyecto=reg.idRegion";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
