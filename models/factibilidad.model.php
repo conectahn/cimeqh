@@ -99,13 +99,13 @@ function verSolicitudesFactbilidadRegCimeqh($region){
         and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
         and tbld.departamentoId=tblp.departamentoId
         and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-        and tblsf.estadoFactibilidadId IN (1,4) and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";
+        and tblsf.estadoFactibilidadId IN (1,4) and reg.idRegion=tblp.regionProyecto and reg.idRegion IN ($region,$region+1);";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
 
 
-function verSolicitudesFactbilidadEneeSup($region){
+function verSolicitudesFactbilidadEneeSupervisor($region){
     $solicitudFactibilidad = array();
     $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
     proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
@@ -121,15 +121,34 @@ function verSolicitudesFactbilidadEneeSup($region){
     and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
     and tbld.departamentoId=tblp.departamentoId
     and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-    and tblsf.estadoFactibilidadId=1 and tblp.regionProyecto=$region and tblu.rolId=tblroles.rolId";
+    and tblsf.estadoFactibilidadId IN (1,2,5) and tblp.regionProyecto=$region and tblu.rolId=tblroles.rolId;";
+    $solicitudFactibilidad = obtenerRegistros($sqlstr);
+    return $solicitudFactibilidad;
+}
+
+function verSolicitudesFactbilidadEneeAprobacion($region){
+    $solicitudFactibilidad = array();
+    $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
+    proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
+    proyectoIdentidadPropietario, proyectoTelefonoPropietario, proyectoCelularPropietario,
+    proyectoEmailPropietario, proyectoDireccionPropietario,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' '
+    ,usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',
+    usuarioNumeroColegiacion, usuarioTelefono, usuarioCelular, voltajeDescripcion, conexionDescripcion,
+    solicitudFactibilidadPotencia, solicitudadFactibilidadCrecimientoEsperado, solicitudFactibilidadKva,
+    estadoFactibilidadDescripcion
+    FROM tblsolicitudfactibilidad tblsf, tblconexiones tblc, tblvoltajes tblv, tbldepartamentos tbld,
+    tblproyectos tblp, tblusuarios tblu,  tblestadofactibilidad, tblroles
+    where tblsf.proyectoId=tblp.proyectoId and tblsf.conexionId=tblc.conexionId
+    and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
+    and tbld.departamentoId=tblp.departamentoId
+    and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
+    and tblsf.estadoFactibilidadId IN (2,5) and tblp.regionProyecto=$region and tblu.rolId=tblroles.rolId;";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
 
 
-
-
-function verSolicitudesFactbilidadEnee(){
+function verSolicitudesFactbilidadEneeAdmin(){
     $solicitudFactibilidad = array();
     $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
     proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
@@ -145,7 +164,7 @@ function verSolicitudesFactbilidadEnee(){
     and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
     and tbld.departamentoId=tblp.departamentoId
     and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-    and tblsf.estadoFactibilidadId=1;";
+    and tblsf.estadoFactibilidadId IN (1,2);";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
