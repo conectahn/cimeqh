@@ -39,8 +39,8 @@
 */
   function imagenes($codigoAprobacion)
   {
-    define("WIDTH", 100);
-    define("HEIGHT", 135);
+    define("WIDTH", 110);
+    define("HEIGHT", 139);
     //creamos la imagen destino a colores, pasando como parametros el alto y ancho que tendra esta imagen
     $dest_image = imagecreatetruecolor(WIDTH, HEIGHT);
     imagesavealpha($dest_image, true);
@@ -49,18 +49,19 @@
     //traemos todas las imagenes que queremos unir,es posible unir dos o mas imagenes siempre y cuando tengan la misma extension en este caso .png
     $a = imagecreatefrompng("images/timbre.png");
     $b = imagecreatefrompng("temp/$codigoAprobacion.png");
-    $c = imagecreatefrompng("images/borde.png");
+    $c = imagecreatefrompng("images/borde2.png");
     //se procede a hacer la copia de las imagenes a la imagen destino con la funcion imagecopy(ImagenDestino,imagenCopiar,posx1,posy1,posx2,posy2,ancho,alto)
     //las posiciones 1 y 2 son usadas para ubicar la imagen a copiar en la imagen final
-    imagecopy($dest_image, $a, 0, 0, 0, 0, WIDTH, HEIGHT);
-    imagecopy($dest_image, $b, 0, 35, 0, 0, WIDTH, HEIGHT);
-    //imagecopy($dest_image, $c, 0, 0, 0, 0, WIDTH, HEIGHT);
+
+    imagecopy($dest_image, $a, 4, 4, 0, 0, WIDTH, HEIGHT);
+    imagecopy($dest_image, $b, 4, 35, 0, 0, WIDTH, HEIGHT);
+    imagecopy($dest_image, $c, 1, 0, 0, 0, WIDTH, HEIGHT);
     //guardamos la imagen en una carpeta temporal
     imagepng($dest_image,"temp/a$codigoAprobacion.png");
     //destruimos las imagenes que usamos en el proceso
     imagedestroy($a);
     imagedestroy($b);
-    imagedestroy($b);
+    imagedestroy($c);
     imagedestroy($dest_image);
   }
   run();
