@@ -3,7 +3,7 @@
 require_once("libs/dao.php");
 
 function registrarDespeje($tiempo,$cuadrillas,$personal,$fecha,$aprobacionId){
-  $insertSQL = "INSERT INTO `cimeqh`.`tblsolicituddespeje`(`solicitudDespejeHoras`,`solicitudDespejeCuadrillas`,`solicitudDespejeCantidadPersonal`,`solicitudDespejeFecha`,`tblsolicitudaprobacion_solicitudAprobacionId`,`estadoDespejeId`,`fechaRegistro`)VALUES(%d,%d,%d,'%s',%d,4,now());";  $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);    if(ejecutarNonQuery($insertSQL)){            $ultimoID=getLastInserId();              return $ultimoID;         }
+  $insertSQL = "INSERT INTO `cimeqh`.`tblsolicituddespeje`(`solicitudDespejeHoras`,`solicitudDespejeCuadrillas`,`solicitudDespejeCantidadPersonal`,`solicitudDespejeFecha`,`tblsolicitudaprobacion_solicitudAprobacionId`,`estadoDespejeId`,`fechaRegistro`)VALUES(%d,%d,%d,'%s',%d,4,now());";  $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);  if(ejecutarNonQuery($insertSQL)){            $ultimoID=getLastInserId();              return $ultimoID;         }
 }
 function actualizarDespeje($tiempo,$cuadrillas,$personal,$fecha,$despejeId){  $insertSQL = "UPDATE `tblsolicituddespeje`SET`solicitudDespejeHoras` =%d,`solicitudDespejeCuadrillas` = %d,`solicitudDespejeCantidadPersonal` = %d,`solicitudDespejeFecha` = '%s',`estadoDespejeId` = 4,`comentarioDespeje` = ''WHERE `solicitudDespejeId` = %d;";
   $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$despejeId);
@@ -14,7 +14,7 @@ function actualizarDespeje($tiempo,$cuadrillas,$personal,$fecha,$despejeId){  $
 
 }
 function verSolicitudesDespejeENEEReg($region,$estado){  $solicitud = array();  $sqlrt = "SELECT tbled.estadoDespejeDescripcion,solicitudDespejeId,solicitudDespejeHoras,solicitudDespejeCuadrillas,solicitudDespejeCantidadPersonal,solicitudDespejeFecha, proyectoNombrePropietario,proyectoIdentidadPropietario,proyectoDescrpcion,proyectoLatitud,proyectoLongitud,departamentoDescripcion,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' ',usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',proyectoNombre,proyectoDescrpcion,usuarioNumeroColegiacion,proyectoDireccion,proyectoTelefonoPropietario,proyectoEmailPropietario,proyectoEmailPropietario,proyectoIdentidadPropietario,usuarioCelular,usuarioTelefono,proyectoCelularPropietario,proyectoTelefonoPropietario,proyectoDireccionPropietarioFROM tblsolicituddespeje tblsd,tblsolicitudaprobacion tblsa, tblproyectos tblp, tblusuarios tblu,  tblregion as reg,tbldepartamentos tblde, tblestadodespeje tbledwhere tblsd.tblsolicitudaprobacion_solicitudAprobacionId=tblsa.solicitudAprobacionId andtbled.estadoDespejeId=tblsd.estadoDespejeIdand tblsa.proyectoId=tblp.proyectoId and tblde.departamentoId=tblp.departamentoId andtblp.usuarioIdentidad=tblu.usuarioIdentidad and tblsd.estadoDespejeId=$estado and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";$solicitud = obtenerRegistros($sqlrt);return $solicitud;}
-function verSolicitudesDespeje(){
+function verSolicitudesDespejeAdminCimeqh(){
     $solicitudFactibilidad = array();
     $sqlstr = "SELECT tbled.estadoDespejeDescripcion,solicitudDespejeId,solicitudDespejeHoras,solicitudDespejeCuadrillas,solicitudDespejeCantidadPersonal,
 solicitudDespejeFecha, proyectoNombrePropietario,proyectoIdentidadPropietario,proyectoDescrpcion,
@@ -28,10 +28,10 @@ tbldepartamentos tblde, tblestadodespeje tbled
 where tblsd.tblsolicitudaprobacion_solicitudAprobacionId=tblsa.solicitudAprobacionId and
 tbled.estadoDespejeId=tblsd.estadoDespejeId
 and tblsa.proyectoId=tblp.proyectoId and tblde.departamentoId=tblp.departamentoId and
-tblp.usuarioIdentidad=tblu.usuarioIdentidad and tblsd.estadoDespejeId=4;";
+tblp.usuarioIdentidad=tblu.usuarioIdentidad and tblsd.estadoDespejeId IN (1,4);";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
-}
+}function verSolicitudesDespejeRegCimeqh($region){    $solicitudFactibilidad = array();    $sqlstr = "SELECT tbled.estadoDespejeDescripcion,solicitudDespejeId,solicitudDespejeHoras,solicitudDespejeCuadrillas,solicitudDespejeCantidadPersonal,solicitudDespejeFecha, proyectoNombrePropietario,proyectoIdentidadPropietario,proyectoDescrpcion,proyectoLatitud,proyectoLongitud,departamentoDescripcion,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' ',usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',proyectoNombre,proyectoDescrpcion,usuarioNumeroColegiacion,proyectoDireccion,proyectoTelefonoPropietario,proyectoEmailPropietario,proyectoEmailPropietario,proyectoIdentidadPropietario,usuarioCelular,usuarioTelefono,proyectoCelularPropietario,proyectoTelefonoPropietario,proyectoDireccionPropietarioFROM cimeqh.tblsolicituddespeje tblsd,cimeqh.tblsolicitudaprobacion tblsa, cimeqh.tblproyectos tblp, cimeqh.tblusuarios tblu, cimeqh.tblregion as reg,cimeqh.tbldepartamentos tblde, cimeqh.tblestadodespeje tbledwhere tblsd.tblsolicitudaprobacion_solicitudAprobacionId=tblsa.solicitudAprobacionId andtbled.estadoDespejeId=tblsd.estadoDespejeIdand tblsa.proyectoId=tblp.proyectoId and tblde.departamentoId=tblp.departamentoId andtblp.usuarioIdentidad=tblu.usuarioIdentidad and tblsd.estadoDespejeId IN (1,4) and reg.idRegion=tblp.regionProyecto and reg.idRegion=$region;";    $solicitudFactibilidad = obtenerRegistros($sqlstr);    return $solicitudFactibilidad;}
 
 function verSolicitudesDespejeEnee(){
     $solicitudFactibilidad = array();
