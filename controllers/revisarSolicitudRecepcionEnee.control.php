@@ -19,7 +19,7 @@
           }
 
 
-          $revisar=obtenerSolicitudRecepcionAdmin();
+          $revisar=obtenerSolicitudRecepcionENEEAdmin();
           renderizar("revisarSolicitudRecepcionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
             break;
 
@@ -47,11 +47,11 @@
               agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["comentario"],3);
             }elseif ($_POST["tipo"]=="aceptado") {
 
-              agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["comentario"],2);
+              agregarComentarioRecepcion($_POST["codigoProyecto"],$_POST["comentario"],5);
             }
             }
             $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
-            $revisar=obtenerSolicitudRecepcion(1,$usuarios["usuarioRegion"]);
+            $revisar=obtenerSolicitudRecepcionENEERegSupervisor($usuarios["usuarioRegion"]);
             renderizar("revisarSolicitudRecepcionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
 
               break;
@@ -84,7 +84,7 @@
               }
               }
               $usuarios=obtenerUsuariosPorId($_SESSION["userName"]);
-              $revisar=obtenerSolicitudRecepcion(2,$usuarios["usuarioRegion"]);
+              $revisar=obtenerSolicitudRecepcionENEERegAprobacion($usuarios["usuarioRegion"]);
               renderizar("revisarSolicitudRecepcionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
               break;
 
