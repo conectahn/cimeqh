@@ -64,7 +64,8 @@ return $solicitudFactibilidad;
 
 function verSolicitudesFactbilidadAdminCimeqh(){
     $solicitudFactibilidad = array();
-    $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
+    $sqlstr = "SELECT if(tblestadofactibilidad.estadoFactibilidadId!=1 ,true,false) 'aprobado', 
+    tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
     proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
     proyectoIdentidadPropietario, proyectoTelefonoPropietario, proyectoCelularPropietario,
     proyectoEmailPropietario, proyectoDireccionPropietario,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' '
@@ -85,7 +86,9 @@ function verSolicitudesFactbilidadAdminCimeqh(){
 
 function verSolicitudesFactbilidadRegCimeqh($region){
     $solicitudFactibilidad = array();
-    $sqlstr = "SELECT  tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
+    $sqlstr = "SELECT
+        if(tblestadofactibilidad.estadoFactibilidadId!=1 ,true,false) 'aprobado',
+        tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
         proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
         proyectoIdentidadPropietario, proyectoTelefonoPropietario, proyectoCelularPropietario,
         proyectoEmailPropietario, proyectoDireccionPropietario,concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' '
