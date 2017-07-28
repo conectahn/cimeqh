@@ -42,8 +42,8 @@
           <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="images/animacion/Untitled-2.html" width="100%" height="100%" frameborder="0"></iframe>
           </div>
-          <h2>CIMEQH</h2>
-          <p>La plataforma virtual de CIMEQH te permite realizar todos lo tramites que necesitas sin necesidad de salir de la comodidad de tu hogar u oficina, en la cual puedes relizar tramites para Despeje de Energía Electrica, Factibilidad de Proyectos, Aprobación de proyectos y Recepción de proyectos</p>
+          <h2>E-CIMEQH</h2>
+          <p>La plataforma Electronica-CIMEQH te permite realizar todos lo tramites que necesitas sin necesidad de salir de la comodidad de tu hogar u oficina, en la cual puedes relizar tramites para Despeje de Energía Electrica, Factibilidad de Proyectos, Aprobación de proyectos y Recepción de proyectos</p>
           <a href="?page=login" class="btn btn-lg btn-outline">
               <i class="fa fa-sign-in"></i> Ingresar</a>
         </div>
