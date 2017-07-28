@@ -140,13 +140,24 @@ function obtenerSolicitudAprobacion(){
 
 function verSolicitudesAprobacionAdminCimeqh(){
     $solicitudes = array();
-    $sqlstr = "SELECT *
-from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa, tblestadoaprobacion as ea
+    $sqlstr = "SELECT if(sa.estadoSolicitudAprobacion!=1 and sa.estadoSolicitudAprobacion!=2,true,false)'aprobado',
+sa.codigoAprobacion,sa.comentarioAprobacion,sa.estadoSolicitudAprobacion,sa.fechaRegistroSolicitud,
+sa.solicitudAaprobacionMontoEstimado,sa.solicitudAprobacionCosto,sa.solicitudAprobacionFecha,
+sa.solicitudAprobacionId,ea.estadoAprobacionDescripcion
+,proyectoNombrePropietario,proyectoIdentidadPropietario,
+proyectoDescrpcion,proyectoLatitud,proyectoLongitud,departamentoDescripcion,
+concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' ',
+usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',proyectoNombre,
+proyectoDescrpcion,usuarioNumeroColegiacion,proyectoDireccion,proyectoTelefonoPropietario,
+proyectoEmailPropietario,proyectoEmailPropietario,proyectoIdentidadPropietario,
+usuarioCelular,usuarioTelefono,proyectoCelularPropietario,proyectoTelefonoPropietario,
+proyectoDireccionPropietario
+from tblproyectos as p, tblusuarios as u, tbldepartamentos as d, tblsolicitudaprobacion as sa,
+tblestadoaprobacion as ea
  where p.proyectoId=sa.proyectoId
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
- and p.departamentoId=d.departamentoId
- and ea.estadoAprobacionId IN (4,1);";
+ and p.departamentoId=d.departamentoId;";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }

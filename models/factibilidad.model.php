@@ -64,7 +64,7 @@ return $solicitudFactibilidad;
 
 function verSolicitudesFactbilidadAdminCimeqh(){
     $solicitudFactibilidad = array();
-    $sqlstr = "SELECT if(tblestadofactibilidad.estadoFactibilidadId!=1 ,true,false) 'aprobado', 
+    $sqlstr = "SELECT if(tblestadofactibilidad.estadoFactibilidadId!=1 and tblestadofactibilidad.estadoFactibilidadId!=2 ,true,false) 'aprobado', 
     tblsf.solicitudFactibilidadId,tblsf.estadoFactibilidadId,proyectoNombre, departamentoDescripcion, proyectoDireccion, proyectoDescrpcion,
     proyectoLatitud,proyectoLongitud, proyectoNombrePropietario,
     proyectoIdentidadPropietario, proyectoTelefonoPropietario, proyectoCelularPropietario,
@@ -78,8 +78,7 @@ function verSolicitudesFactbilidadAdminCimeqh(){
     where tblsf.proyectoId=tblp.proyectoId and tblsf.conexionId=tblc.conexionId
     and tblsf.voltajeId=tblv.voltajeId and tblp.usuarioIdentidad=tblu.usuarioIdentidad
     and tbld.departamentoId=tblp.departamentoId
-    and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId
-    and tblsf.estadoFactibilidadId IN (1,4);";
+    and tblsf.estadoFactibilidadId=tblestadofactibilidad.estadoFactibilidadId;";
     $solicitudFactibilidad = obtenerRegistros($sqlstr);
     return $solicitudFactibilidad;
 }
