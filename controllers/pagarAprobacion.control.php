@@ -16,6 +16,7 @@
   require 'pagar/lib/Stripe.php';
   $errores = array();
   $htmlDatos = array();
+  //print_r($htmlDatos);
 
   if (isset($_POST["btnPagarAprobacion"])) {
       redirectWithMessage("El pago se realizo con exito","?page=verProyectos");
@@ -33,8 +34,11 @@
         $upload = new Multiupload();
         //llamamos a la funcion upFiles y le pasamos el array de campos file del formulario
         $isUpload = $upload->upFiles($files,$respuesta,"aprobacion");
+
+
          //llamamos a la funcion upFiles y le pasamos el array de campos file del formulari
         if ($isUpload===FALSE) {
+           print_r($htmlDatos);
            borrarAprobacion($respuesta);
            $alerta=redirectWithMessage("Error al subir el archivo ","index.php?page=aprobacionProyectos");
         }else {
@@ -42,7 +46,10 @@
           $htmlDatos["txtTotalTimbres"]=$_POST["txtTotalTimbres"];
           $htmlDatos["proyectoId"]=$_POST["proyectoId"];
           $htmlDatos["respuesta"]=$respuesta;
+          $htmlDatos["imagenes"]=$files;
+          print_r($htmlDatos);
          }
+         //print_r($htmlDatos);
         break;
 
       case 'UPD':
@@ -76,6 +83,7 @@
             $htmlDatos["success"]  = '<div class="alert alert-success">
                       <strong>Success!</strong> Your payment was successful.
               </div>';
+              actualizarAprobacionEstado($_POST["respuesta"]);
         }
         catch (Exception $e) {
           borrarAprobacion($_POST["respuesta"]);
@@ -88,11 +96,7 @@
         # code...
         break;
     }
-
   }
-
-
-
 
     renderizar("pagarAprobacion",   $htmlDatos);
   }

@@ -216,6 +216,10 @@ $(document).ready(function() {
   <input type="hidden" name="txtTotalTimbres" value="{{txtTotalTimbres}}">
   <input type="hidden" name="respuesta" value="{{respuesta}}">
   <input type="hidden" name="accion" value="PAY">
+
+  {{foreach imagenes}}
+    <input type="hidden" name="userfile[]" value="{{}}">
+  {{endfor imagenes}}
   <div class="row row-centered">
   <div class="col-md-4 col-md-offset-4">
   <div class="page-header">

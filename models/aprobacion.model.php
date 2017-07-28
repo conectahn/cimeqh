@@ -9,7 +9,7 @@ function registrarAprobacion($monto, $costo, $proyectoId){
 `proyectoId`,
 `fechaRegistroSolicitud`)
 VALUES
-(%f,%f,4,%d,now());";
+(%f,%f,5,%d,now());";
 $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
 
   if(ejecutarNonQuery($insertSQL)){
@@ -26,6 +26,12 @@ $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
               return $ultimoID;
 
          }
+}
+
+function actualizarAprobacionEstado($id){
+  $insertSQL = "UPDATE tblsolicitudaprobacion set `estadoSolicitudAprobacion`= 4;";
+  return ejecutarNonQueryConErroresQuery($insertSQL);
+
 }
 
 function obtenerDocumentos($solicitudId){

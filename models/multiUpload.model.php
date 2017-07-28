@@ -49,7 +49,6 @@ class Multiupload
                           $strsql = sprintf($strsql,  $direccion, $Id,$nombreArchivo);
                           $resultado=0;
                           $resultado=  ejecutarNonQuery($strsql);
-                          echo "subida correctamente";
                           break;
 
                         case 'factibilidad':
@@ -60,7 +59,6 @@ class Multiupload
                           $strsql = sprintf($strsql,  $direccion, $nombreArchivo,$Id);
                           $resultado=0;
                           $resultado=  ejecutarNonQuery($strsql);
-                          echo "subida correctamente";
                           break;
 
                           case 'recepcion':
@@ -69,7 +67,6 @@ class Multiupload
                             $strsql = sprintf($strsql,  $direccion, $Id,$nombreArchivo);
                             $resultado=0;
                             $resultado=  ejecutarNonQuery($strsql);
-                            echo "subida correctamente";
                             break;
 
                             case 'despeje':
@@ -80,7 +77,6 @@ class Multiupload
                             $strsql = sprintf($strsql,  $direccion, $nombreArchivo,$Id);
                             $resultado=0;
                             $resultado=  ejecutarNonQuery($strsql);
-                            //echo "subida correctamente";
                               break;
 
                         default:
@@ -93,13 +89,10 @@ class Multiupload
                     }
                 //si la extension no es una de las permitidas
                 }else{
-                    echo "la extension no esta permitida";
                 }
             //si ese input file no ha sido cargado con un archivo
             }else{
-                echo "sin imagen";
             }
-            echo "<br />";
             //en cada pasada por el loop incrementamos i para acceder al siguiente archivo
             $i++;
         }
