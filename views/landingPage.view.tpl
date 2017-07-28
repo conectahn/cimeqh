@@ -236,7 +236,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; www.cimeqh.org 2017
+                        Copyright &copy; www.e-cimeqh.com 2017
                     </div>
                 </div>
             </div>
