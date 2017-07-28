@@ -25,7 +25,7 @@
           <h1>Descargue el Siguiente Codigo QR y el Timbre Electronico</h1>
         <div class="x_content col-lg-4 col-lg-offset-4">
 
-          <img src="temp/a{{codigoAprobacion}}" height="330" width="210">
+          <img src="temp/a{{codigoAprobacion}}" height="250" width="180">
         </div>
       </div>
       <div class="col-lg-12" align="right">
