@@ -75,6 +75,32 @@
         return $proyecto;
     }
 
+    function ActualizarProyecto($proyectoId,$proyectoNombre,$departamentoDescripcion,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
+    $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
+    $proyectoDireccionPropietario,$proyectoTelefonoPropietario)
+    {
+      $insertSQL = "UPDATE `tblproyectos`
+    SET `proyectoNombre` = `%s`,
+    `departamentoDescripcion` = `%s`,
+    `proyectoDireccion` = `%s`,
+    `proyectoDescrpcion` = `%s`,
+    `proyectoLatitud` = %d,
+    `proyectoLongitud` = %d,
+    `zonaUtm` = `%s`,
+    `proyectoEmailPropietario` = `%s`,
+    `proyectoNombrePropietario` = `%s`,
+    `proyectoIdentidadPropietario` = `%s`,
+    `proyectoCelularPropietario` = `%s`,
+    `proyectoDireccionPropietario` = `%s`,
+    `proyectoTelefonoPropietario` = `%s`
+    WHERE `proyectoId` = %d;";
+    $insertSQL = sprintf($insertSQL, $proyectoNombre,$departamentoDescripcion,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
+    $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
+    $proyectoDireccionPropietario,$proyectoTelefonoPropietario);
+
+    return ejecutarNonQueryConErrores($insertSQL);
+    }
+
     function registrarProyecto($txtNombrePropietario,
     $txtIdentidadPropietario,$txtDireccionPropietario,$txtEmailPropietario,
     $txtTelefonoPropietario,$txtCelularPropietario,$txtProyectoNombre,

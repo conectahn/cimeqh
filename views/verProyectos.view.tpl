@@ -48,7 +48,9 @@
                   <td>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-{{proyectoId}}">Ver</button>
-
+                    <a href="index.php?page=modificarProyectos&proyectoId={{proyectoId}}&accion=UPD">
+                      <button type="button" class="btn btn-warning">Modificar</button>
+                    </a>
                     <div class="modal fade bs-example-modal-lg-{{proyectoId}}" tabindex="-1" role="dialog" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
