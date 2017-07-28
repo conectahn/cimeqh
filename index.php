@@ -209,6 +209,10 @@
             require_once("controllers/productos.control.php");
             break;
 
+        case "modificarProyectos":
+            require_once("controllers/modificarProyectos.control.php");
+            break;
+
             case "verUsuarios":
                 //llamar al controlador
                 require_once("controllers/verUsuarios.control.php");
