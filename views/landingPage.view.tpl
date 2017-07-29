@@ -307,9 +307,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Plataforma Web</h2>
+                            <h2>E-CIMEQH</h2>
                             <hr class="star-primary">
-                            <p>La plataforma E-CIMEQH no solo te ahorra tiempo y dinero, pero te facilita llevar un control de tus proyectos y todos tus tramites!</p>
+                            <p>La plataforma Electronica-CIMEQH no solo te ahorra tiempo y dinero, pero te facilita llevar un control de tus proyectos y todos tus tramites!</p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
                         </div>
                     </div>
