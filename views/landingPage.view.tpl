@@ -86,7 +86,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="images/welcome.png" class="img-responsive" alt="Circus tent">
+                        <img src="images/e-cimeqh2.jpg" class="img-responsive" alt="Circus tent">
                     </a>
                 </div>
                 <!--div class="col-sm-4 portfolio-item">
