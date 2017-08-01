@@ -38,7 +38,7 @@
               switch ($_POST["accion"]) {
                 case 'UPD':
 
-                  $resultado=ActualizarProyecto($_POST["txtProyectoNombre"],$_POST["txtproyectoDepartamento"],
+                  $resultado=ActualizarProyecto($_GET["proyectoId"],$_POST["txtProyectoNombre"],$_POST["txtproyectoDepartamento"],
                 $_POST["txtDireccionProyecto"],
                 $_POST["txtDescripcionProyecto"],
                 $_POST["txtLatitud"],

@@ -94,7 +94,7 @@
     `proyectoDireccionPropietario` = `%s`,
     `proyectoTelefonoPropietario` = `%s`
     WHERE `proyectoId` = %d;";
-    $insertSQL = sprintf($insertSQL, $proyectoNombre,$departamentoDescripcion,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
+    $insertSQL = sprintf($insertSQL, $proyectoId,$proyectoNombre,$departamentoDescripcion,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
     $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
     $proyectoDireccionPropietario,$proyectoTelefonoPropietario);
 
