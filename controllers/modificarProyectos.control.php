@@ -16,7 +16,7 @@
           if(isset($_GET["proyectoId"])){
             $proyectos=obtnerProyectosPorId($_GET["proyectoId"]);
             if($proyectos){
-              $htmlDatos["accion"] = $_GET["accion"];
+            //  $htmlDatos["accion"] = $_GET["accion"];
               $htmlDatos["proyectoId"] = $proyectos["proyectoId"];
               $htmlDatos["proyectoNombre"] = $proyectos["proyectoNombre"];
               $htmlDatos["departamentoNombre"] = $proyectos["departamentoDescripcion"];
@@ -32,13 +32,14 @@
               $htmlDatos["proyectoDireccionPropietario"] = $proyectos["proyectoDireccionPropietario"];
               $htmlDatos["proyectoTelefonoPropietario"] = $proyectos["proyectoTelefonoPropietario"];
               }
+
             }
-
             if (isset($_POST["btnModificarProyectos"])) {
-              switch ($_POST["accion"]) {
-                case 'UPD':
 
-                  $resultado=ActualizarProyecto($_GET["proyectoId"],$_POST["txtProyectoNombre"],$_POST["txtproyectoDepartamento"],
+                $resultado=ActualizarProyecto(
+                $_GET["proyectoId"],
+                $_POST["txtProyectoNombre"],
+                $_POST["txtproyectoDepartamento"],
                 $_POST["txtDireccionProyecto"],
                 $_POST["txtDescripcionProyecto"],
                 $_POST["txtLatitud"],
@@ -50,15 +51,15 @@
                 $_POST["txtCelularPropietario"],
                 $_POST["txtEmailPropietario"],
                 $_POST["txtDireccionPropietario"]
-              );
-                  //$location="Location:index.php?page=factibilidadProyectos&error=".$resultado;
+             );
+                  //$location="Location:index.php?page=verProyectos&error=".$resultado;
                   //header($location);
 
                   echo $resultado;
-                  redirectWithMessage("El cambio se ha realizado.","?page=login");
-                  break;
+                    echo '<script>alert("madres");</script>';//redirectWithMessage("El cambio se ha realizado.","?page=login");
+                //  break;
               }
-            }
+            //}
           renderizar("modificarProyectos",  $htmlDatos);
         }else {
           redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");

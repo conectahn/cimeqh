@@ -81,7 +81,7 @@
     {
       $insertSQL = "UPDATE `tblproyectos`
     SET `proyectoNombre` = `%s`,
-    `departamentoDescripcion` = `%s`,
+    `departamentoId` = %d,
     `proyectoDireccion` = `%s`,
     `proyectoDescrpcion` = `%s`,
     `proyectoLatitud` = %d,
@@ -94,7 +94,7 @@
     `proyectoDireccionPropietario` = `%s`,
     `proyectoTelefonoPropietario` = `%s`
     WHERE `proyectoId` = %d;";
-    $insertSQL = sprintf($insertSQL, $proyectoId,$proyectoNombre,$departamentoDescripcion,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
+    $insertSQL = sprintf($insertSQL, $proyectoId,$proyectoNombre,1,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
     $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
     $proyectoDireccionPropietario,$proyectoTelefonoPropietario);
 

@@ -69,12 +69,12 @@ require_once("clases/class.phpmaileroauthgoogle.php");
       $mail = new PHPMailer;
       $mail->SMTPDebug=0;
       $mail->isSMTP();
-      $mail->Host = 'chimera.lunarpages.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'cimeqh@conectahn.org';
-      $mail->Password = 'conecta2017';
-      $mail->SMTPSecure = 'ssl';
-      $mail->Port = 465;
+      $mail->Host = 'localhost';
+      $mail->SMTPAuth = false;
+      //$mail->Username = 'registro@e-cimeqh.com';
+      //$mail->Password = 'conecta2017';
+      //$mail->SMTPSecure = 'ssl';
+      $mail->Port = 25;
       $mail->setFrom('cimeqh@conectahn.org', 'CIMEQH');
       $mail->addAddress($usuarios["txtCorreo"], '');
       $mail->addReplyTo('cimeqh@conectahn.org', 'Information');
@@ -91,7 +91,7 @@ require_once("clases/class.phpmaileroauthgoogle.php");
 
 
     echo $respueta;
-    redirectWithMessage("Su cuenta ya existe verifique su correo para enterarse si esta ha sido verificada por el CIMEQH.","?page=login");
+    //redirectWithMessage("Su cuenta ya existe verifique su correo para enterarse si esta ha sido verificada por el CIMEQH.","?page=login");
     header($location);
 
     }

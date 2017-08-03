@@ -20,7 +20,7 @@
                 <div class="x_content">
                   <br>
 
-                    <form action="index.php?page=verProyectos" id="defaultForm" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <form action="index.php?page=modificarProyectos" id="defaultForm" data-parsley-validate class="form-horizontal form-label-left" method="post">
                       <input type="hidden" name="proyectoId" id="proyectoId" value="{{proyectoId}}">
                       <input type="hidden" name="accion" id="accion" value="{{accion}}">
 
