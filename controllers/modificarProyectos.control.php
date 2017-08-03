@@ -35,9 +35,8 @@
 
             }
             if (isset($_POST["btnModificarProyectos"])) {
-
                 $resultado=ActualizarProyecto(
-                $_GET["proyectoId"],
+                $_POST["proyectoId"],
                 $_POST["txtProyectoNombre"],
                 $_POST["txtproyectoDepartamento"],
                 $_POST["txtDireccionProyecto"],
@@ -56,7 +55,7 @@
                   //header($location);
 
                   echo $resultado;
-                    echo '<script>alert("madres");</script>';//redirectWithMessage("El cambio se ha realizado.","?page=login");
+                    //echo '<script>alert("madres");</script>';//redirectWithMessage("El cambio se ha realizado.","?page=login");
                 //  break;
               }
             //}

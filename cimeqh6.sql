@@ -279,6 +279,7 @@ CREATE TABLE `tblfacturas` (
   `fechaRegistro` datetime DEFAULT NULL,
   `montoPagado` float DEFAULT NULL,
   `fechaPago` datetime DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
   PRIMARY KEY (`idFacturas`),
   KEY `idUsuario_idx` (`idUsuario`),
   KEY `idConcepto_idx` (`idConcepto`),
@@ -667,4 +668,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-03 11:03:36
+-- Dump completed on 2017-08-03 13:14:28
