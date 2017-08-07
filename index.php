@@ -40,6 +40,11 @@
             require_once("controllers/posponerDespeje.control.php");
             break;
 
+            case "pagos":
+                //llamar al controlador
+                require_once("controllers/pagos.control.php");
+                break;
+
             case "reporteAprobacion":
                 //llamar al controlador
                 require_once("controllers/reporteAprobacion.control.php");
