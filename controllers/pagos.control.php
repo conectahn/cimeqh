@@ -2,10 +2,10 @@
   require_once("libs/template_engine.php");
   require_once("models/pagos.model.php");
   $pagos = array();
-  $check  = "";
+  $check  = array();
 
 if(isset($_POST['btnPagar'])){
-$check=$_POST['check'];
+$check=$_POST["check"];
   foreach ($check as $key ) {
   echo $key."<br>";
   }
