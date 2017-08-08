@@ -79,26 +79,27 @@
     $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
     $proyectoDireccionPropietario,$proyectoTelefonoPropietario)
     {
-      $insertSQL = "UPDATE `tblproyectos`
-    SET `proyectoNombre` = `%s`,
-    `departamentoId` = %d,
-    `proyectoDireccion` = `%s`,
-    `proyectoDescrpcion` = `%s`,
-    `proyectoLatitud` = %d,
-    `proyectoLongitud` = %d,
-    `zonaUtm` = `%s`,
-    `proyectoEmailPropietario` = `%s`,
-    `proyectoNombrePropietario` = `%s`,
-    `proyectoIdentidadPropietario` = `%s`,
-    `proyectoCelularPropietario` = `%s`,
-    `proyectoDireccionPropietario` = `%s`,
-    `proyectoTelefonoPropietario` = `%s`
-    WHERE `proyectoId` = %d;";
-    $insertSQL = sprintf($insertSQL, $proyectoId,$proyectoNombre,1,$proyectoDireccion,$proyectoDescrpcion,$proyectoLatitud,
-    $proyectoLongitud,$zonaUtm,$proyectoEmailPropietario,$proyectoNombrePropietario,$proyectoIdentidadPropietario,$proyectoCelularPropietario,
-    $proyectoDireccionPropietario,$proyectoTelefonoPropietario);
+      $sqlstr = "UPDATE `tblproyectos`
+    SET `proyectoNombre` = '$proyectoNombre',
+    `departamentoId` = (select departamentoId from tbldepartamentos where departamentoDescripcion = '$departamentoDescripcion'),
+    `proyectoDireccion` = '$proyectoDireccion',
+    `proyectoDescrpcion` = '$proyectoDescrpcion',
+    `proyectoLatitud` = $proyectoLatitud,
+    `proyectoLongitud` = $proyectoLongitud,
+    `zonaUtm` = '$zonaUtm',
+    `proyectoEmailPropietario` = '$proyectoEmailPropietario',
+    `proyectoNombrePropietario` = '$proyectoNombrePropietario',
+    `proyectoIdentidadPropietario` = '$proyectoIdentidadPropietario',
+    `proyectoCelularPropietario` = '$proyectoCelularPropietario',
+    `proyectoDireccionPropietario` = '$proyectoDireccionPropietario',
+    `proyectoTelefonoPropietario` = '$proyectoTelefonoPropietario'
+    WHERE `proyectoId` = $proyectoId;";
 
-    return ejecutarNonQueryConErrores($insertSQL);
+    if(ejecutarNonQuery($sqlstr)){
+    return ejecutarNonQueryConErrores($sqlstr);
+    }
+
+    //  return ejecutarNonQueryConErrores($insertSQL);
     }
 
     function registrarProyecto($txtNombrePropietario,

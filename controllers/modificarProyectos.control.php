@@ -51,11 +51,12 @@
                 $_POST["txtEmailPropietario"],
                 $_POST["txtDireccionPropietario"]
              );
-                  //$location="Location:index.php?page=verProyectos&error=".$resultado;
-                  //header($location);
+                  $location="Location:index.php?page=verProyectos&error=".$resultado;
+                  header($location);
 
                   echo $resultado;
-                    //echo '<script>alert("madres");</script>';//redirectWithMessage("El cambio se ha realizado.","?page=login");
+                    //echo '<script>alert("madres");</script>';//
+                    redirectWithMessage("El cambio se ha realizado.","?page=login");
                 //  break;
               }
             //}
