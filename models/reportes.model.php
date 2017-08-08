@@ -133,4 +133,21 @@
     $cantidadPlanos = obtenerRegistros($sqlrt);
     return $cantidadPlanos;
   }
+
+  function obtenerIngresosPorAprobacion($fecha1,$fecha2)
+  {
+    $ingresos = "";
+    $sqlrt = "
+      select
+      	sum(montoPagado) as monto
+      from
+      	cimeqh.tblfacturas
+      where
+      	idConcepto = 2 and
+          fechaPago between '2017-05-26 13:23:55' and '2017-08-26 13:23:55' and
+          estado = 1;
+    ";
+    $ingresos = obtenerUnRegistro($sqlrt);
+    return $ingresos;
+  }
 ?>
