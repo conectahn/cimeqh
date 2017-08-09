@@ -73,7 +73,7 @@
           deseamos mostrar para este caso es layoutEnee
           */
           ###################################################################
-          renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+          renderizar("revisarSolicitudFactibilidadEnee",array('solicitud'=>$revisar),"layoutEneeAdmin.view.tpl");
             break;
 
 #######################################################################

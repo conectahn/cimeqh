@@ -92,7 +92,7 @@
                         <li><a ><i class="fa fa-user"></i>Control de Usuarios<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                         <li><a href="index.php?page=registroUsuariosEnee">Ingresar Usuario ENEE</a></li>
-                        <li><a href="index.php?page=verUsuarios">Administrar Usuarios</a></li>
+                        <!--<li><a href="index.php?page=verUsuarios">Administrar Usuarios</a></li>-->
                         </ul>
                         </li>
                       <h3>General</h3>
@@ -104,6 +104,12 @@
                         <li><a href="index.php?page=revisarSolicitudRecepcionEnee"><i class="fa fa-cloud-upload"></i>Revisar Solicitudes de Recepcion de Proyectos<span class="fa fa-chevron-down"></span></a>
                         </li>
                         <li><a href="index.php?page=revisarSolicitudDespejeEnee"><i class="fa fa-flash"></i>Revisar Solicitudes de Despeje de Energía<span class="fa fa-chevron-down"></span></a>
+                        </li>
+                        <li><a ><i class="fa fa-file-photo-o"></i>Reportes<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                        <li><a href="index.php?page=reporteFinancieroCimeqh">Reportes Financieros</a></li>
+                        <li><a href="index.php?page=reporteProyectoCimeqh">Reportes de Gestion de Proyectos</a></li>
+                        </ul>
                         </li>
                       </ul>
                     </div>

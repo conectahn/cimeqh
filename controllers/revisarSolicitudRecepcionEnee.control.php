@@ -20,7 +20,7 @@
 
 
           $revisar=obtenerSolicitudRecepcionENEEAdmin();
-          renderizar("revisarSolicitudRecepcionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+          renderizar("revisarSolicitudRecepcionEnee",array('solicitud'=>$revisar),"layoutEneeAdmin.view.tpl");
             break;
 
             case '5':

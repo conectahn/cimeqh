@@ -38,7 +38,7 @@
           }
 
           $revisar=verSolicitudesDespejeEneeAdmin();
-          renderizar("revisarSolicitudDespejeEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+          renderizar("revisarSolicitudDespejeEnee",array('solicitud'=>$revisar),"layoutEneeAdmin.view.tpl");
             break;
 
             case '5':
