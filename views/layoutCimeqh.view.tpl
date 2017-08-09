@@ -101,6 +101,12 @@
                         </li>
                         <li><a href="index.php?page=revisarSolicitudDespejeCimeqh"><i class="fa fa-flash"></i>Revisar Solicitudes de Despeje de Energía</a>
                         </li>
+                        <li><a ><i class="fa fa-file-photo-o"></i>Reportes<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                        <li><a href="index.php?page=reporteFinancieroCimeqh">Reportes Financieros</a></li>
+                        <li><a href="index.php?page=reporteProyectoCimeqh">Reportes de Gestion de Proyectos</a></li>
+                        </ul>
+                        </li>
                       </ul>
                     </div>
 

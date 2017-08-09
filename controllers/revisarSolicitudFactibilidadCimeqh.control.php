@@ -88,7 +88,7 @@
             break;
 
             default:
-            redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
+            redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta página.","?page=login");
             break;
         }
 

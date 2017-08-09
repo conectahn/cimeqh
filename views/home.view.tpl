@@ -1,6 +1,10 @@
 <div class="right_col" role="main">
 
+
+
     <div class="container">
+
+<h1>Hola</h1>
 
 <script src="graficas/code/highcharts.js"></script>
 <script src="graficas/code/modules/exporting.js"></script>
@@ -67,7 +71,7 @@ Highcharts.chart('container', {
         data: [18, 31, 54, 156, 339, 818, 1201]
     }, {
         name: 'Factibilidad',
-        data: [2, 2, 2, 6, 13, 30, 46]
+        data: [200, 152, 289, 670, 130, 300, 460]
     }]
 });
 		</script>

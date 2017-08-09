@@ -114,7 +114,7 @@ $numeroColegiacion, $userCelular,$userTelefono, $userDireccion, $userPassword, $
 
     $regiones=obtenerRegiones();
     $roles=obtenerRolesEnee();
-    renderizar("registroUsuariosCimeqh",array('datos' =>$htmlData, 'regiones'=>$regiones, 'roles'=>$roles),'layoutEneeAdmin.view.tpl');
+    renderizar("registroUsuariosCimeqh",array('datos' =>$htmlData, 'regiones'=>$regiones, 'roles'=>$roles),'layoutCimeqh.view.tpl');
   }
   run();
 ?>
