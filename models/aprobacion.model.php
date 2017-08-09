@@ -1,15 +1,16 @@
 <?php
   require_once("libs/dao.php");
 
-function registrarAprobacion($monto, $costo, $proyectoId){
+function registrarAprobacion($monto, $costo, $proyectoId,$usuarioIdentidad){
   $insertSQL = "INSERT INTO `tblsolicitudaprobacion`
 (`solicitudAaprobacionMontoEstimado`,
 `solicitudAprobacionCosto`,
 `estadoSolicitudAprobacion`,
 `proyectoId`,
+`usuarioIdentidad`,
 `fechaRegistroSolicitud`)
 VALUES
-(%f,%f,5,%d,now());";
+(%f,%f,5,%d,%s,now());";
 $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
 
   if(ejecutarNonQuery($insertSQL)){

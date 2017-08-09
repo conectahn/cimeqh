@@ -14,7 +14,7 @@
           $htmlDatos = array( );
 
           if (isset($_POST["btnSolicitarAprobacion"])) {
-            $respuesta = registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
+            $respuesta = registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"],$_SESSION["userName"]);
 
 
             switch ($_POST["accion"]) {
