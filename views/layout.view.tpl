@@ -252,7 +252,9 @@
           <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 
           <script src="vendors/iCheck/icheck.min.js"></script>
-
+          <script src="code/highcharts.js"></script>
+          <script src="code/highcharts-3d.js"></script>
+          <script src="code/modules/exporting.js"></script>
           <script src="public/js/custom.min.js"></script>
 
         </body>
