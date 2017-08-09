@@ -31,7 +31,7 @@ en caso que sea enee admin
 
     $revisar=verSolicitudesAprobacionEneeAdmin();
     //$documentos=verSolicitudesArchivos($revisar[""]);
-    renderizar("revisarSolicitudAprobacionEnee",array('solicitud'=>$revisar),"layoutEnee.view.tpl");
+    renderizar("revisarSolicitudAprobacionEnee",array('solicitud'=>$revisar),"layoutEneeAdmin.view.tpl");
     break;
     #############################################################################################
     /*
