@@ -254,6 +254,10 @@
                     require_once("controllers/restablecerPass.control.php");
                     break;
 
+                    case "reporteFinancieroCimeqh":
+                    require_once("controllers/reporteFinancieroCimeqh.control.php");
+                    break;
+
         default:
             require_once("controllers/error.control.php");
 
