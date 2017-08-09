@@ -60,7 +60,7 @@
       	ON (B.proyectoId = A.proyectoId)
       where
       	tblrp.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
-        and A.solicitudRecepcioEstado in (1,2)
+        and tblrp.solicitudRecepcioEstado in (1,2)
       group by B.regionDescripcion;
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
@@ -91,7 +91,7 @@
           ON (B.proyectoId = A.proyectoId)
       where
       	A.fechaSolicitud between '$fecha1' and '$fecha2'
-        and A.estadoFactibilidad in (1,2)
+        and A.estadoFactibilidadId in (1,2)
       group by B.regionDescripcion;
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
@@ -127,7 +127,7 @@
       	ON (B.proyectoId = A.proyectoId)
       where
       	tbldp.fechaRegistro between '$fecha1' and '$fecha2'
-        and A.estadoSolicitudAprobacion in (1,2)
+        and tbldp.estadoDespejeId in (1,2)
       group by B.regionDescripcion;
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
