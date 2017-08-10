@@ -134,30 +134,12 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {{foreach aprobaciones}}
                                   <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
+                                    <td>{{region}}</td>
+                                    <td>{{total_aprobacion}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>Área Regional Centro Sur</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución San Pedro Sula y alrededores</td>
-                                    <td>10</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional de Nor Occidente</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución La Ceiba y alrededores</td>
-                                    <td>4</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional del Litoral Atlántico</td>
-                                    <td>5</td>
-                                  </tr>
+                                  {{endfor aprobaciones}}
                                 </tbody>
                               </table>
                             </div>
@@ -194,30 +176,12 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {{foreach recepciones}}
                                   <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
+                                    <td>{{region}}</td>
+                                    <td>{{cantidad_proyectos_recepcion}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>Área Regional Centro Sur</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución San Pedro Sula y alrededores</td>
-                                    <td>10</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional de Nor Occidente</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución La Ceiba y alrededores</td>
-                                    <td>4</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional del Litoral Atlántico</td>
-                                    <td>5</td>
-                                  </tr>
+                                  {{endfor recepciones}}
                                 </tbody>
                               </table>
                             </div>
@@ -254,30 +218,12 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {{foreach despejes}}
                                   <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
+                                    <td>{{region}}</td>
+                                    <td>{{cantidad_proyectos_despeje}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>Área Regional Centro Sur</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución San Pedro Sula y alrededores</td>
-                                    <td>10</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional de Nor Occidente</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución La Ceiba y alrededores</td>
-                                    <td>4</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional del Litoral Atlántico</td>
-                                    <td>5</td>
-                                  </tr>
+                                  {{endfor despejes}}
                                 </tbody>
                               </table>
                             </div>
@@ -305,7 +251,7 @@
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                            
+
                               <table id="datatable-responsive" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
@@ -314,30 +260,12 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {{foreach despejes}}
                                   <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
+                                    <td>{{region}}</td>
+                                    <td>{{cantidad_proyectos_despeje}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>Área Regional Centro Sur</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución San Pedro Sula y alrededores</td>
-                                    <td>10</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional de Nor Occidente</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución La Ceiba y alrededores</td>
-                                    <td>4</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional del Litoral Atlántico</td>
-                                    <td>5</td>
-                                  </tr>
+                                  {{endfor despejes}}
                                 </tbody>
                               </table>
                             </div>

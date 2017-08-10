@@ -6,8 +6,8 @@
     $cantidadPlanos = array();
     $sqlrt = "
     select
-    	count(1) as cantidad_proyectos_aprobacion,
-        B.regionDescripcion
+    	count(1) as total_aprobacion,
+        B.regionDescripcion as region
     from
     	tblsolicitudaprobacion A
     	inner join
@@ -37,7 +37,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_recepcion,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicitudrecepcion tblrp
       	inner join
@@ -104,7 +104,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_despeje,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicituddespeje tbldp
       	inner join
