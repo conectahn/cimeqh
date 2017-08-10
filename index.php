@@ -27,6 +27,11 @@
             require_once("controllers/revisarSolicitudRecepcionEnee.control.php");
             break;
 
+            case "reporteProyectoCimeqh":
+                //llamar al controlador
+                require_once("controllers/reporteProyectoCimeqh.control.php");
+                break;
+
         case "reporte":
           require_once("controllers/reporte.control.php");
           break;
