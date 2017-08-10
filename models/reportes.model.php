@@ -184,7 +184,7 @@
           (
       		select
       			usuarioIdentidad,
-      			concat(usuarioPrimerNombre , " " , usuarioPrimerApellido) as nombre,
+      			concat(usuarioPrimerNombre , ' ' , usuarioPrimerApellido) as nombre,
                   usuarioNumeroColegiacion
       		from
       			cimeqh.tblusuarios
@@ -352,7 +352,7 @@
         from cimeqh.tblsolicitudaprobacion tblsp
         inner join
         (
-        	select concat(usuarioPrimerNombre, " ", usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
+        	select concat(usuarioPrimerNombre, ' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
         ) A
         on (A.usuarioIdentidad = tblsp.usuarioIdentidad)
         inner join
@@ -360,7 +360,7 @@
         	select proyectoNombre,proyectoId from cimeqh.tblproyectos
         ) B
         on (B.proyectoId = tblsp.proyectoId)
-        where tblsp.fechaRegistroSolicitud between '' and '';
+        where tblsp.fechaRegistroSolicitud between $fecha1 and $fecha2;
       ";
       $usuario = obtenerRegistros($sqlrt);
       return $usuario;
