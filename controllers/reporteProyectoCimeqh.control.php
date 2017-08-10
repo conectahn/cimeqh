@@ -5,6 +5,10 @@
   include_once("libs/phpqrcode/qrlib.php");
 
   function run(){
+    if (isset($_POST["btnFechas"]) {
+      $factibilidades = array();
+      $factibilidades = obtenerPlanosFactibilidad($_POST["fecha1"],$_POST["fecha2"]);
+    }
       renderizar("reporteProyectoCimeqh",array());
   }
   run();
