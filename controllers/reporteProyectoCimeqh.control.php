@@ -3,14 +3,21 @@
   require_once("models/reportes.model.php");
 
   function run(){
+
+    $factibilidades = array();
     if (isset($_POST["btnFechas"])) {
-      $factibilidades = array();
       $factibilidades = obtenerPlanosFactibilidad($_POST["txtFecha1"],$_POST["txtFecha2"]);
-      print_r($factibilidades);
-      //renderizar("reporteProyectoCimeqh",$factibilidades);
+
+      renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades));
 
     }
-    renderizar("reporteProyectoCimeqh",array());
+    $fecha1 = date('Y-m-d', strtotime('-1 week'));
+    $fecha2 = time();
+    $factibilidades = obtenerPlanosFactibilidad($fecha1,$fecha2);
+
+    renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades));
+
+
   }
   run();
 ?>

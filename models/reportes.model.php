@@ -73,7 +73,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_Factibilidad,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicitudfactibilidad A
       	inner join
@@ -142,30 +142,11 @@
   {
     $ingresos = "";
     $sqlrt = "";
-    if($concepto != 0)
-    {
-      $sqlrt = "
-        select
-        	sum(montoPagado) as monto
-        from
-        	tblfacturas
-        where
-        	idConcepto = $concepto and
-          fechaPago between '$fecha1' and '$fecha2' and
-          estado = 1;
+    $sqlrt = "
+    select sum(montoPagado) as monto,tblc.conceptoDescripcion from tblfacturas tblf,tblconceptos tblc
+    where tblf.idConcepto = tblc.idConecpto and fechaPago between '$fecha1' and '$fecha2'
+    and tblf.estado = 1 group by tblc.conceptoDescripcion;
       ";
-    }
-    else {
-      $sqlrt = "
-        select
-        	sum(montoPagado) as monto
-        from
-        	tblfacturas
-        where
-          fechaPago between '$fecha1' and '$fecha2' and
-          estado = 1;
-      ";
-    }
     $ingresos = obtenerUnRegistro($sqlrt);
     return $ingresos;
   }
