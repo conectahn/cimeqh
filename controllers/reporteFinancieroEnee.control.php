@@ -7,5 +7,5 @@
   function run(){
       renderizar("reporteFinancieroEnee",array());
   }
-  run();
+  run(); 
 ?>

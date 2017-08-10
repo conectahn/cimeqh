@@ -6,6 +6,6 @@
 
   function run(){
       renderizar("reporteFinancieroCimeqh",array());
-  }
+  } 
   run();
 ?>
