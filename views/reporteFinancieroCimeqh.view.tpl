@@ -42,6 +42,7 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="form-group">
+                            <form method="post" action="index.php?page=reporteProyectoCimeqh">
                             <label for="userfile">Ingrese la fecha de inicio</label>
                             <input type="date" id="txtFecha" name="txtFecha" class="form-control">
                           </div>
@@ -52,11 +53,13 @@
                       <div class="input-group date">
                         <label for="txtFecha">Ingrese la fecha final</label>
                         <input type="date" id="txtFecha" name="txtFecha" class="form-control">
+
                       </div>
+                      <button class="btn btn-success btn-lg" id="btnFechas" name="btnFechas">Buscar</button>
                     </div>
                        </div>
                        </div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix"></form></div>
                   </div>
                   <div class="x_content">
 
@@ -86,78 +89,34 @@
                               <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Regiones</th>
+                                    <th>Factibilidades</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>Support Engineer</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2011/02/03</td>
-                                    <td>$234,500</td>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional Centro Sur</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución San Pedro Sula y alrededores</td>
+                                    <td>10</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional de Nor Occidente</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución La Ceiba y alrededores</td>
+                                    <td>4</td>
                                   </tr>
                                   <tr>
-                                    <td>Thor Walton</td>
-                                    <td>Developer</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2013/08/11</td>
-                                    <td>$98,540</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Finn Camacho</td>
-                                    <td>Support Engineer</td>
-                                    <td>San Francisco</td>
-                                    <td>47</td>
-                                    <td>2009/07/07</td>
-                                    <td>$87,500</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Serge Baldwin</td>
-                                    <td>Data Coordinator</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2012/04/09</td>
-                                    <td>$138,575</td>
+                                    <td>Área Regional del Litoral Atlántico</td>
+                                    <td>5</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -192,78 +151,34 @@
                               <table id="datatable-checkbox" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Regiones</th>
+                                    <th>Aprobacion</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>Support Engineer</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2011/02/03</td>
-                                    <td>$234,500</td>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional Centro Sur</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución San Pedro Sula y alrededores</td>
+                                    <td>10</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional de Nor Occidente</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución La Ceiba y alrededores</td>
+                                    <td>4</td>
                                   </tr>
                                   <tr>
-                                    <td>Thor Walton</td>
-                                    <td>Developer</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2013/08/11</td>
-                                    <td>$98,540</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Finn Camacho</td>
-                                    <td>Support Engineer</td>
-                                    <td>San Francisco</td>
-                                    <td>47</td>
-                                    <td>2009/07/07</td>
-                                    <td>$87,500</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Serge Baldwin</td>
-                                    <td>Data Coordinator</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2012/04/09</td>
-                                    <td>$138,575</td>
+                                    <td>Área Regional del Litoral Atlántico</td>
+                                    <td>5</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -298,78 +213,34 @@
                               <table id="datatable-fixed-header" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Regiones</th>
+                                    <th>Recepcion</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>Support Engineer</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2011/02/03</td>
-                                    <td>$234,500</td>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional Centro Sur</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución San Pedro Sula y alrededores</td>
+                                    <td>10</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional de Nor Occidente</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución La Ceiba y alrededores</td>
+                                    <td>4</td>
                                   </tr>
                                   <tr>
-                                    <td>Thor Walton</td>
-                                    <td>Developer</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2013/08/11</td>
-                                    <td>$98,540</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Finn Camacho</td>
-                                    <td>Support Engineer</td>
-                                    <td>San Francisco</td>
-                                    <td>47</td>
-                                    <td>2009/07/07</td>
-                                    <td>$87,500</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Serge Baldwin</td>
-                                    <td>Data Coordinator</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2012/04/09</td>
-                                    <td>$138,575</td>
+                                    <td>Área Regional del Litoral Atlántico</td>
+                                    <td>5</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -404,78 +275,34 @@
                               <table id="datatable-keytable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Regiones</th>
+                                    <th>Despeje</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>Support Engineer</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2011/02/03</td>
-                                    <td>$234,500</td>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional Centro Sur</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución San Pedro Sula y alrededores</td>
+                                    <td>10</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional de Nor Occidente</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución La Ceiba y alrededores</td>
+                                    <td>4</td>
                                   </tr>
                                   <tr>
-                                    <td>Thor Walton</td>
-                                    <td>Developer</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2013/08/11</td>
-                                    <td>$98,540</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Finn Camacho</td>
-                                    <td>Support Engineer</td>
-                                    <td>San Francisco</td>
-                                    <td>47</td>
-                                    <td>2009/07/07</td>
-                                    <td>$87,500</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Serge Baldwin</td>
-                                    <td>Data Coordinator</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2012/04/09</td>
-                                    <td>$138,575</td>
+                                    <td>Área Regional del Litoral Atlántico</td>
+                                    <td>5</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -510,78 +337,34 @@
                               <table id="datatable-responsive" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Regiones</th>
+                                    <th>Despeje</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>Support Engineer</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2011/02/03</td>
-                                    <td>$234,500</td>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional Centro Sur</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución San Pedro Sula y alrededores</td>
+                                    <td>10</td>
                                   </tr>
                                   <tr>
-                                    <td>Bruno Nash</td>
-                                    <td>Software Engineer</td>
-                                    <td>London</td>
-                                    <td>38</td>
-                                    <td>2011/05/03</td>
-                                    <td>$163,500</td>
+                                    <td>Área Regional de Nor Occidente</td>
+                                    <td>2</td>
                                   </tr>
                                   <tr>
-                                    <td>Sakura Yamamoto</td>
-                                    <td>Support Engineer</td>
-                                    <td>Tokyo</td>
-                                    <td>37</td>
-                                    <td>2009/08/19</td>
-                                    <td>$139,575</td>
+                                    <td>Distribución La Ceiba y alrededores</td>
+                                    <td>4</td>
                                   </tr>
                                   <tr>
-                                    <td>Thor Walton</td>
-                                    <td>Developer</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2013/08/11</td>
-                                    <td>$98,540</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Finn Camacho</td>
-                                    <td>Support Engineer</td>
-                                    <td>San Francisco</td>
-                                    <td>47</td>
-                                    <td>2009/07/07</td>
-                                    <td>$87,500</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Serge Baldwin</td>
-                                    <td>Data Coordinator</td>
-                                    <td>Singapore</td>
-                                    <td>64</td>
-                                    <td>2012/04/09</td>
-                                    <td>$138,575</td>
+                                    <td>Área Regional del Litoral Atlántico</td>
+                                    <td>5</td>
                                   </tr>
                                 </tbody>
                               </table>
