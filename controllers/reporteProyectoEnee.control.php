@@ -5,9 +5,9 @@
   include_once("libs/phpqrcode/qrlib.php");
 
   function run(){
-<<<<<<< HEAD
+
       renderizar("reporteProyectoEnee",array(),"layoutEneeAdmin.view.tpl");
-=======
+
     $factibilidades = array();
     $aprobaciones= array();
     $despejes= array();
@@ -29,7 +29,7 @@
 
     renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades,"despejes"=>$despejes,"recepciones"=>$recepciones,"aprobaciones"=>$aprobaciones));
 
->>>>>>> master
+
   }
   run();
 ?>

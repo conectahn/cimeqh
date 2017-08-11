@@ -14,7 +14,7 @@
       renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades));
     }
     }
-
+///1231321321321
         $fecha1 = date('Y-m-d', strtotime('-1 week'));
         $fecha2 = time();
         $ingresos = obtenerIngresos($fecha1,$fecha2);
