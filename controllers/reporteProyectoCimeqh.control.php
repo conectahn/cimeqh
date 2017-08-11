@@ -13,7 +13,6 @@
       $aprobaciones = obtenerPlanosAprobacion($_POST["txtFecha1"],$_POST["txtFecha2"]);
       $despejes = obtenerPlanosDespeje($_POST["txtFecha1"],$_POST["txtFecha2"]);
       $recepciones = obtenerPlanosRecepcion($_POST["txtFecha1"],$_POST["txtFecha2"]);
-      echo ($_POST["txtFecha1"]);
       renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades,"despejes"=>$despejes,"recepciones"=>$recepciones,"aprobaciones"=>$aprobaciones));
 
     }

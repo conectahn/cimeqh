@@ -147,7 +147,7 @@
     where tblf.idConcepto = tblc.idConecpto and fechaPago between '$fecha1' and '$fecha2'
     and tblf.estado = 1 group by tblc.conceptoDescripcion;
       ";
-    $ingresos = obtenerUnRegistro($sqlrt);
+    $ingresos = obtenerRegistros($sqlrt);
     return $ingresos;
   }
 

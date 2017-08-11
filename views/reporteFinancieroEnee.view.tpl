@@ -42,9 +42,9 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="form-group">
-                            <form method="post" action="index.php?page=reporteProyectoCimeqh">
+                            <form method="post" action="index.php?page=reporteFinancieroEnee">
                             <label for="userfile">Ingrese la fecha de inicio</label>
-                            <input type="date" id="txtFecha" name="txtFecha" class="form-control">
+                            <input type="date" id="txtFecha1" name="txtFecha1" class="form-control">
                           </div>
                       </div>
 
@@ -52,7 +52,7 @@
                           <div class="form-group">
                       <div class="input-group date">
                         <label for="txtFecha">Ingrese la fecha final</label>
-                        <input type="date" id="txtFecha" name="txtFecha" class="form-control">
+                        <input type="date" id="txtFecha2" name="txtFecha2" class="form-control">
 
                       </div>
                       <button class="btn btn-success btn-lg" id="btnFechas" name="btnFechas">Buscar</button>
