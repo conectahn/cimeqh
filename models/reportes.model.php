@@ -6,8 +6,8 @@
     $cantidadPlanos = array();
     $sqlrt = "
     select
-    	count(1) as cantidad_proyectos_aprobacion,
-        B.regionDescripcion
+    	count(1) as total_aprobacion,
+        B.regionDescripcion as region
     from
     	tblsolicitudaprobacion A
     	inner join
@@ -37,7 +37,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_recepcion,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicitudrecepcion tblrp
       	inner join
@@ -73,7 +73,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_Factibilidad,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicitudfactibilidad A
       	inner join
@@ -104,7 +104,7 @@
     $sqlrt = "
       select
       	count(1) as cantidad_proyectos_despeje,
-          B.regionDescripcion
+          B.regionDescripcion as region
       from
       	tblsolicituddespeje tbldp
       	inner join
@@ -134,7 +134,7 @@
     return $cantidadPlanos;
   }
 
-  function obtenerIngresos($fecha1,$fecha2,$concepto)
+  function obtenerIngresos($fecha1,$fecha2)
   /*******************************************************************************************************
   se envia el codigo del concepto que se quiere ver pero si se quieren ver los ingresos totales
   independientemente de los conceptos se enviara un 0 como parametro
@@ -142,31 +142,12 @@
   {
     $ingresos = "";
     $sqlrt = "";
-    if($concepto != 0)
-    {
-      $sqlrt = "
-        select
-        	sum(montoPagado) as monto
-        from
-        	tblfacturas
-        where
-        	idConcepto = $concepto and
-          fechaPago between '$fecha1' and '$fecha2' and
-          estado = 1;
+    $sqlrt = "
+    select sum(montoPagado) as monto,tblc.conceptoDescripcion as concepto from tblfacturas tblf,tblconceptos tblc
+    where tblf.idConcepto = tblc.idConecpto and fechaPago between '$fecha1' and '$fecha2'
+    and tblf.estado = 1 group by tblc.conceptoDescripcion;
       ";
-    }
-    else {
-      $sqlrt = "
-        select
-        	sum(montoPagado) as monto
-        from
-        	tblfacturas
-        where
-          fechaPago between '$fecha1' and '$fecha2' and
-          estado = 1;
-      ";
-    }
-    $ingresos = obtenerUnRegistro($sqlrt);
+    $ingresos = obtenerRegistros($sqlrt);
     return $ingresos;
   }
 
@@ -184,7 +165,11 @@
           (
       		select
       			usuarioIdentidad,
+<<<<<<< HEAD
       			concat(usuarioPrimerNombre ,' ', usuarioPrimerApellido) as nombre,
+=======
+      			concat(usuarioPrimerNombre , ' ' , usuarioPrimerApellido) as nombre,
+>>>>>>> master
                   usuarioNumeroColegiacion
       		from
       			cimeqh.tblusuarios
@@ -355,7 +340,11 @@
         from cimeqh.tblsolicitudaprobacion tblsp
         inner join
         (
+<<<<<<< HEAD
         	select concat(usuarioPrimerNombre,' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
+=======
+        	select concat(usuarioPrimerNombre, ' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
+>>>>>>> master
         ) A
         on (A.usuarioIdentidad = tblsp.usuarioIdentidad)
         inner join
@@ -363,7 +352,7 @@
         	select proyectoNombre,proyectoId from cimeqh.tblproyectos
         ) B
         on (B.proyectoId = tblsp.proyectoId)
-        where tblsp.fechaRegistroSolicitud between '' and '';
+        where tblsp.fechaRegistroSolicitud between $fecha1 and $fecha2;
       ";
       $usuario = obtenerRegistros($sqlrt);
       return $usuario;
