@@ -184,7 +184,7 @@
           (
       		select
       			usuarioIdentidad,
-      			concat(usuarioPrimerNombre , " " , usuarioPrimerApellido) as nombre,
+      			concat(usuarioPrimerNombre ,' ', usuarioPrimerApellido) as nombre,
                   usuarioNumeroColegiacion
       		from
       			cimeqh.tblusuarios
@@ -272,14 +272,17 @@
     $diseños = obtenerRegistros($sqlrt);
     return $diseños;
 
-    function obtenerDisenosFactibilidad($fecha1,$fecha2,$estadoSolicitud)
+    function obtenerDisenosFactibilidad($fecha1,$fecha2)
     {
       /***********************************************************************************************************
         $estadoSolicitud debe ser 1 o 2 dado que se quiera ver los recibidos o aprobados respectivamente
       ***********************************************************************************************************/
       $diseños = array();
-      $sqlrt = "
-        select
+      $sqlrt="SELECT fa.proyectoId, p.proyectoNombre, e.estadoFactibilidadId
+      FROM tblsolicitudfactibilidad fa, tblproyectos p, tblestadofactibilidad e
+      where fa.proyectoId=p.proyectoId and fa.estadoFactibilidadId=e.estadoFactibilidadId
+      and fa.fechaSolicitud between '2017-07-19 14:58:36' and now() and fa.estadoFactibilidadId in (1,2);";
+      /*$sqlrt = "select
           count(1) as cantidad_proyectos_Factibilidad,
             B.regionDescripcion
         from
@@ -301,7 +304,7 @@
           A.fechaSolicitud between '$fecha1' and '$fecha2'
           and A.estadoFactibilidad = $estadoSolicitud
         group by B.regionDescripcion;
-      ";
+      ";*/
       $diseños = obtenerRegistros($sqlrt);
       return $diseños;
     }
@@ -352,7 +355,7 @@
         from cimeqh.tblsolicitudaprobacion tblsp
         inner join
         (
-        	select concat(usuarioPrimerNombre, " ", usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
+        	select concat(usuarioPrimerNombre,' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
         ) A
         on (A.usuarioIdentidad = tblsp.usuarioIdentidad)
         inner join

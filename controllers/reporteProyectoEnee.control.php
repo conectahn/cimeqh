@@ -5,7 +5,7 @@
   include_once("libs/phpqrcode/qrlib.php");
 
   function run(){
-      renderizar("reporteProyectoEnee",array());
+      renderizar("reporteProyectoEnee",array(),"layoutEneeAdmin.view.tpl");
   }
   run();
 ?>

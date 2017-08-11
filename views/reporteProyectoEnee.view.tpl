@@ -4,7 +4,6 @@
               <div class="title_left">
                 <h3>General Elements</h3>
               </div>
-
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
@@ -42,7 +41,7 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="form-group">
-                            <form method="post" action="index.php?page=reporteProyectoCimeqh">
+                            <form method="post" action="index.php?page=reporteFinancieroEnee">
                             <label for="userfile">Ingrese la fecha de inicio</label>
                             <input type="date" id="txtFecha" name="txtFecha" class="form-control">
                           </div>
@@ -83,9 +82,6 @@
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                              <p class="text-muted font-13 m-b-30">
-                                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-                              </p>
                               <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
@@ -94,30 +90,12 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {{foreach factibilidades}}
                                   <tr>
                                     <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
+                                    <td>{{total}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>Área Regional Centro Sur</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución San Pedro Sula y alrededores</td>
-                                    <td>10</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional de Nor Occidente</td>
-                                    <td>2</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución La Ceiba y alrededores</td>
-                                    <td>4</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Área Regional del Litoral Atlántico</td>
-                                    <td>5</td>
-                                  </tr>
+                                  {{endfor factibilidades}}
                                 </tbody>
                               </table>
                             </div>
@@ -370,15 +348,77 @@
                               </table>
                             </div>
                           </div>
+
                         </div>
+                        <!-- Espacio para la grafica  -->
+                        <script src="graficas/code/highcharts.js"></script>
+                        <script src="graficas/code/modules/exporting.js"></script>
+
+                        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+                        		<script type="text/javascript">
+
+                        Highcharts.chart('container', {
+                        		chart: {
+                        				plotBackgroundColor: null,
+                        				plotBorderWidth: null,
+                        				plotShadow: false,
+                        				type: 'pie'
+                        		},
+                        		title: {
+                        				text: 'Browser market shares January, 2015 to May, 2015'
+                        		},
+                        		tooltip: {
+                        				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        		},
+                        		plotOptions: {
+                        				pie: {
+                        						allowPointSelect: true,
+                        						cursor: 'pointer',
+                        						dataLabels: {
+                        								enabled: true,
+                        								format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        								style: {
+                        										color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        								}
+                        						}
+                        				}
+                        		},
+                        		series: [{
+                        				name: 'Brands',
+                        				colorByPoint: true,
+                        				data: [{
+                        						name: 'Microsoft Internet Explorer',
+                        						y: 56.33
+                        				}, {
+                        						name: 'Chrome',
+                        						y: 24.03,
+                        						sliced: true,
+                        						selected: true
+                        				}, {
+                        						name: 'Firefox',
+                        						y: 10.38
+                        				}, {
+                        						name: 'Safari',
+                        						y: 4.77
+                        				}, {
+                        						name: 'Opera',
+                        						y: 0.91
+                        				}, {
+                        						name: 'Proprietary or Undetectable',
+                        						y: 0.2
+                        				}]
+                        		}]
+                        });
+                        		</script>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
           <div class="clearfix"></div>
         </div>

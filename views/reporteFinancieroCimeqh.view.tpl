@@ -42,7 +42,7 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="form-group">
-                            <form method="post" action="index.php?page=reporteProyectoCimeqh">
+                            <form method="post" action="index.php?page=reporteFinancieroCimeqh">
                             <label for="userfile">Ingrese la fecha de inicio</label>
                             <input type="date" id="txtFecha" name="txtFecha" class="form-control">
                           </div>
@@ -93,6 +93,7 @@
                                     <th>Factibilidades</th>
                                   </tr>
                                 </thead>
+                                {{factibilidades}}
                                 <tbody>
                                   <tr>
                                     <td>Distribución Tegucigalpa y alrededores</td>
@@ -117,6 +118,26 @@
                                   <tr>
                                     <td>Área Regional del Litoral Atlántico</td>
                                     <td>5</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Distribución Tegucigalpa y alrededores</td>
+                                    <td>1</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -370,15 +391,77 @@
                               </table>
                             </div>
                           </div>
+
                         </div>
+                        <!-- Espacio para la grafica  -->
+                        <script src="graficas/code/highcharts.js"></script>
+                        <script src="graficas/code/modules/exporting.js"></script>
+
+                        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+                        		<script type="text/javascript">
+
+                        Highcharts.chart('container', {
+                        		chart: {
+                        				plotBackgroundColor: null,
+                        				plotBorderWidth: null,
+                        				plotShadow: false,
+                        				type: 'pie'
+                        		},
+                        		title: {
+                        				text: 'Browser market shares January, 2015 to May, 2015'
+                        		},
+                        		tooltip: {
+                        				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        		},
+                        		plotOptions: {
+                        				pie: {
+                        						allowPointSelect: true,
+                        						cursor: 'pointer',
+                        						dataLabels: {
+                        								enabled: true,
+                        								format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        								style: {
+                        										color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        								}
+                        						}
+                        				}
+                        		},
+                        		series: [{
+                        				name: 'Brands',
+                        				colorByPoint: true,
+                        				data: [{
+                        						name: 'Microsoft Internet Explorer',
+                        						y: 56.33
+                        				}, {
+                        						name: 'Chrome',
+                        						y: 24.03,
+                        						sliced: true,
+                        						selected: true
+                        				}, {
+                        						name: 'Firefox',
+                        						y: 10.38
+                        				}, {
+                        						name: 'Safari',
+                        						y: 4.77
+                        				}, {
+                        						name: 'Opera',
+                        						y: 0.91
+                        				}, {
+                        						name: 'Proprietary or Undetectable',
+                        						y: 0.2
+                        				}]
+                        		}]
+                        });
+                        		</script>
                       </div>
                     </div>
-
-                  </div>
+                  </div>                
                 </div>
               </div>
             </div>
-
           </div>
           <div class="clearfix"></div>
         </div>
