@@ -90,37 +90,11 @@
                                     <th>montos</th>
                                   </tr>
                                 </thead>
-                                {{factibilidades}}
                                 <tbody>
-                                  {{foreach ingresos}}
                                   <tr>
-                                    <td>{{concepto}}</td>
-                                    <td>{{monto}}</td>
+                                    <td>concepto</td>
+                                    <td>monto</td>
                                   </tr>
-<<<<<<< HEAD
-                                  <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Distribución Tegucigalpa y alrededores</td>
-                                    <td>1</td>
-                                  </tr>
-=======
-                                  {{endfor ingresos}}
->>>>>>> master
                                 </tbody>
                               </table>
                             </div>
@@ -428,7 +402,7 @@
                         		</script>
                       </div>
                     </div>
-                  </div>                
+                  </div>
                 </div>
               </div>
             </div>
