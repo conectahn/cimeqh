@@ -134,7 +134,7 @@
     return $cantidadPlanos;
   }
 
-  function obtenerIngresos($fecha1,$fecha2,$concepto)
+  function obtenerIngresos($fecha1,$fecha2)
   /*******************************************************************************************************
   se envia el codigo del concepto que se quiere ver pero si se quieren ver los ingresos totales
   independientemente de los conceptos se enviara un 0 como parametro
@@ -143,7 +143,7 @@
     $ingresos = "";
     $sqlrt = "";
     $sqlrt = "
-    select sum(montoPagado) as monto,tblc.conceptoDescripcion from tblfacturas tblf,tblconceptos tblc
+    select sum(montoPagado) as monto,tblc.conceptoDescripcion as concepto from tblfacturas tblf,tblconceptos tblc
     where tblf.idConcepto = tblc.idConecpto and fechaPago between '$fecha1' and '$fecha2'
     and tblf.estado = 1 group by tblc.conceptoDescripcion;
       ";
