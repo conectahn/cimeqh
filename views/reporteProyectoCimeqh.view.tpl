@@ -87,7 +87,7 @@
                               <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Regiones</th>
+                                    <th>Proyecto Nombre </th>
                                     <th>Factibilidades</th>
                                   </tr>
                                 </thead>
