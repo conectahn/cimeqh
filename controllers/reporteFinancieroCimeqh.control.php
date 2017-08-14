@@ -13,9 +13,7 @@
 
     }else {
       $fecha1 = date('Y-m-d', strtotime('-1 week'));
-      $fecha2 = date('Y-m-d');
-      echo $fecha1 . "<br>";
-      echo $fecha2;
+      $fecha2 = date('Y-m-d', strtotime('+1 day'));      
       $factibilidades = obtenerIngresos($fecha1,$fecha2);
       $grafica=graficarCimeqhFinanzas($fecha1,$fecha2);
       renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades,"grafica"=>$grafica));
