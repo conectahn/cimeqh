@@ -3,22 +3,24 @@
   require_once("models/reportes.model.php");
 
   function run(){
-  $ingresos = array();
 
-  if (isset($_POST["btnFechas"])){
-    if ($_POST["txtFecha1"]!=null && $_POST["txtFecha2"]=!null) {
-      $factibilidades = array();
-      $fecha1=$_POST["txtFecha1"];
-      $fecha2=$_POST["txtFecha2"];
-      $factibilidades = obtenerIngresosCuotas($fecha1,$fecha2);
-      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades));
+    if (isset($_POST["btnFechas"])) {
+      $fecha1 = $_POST["txtFecha1"]. " 00:00:00";
+      $fecha2 = $_POST["txtFecha2"] . " 23:59:59";
+      $factibilidades = obtenerIngresos($fecha1,$fecha2);
+      $grafica=graficarCimeqhFinanzas($fecha1,$fecha2);
+      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades, "grafica"=>$grafica));
+
+    }else {
+      $fecha1 = date('Y-m-d', strtotime('-1 week'));
+      $fecha2 = date('Y-m-d');
+      echo $fecha1 . "<br>";
+      echo $fecha2;
+      $factibilidades = obtenerIngresos($fecha1,$fecha2);
+      $grafica=graficarCimeqhFinanzas($fecha1,$fecha2);
+      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades,"grafica"=>$grafica));
     }
-    }
-///1231321321321
-        $fecha1 = date('Y-m-d', strtotime('-1 week'));
-        $fecha2 = time();
-        $ingresos = obtenerIngresos($fecha1,$fecha2);
-        renderizar("reporteFinancieroCimeqh",array("ingresos"=>$ingresos));
   }
+
   run();
 ?>

@@ -141,45 +141,55 @@
   **********************************************************************************************************/
   {
     $ingresos = "";
-    $sqlrt = "";
-    $sqlrt = "
-    select sum(montoPagado) as monto,tblc.conceptoDescripcion as concepto from tblfacturas tblf,tblconceptos tblc
-    where tblf.idConcepto = tblc.idConecpto and fechaPago between '$fecha1' and '$fecha2'
-    and tblf.estado = 1 group by tblc.conceptoDescripcion;
-      ";
+    $sqlrt = "select pro.proyectoNombre,con.conceptoDescripcion, reg.regionDescripcion, fa.montoPagado
+    from tblfacturas as fa, tblconceptos as con, tblproyectos as pro, tblregion as reg
+    where fa.idConcepto=con.idConecpto and pro.proyectoId=fa.proyectoid and reg.idRegion=pro.regionProyecto
+    and fa.fechaPago between '$fecha1' and '$fecha2';";
     $ingresos = obtenerRegistros($sqlrt);
     return $ingresos;
   }
+
+
+  function graficarCimeqhFinanzas($fecha1,$fecha2)
+  {
+    $ingresos = array();
+    $sqlrt = "select con.conceptoDescripcion, sum(fa.montoPagado) as total
+    from tblfacturas as fa, tblconceptos as con
+    where fa.idConcepto=con.idConecpto
+    and fa.fechaPago between '$fecha1' and '$fecha2'
+    group by con.conceptoDescripcion;";
+    $ingresos = obtenerRegistros($sqlrt);
+    return $ingresos;
+  }
+
 
   function obtenerIngresosCuotas($fecha1,$fecha2)
   {
     $ingresos = array();
     $sqlrt = "
-      select
-      	sum(montoPagado) as total,
-          A.nombre,
-          A.usuarioNumeroColegiacion
-      from
-      	cimeqh.tblfacturas tblf
-          inner join
-          (
-      		select
-      			usuarioIdentidad,
-<<<<<<< HEAD
-      			concat(usuarioPrimerNombre ,' ', usuarioPrimerApellido) as nombre,
-=======
-      			concat(usuarioPrimerNombre , ' ' , usuarioPrimerApellido) as nombre,
->>>>>>> master
-                  usuarioNumeroColegiacion
-      		from
-      			cimeqh.tblusuarios
-          ) A
-          on (A.usuarioIdentidad = tblf.idUsuario)
-      where
-      	idConcepto = 1 and
-          estado = 1 and
-          tblf.fechaPago between '$fecha1' and '$fecha2'
-      group by A.nombre,A.usuarioNumeroColegiacion;
+    select
+      sum(montoPagado) as total,
+        A.nombre,
+        A.usuarioNumeroColegiacion
+    from
+      cimeqh.tblfacturas tblf
+        inner join
+        (
+        select
+          usuarioIdentidad,
+
+          concat(usuarioPrimerNombre ,' ', usuarioPrimerApellido) as nombre,
+
+                usuarioNumeroColegiacion
+        from
+          cimeqh.tblusuarios
+        ) A
+        on (A.usuarioIdentidad = tblf.idUsuario)
+    where
+      idConcepto = 1 and
+        estado = 1 and
+        tblf.fechaPago between '$fecha1' and '$fecha2'
+    group by A.nombre,A.usuarioNumeroColegiacion;
     ";
     $ingresos = obtenerRegistros($sqlrt);
     return $ingresos;
@@ -340,11 +350,10 @@
         from cimeqh.tblsolicitudaprobacion tblsp
         inner join
         (
-<<<<<<< HEAD
         	select concat(usuarioPrimerNombre,' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
-=======
+
         	select concat(usuarioPrimerNombre, ' ', usuarioPrimerApellido) as nombreUsuario, usuarioIdentidad from cimeqh.tblusuarios
->>>>>>> master
+
         ) A
         on (A.usuarioIdentidad = tblsp.usuarioIdentidad)
         inner join
