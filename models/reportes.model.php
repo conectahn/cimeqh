@@ -199,35 +199,36 @@
     return $ingresos;
   }
 
-  function obtenerDisenosAprobacion($fecha1,$fecha2,$estadoSolicitud)
+  function obtenerDisenosAprobacion($fecha1,$fecha2)
 /*************************************************************************************************************
   $estadoSolicitud debe ser 1 o 2 dado que se quiera ver los recibidos o aprobados respectivamente
 *************************************************************************************************************/
   {
     $diseños = array();
     $sqlrt = "
-      select
-        count(1) as cantidad_proyectos_aprobacion,
-          B.regionDescripcion
-      from
-        tblsolicitudaprobacion A
-        inner join
-          (
-          select
-            tblr.regionDescripcion,
-            tblp.proyectoId,
-            tblp.proyectoNombre
-          from
-            tblproyectos tblp,
-            tblregion tblr
-          where
-            tblp.regionProyecto = tblr.idRegion
-          ) B
-          ON (B.proyectoId = A.proyectoId)
-      where
-        A.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
-        and A.estadoSolicitudAprobacion = $estadoSolicitud
-      group by B.regionDescripcion;
+    select
+      B.regionDescripcion,
+      B.proyectoId,
+      B.proyectoNombre,
+      tbla.estadoAprobacionDescripcion
+    from
+      tblsolicitudaprobacion A
+      inner join
+        (
+        select
+          tblr.regionDescripcion,
+          tblp.proyectoId,
+          tblp.proyectoNombre
+        from
+          tblproyectos tblp,
+          tblregion tblr
+        where
+          tblp.regionProyecto = tblr.idRegion
+        ) B
+        ON (B.proyectoId = A.proyectoId), tblestadoaprobacion tbla
+    where
+      A.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
+      and A.estadoSolicitudAprobacion in (1,2) and tbla.estadoAprobacionId = A.estadoSolicitudAprobacion;
     ";
     $diseños = obtenerRegistros($sqlrt);
     return $diseños;
