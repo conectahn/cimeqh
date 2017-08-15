@@ -42,7 +42,7 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="form-group">
-                            <form method="post" action="index.php?page=reporteProyectoCimeqh">
+                            <form method="post" action="index.php?page=reporteProyectoEnee">
                             <label for="userfile">Ingrese la fecha de inicio</label>
                             <input type="date" id="txtFecha1" name="txtFecha1" class="form-control">
                           </div>
@@ -99,7 +99,7 @@
                                     <td>{{proyectoNombre}}</td>
                                     <td>{{proyectoId}}</td>
                                     <td>{{estadoFactibilidadDescripcion}}</td>
-                                    <td>{{regionDescripcion}}</td>
+                                    <td>{{region}}</td>
                                   </tr>
                                   {{endfor factibilidades}}
                                 </tbody>
@@ -287,7 +287,7 @@
                                   </tr>
                                   {{endfor despejes}}
                                 </tbody>
-                              </table> 
+                              </table>
                             </div>
                           </div>
                         </div>

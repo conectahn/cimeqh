@@ -88,6 +88,7 @@
                                     <th>Proyecto ID</th>
                                     <th>Proyecto Nombre</th>
                                     <th>Estado Actual</th>
+                                    <th>prueba</th>
                                   </tr>
                                 </thead>
                                 <tbody>
