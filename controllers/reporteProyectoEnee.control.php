@@ -19,11 +19,11 @@
       $fecha1 = date('Y-m-d', strtotime('-1 week'));
       $fecha2 = date('Y-m-d');
       $factibilidades = obtenerDisenosFactibilidad($fecha1,$fecha2);
-      //$aprobaciones = obtenerPlanosAprobacion($fecha1,$fecha2);
-      //$despejes = obtenerPlanosDespeje($fecha1,$fecha2);
-      //$recepciones = obtenerPlanosRecepcion($fecha1,$fecha2);
+      $aprobaciones = obtenerDisenosAprobacion($fecha1,$fecha2);
+      $despejes = obtenerDisenosDespeje($fecha1,$fecha2);
+      $recepciones = obtenerDisenosRecepcion($fecha1,$fecha2);
 
-      renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades));
+      renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades,"aprobaciones"=>$aprobaciones,"recepciones"=>$recepciones,"despejes"=>$despejes));
     }
   }
 
