@@ -287,7 +287,7 @@
                                   </tr>
                                   {{endfor despejes}}
                                 </tbody>
-                              </table>
+                              </table> 
                             </div>
                           </div>
                         </div>

@@ -110,7 +110,7 @@
       B.proyectoId,
       B.proyectoNombre,
       tbla.estadoDespejeDescripcion
-    from
+    from 
       tblsolicituddespeje tbldp
       inner join
       (

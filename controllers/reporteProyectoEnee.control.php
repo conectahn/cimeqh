@@ -24,7 +24,7 @@
       $recepciones = obtenerDisenosRecepcion($fecha1,$fecha2);
       renderizar("reporteproyectoEnee",array("factibilidades"=>$factibilidades,"despejes"=>$despejes,"recepciones"=>$recepciones,"aprobaciones"=>$aprobaciones));
 
-      }
+      } 
   }
 
   run();
