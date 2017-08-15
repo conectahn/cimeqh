@@ -18,7 +18,7 @@
     else {
       $fecha1 = date('Y-m-d', strtotime('-1 week'));
       $fecha2 = date('Y-m-d') . " 23:59:59";
-      $factibilidades = obtenerDisenosFactibilidad($fecha1,$fecha2);
+      //$factibilidades = obtenerDisenosFactibilidad($fecha1,$fecha2);
       $aprobaciones = obtenerDisenosAprobacion($fecha1,$fecha2);
       $despejes = obtenerDisenosDespeje($fecha1,$fecha2);
       $recepciones = obtenerDisenosRecepcion($fecha1,$fecha2);

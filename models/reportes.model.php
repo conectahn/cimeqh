@@ -6,8 +6,10 @@
     $cantidadPlanos = array();
     $sqlrt = "
     select
-    	count(1) as total_aprobacion,
-        B.regionDescripcion as region
+    	B.regionDescripcion as region,
+        B.proyectoId,
+        B.proyectoNombre,
+        tbla.estadoAprobacionDescripcion
     from
     	tblsolicitudaprobacion A
     	inner join
@@ -22,11 +24,10 @@
     		where
     			tblp.regionProyecto = tblr.idRegion
         ) B
-        ON (B.proyectoId = A.proyectoId)
+        ON (B.proyectoId = A.proyectoId), tblestadoaprobacion tbla
     where
-    	A.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
-      and A.estadoSolicitudAprobacion in (1,2)
-    group by B.regionDescripcion;";
+    A.estadoSolicitudAprobacion in (1,2) and tbla.estadoAprobacionId = A.estadoSolicitudAprobacion
+    and A.fechaRegistroSolicitud between '$fecha1' and '$fecha2';";
     $cantidadPlanos = obtenerRegistros($sqlrt);
     return $cantidadPlanos;
   }
@@ -35,33 +36,34 @@
   {
     $cantidadPlanos = array();
     $sqlrt = "
-      select
-      	count(1) as cantidad_proyectos_recepcion,
-          B.regionDescripcion as region
-      from
-      	tblsolicitudrecepcion tblrp
-      	inner join
-      	(
-      		select solicitudAprobacionId,proyectoId from tblsolicitudaprobacion
-      	) A
-      	ON A.solicitudAprobacionId = tblrp.solicitudAprobacionId
-      	inner join
-      	(
-      		select
-      				tblr.regionDescripcion,
-      				tblp.proyectoId,
-      				tblp.proyectoNombre
-      			from
-      				tblproyectos tblp,
-      				tblregion tblr
-      			where
-      				tblp.regionProyecto = tblr.idRegion
-      	) B
-      	ON (B.proyectoId = A.proyectoId)
-      where
-      	tblrp.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
-        and tblrp.solicitudRecepcioEstado in (1,2)
-      group by B.regionDescripcion;
+    select
+      B.regionDescripcion as region,
+      B.proyectoId,
+      B.proyectoNombre,
+      tbla.estadoRecepcionDescripcion
+    from
+      tblsolicitudrecepcion tblrp
+      inner join
+      (
+        select solicitudAprobacionId,proyectoId from tblsolicitudaprobacion
+      ) A
+      ON A.solicitudAprobacionId = tblrp.solicitudAprobacionId
+      inner join
+      (
+        select
+            tblr.regionDescripcion,
+            tblp.proyectoId,
+            tblp.proyectoNombre
+          from
+            tblproyectos tblp,
+            tblregion tblr
+          where
+            tblp.regionProyecto = tblr.idRegion
+      ) B
+      ON (B.proyectoId = A.proyectoId),tblestadorecepcion tbla
+    where
+      tblrp.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
+      and tblrp.solicitudRecepcioEstado in (1,2) and tbla.estadoRecepcionId = tblrp.solicitudRecepcioId;
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
     return $cantidadPlanos;
@@ -71,28 +73,29 @@
   {
     $cantidadPlanos = array();
     $sqlrt = "
-      select
-      	count(1) as cantidad_proyectos_Factibilidad,
-          B.regionDescripcion as region
-      from
-      	tblsolicitudfactibilidad A
-      	inner join
-          (
-      		select
-      			tblr.regionDescripcion,
-      			tblp.proyectoId,
-      			tblp.proyectoNombre
-      		from
-      			tblproyectos tblp,
-      			tblregion tblr
-      		where
-      			tblp.regionProyecto = tblr.idRegion
-          ) B
-          ON (B.proyectoId = A.proyectoId)
-      where
-      	A.fechaSolicitud between '$fecha1' and '$fecha2'
-        and A.estadoFactibilidadId in (1,2)
-      group by B.regionDescripcion;
+    select
+      B.regionDescripcion as region,
+      B.proyectoId,
+      B.proyectoNombre,
+      tbla.estadoFactibilidadDescripcion
+    from
+      tblsolicitudfactibilidad A
+      inner join
+        (
+        select
+          tblr.regionDescripcion,
+          tblp.proyectoId,
+          tblp.proyectoNombre
+        from
+          tblproyectos tblp,
+          tblregion tblr
+        where
+          tblp.regionProyecto = tblr.idRegion
+        ) B
+        ON (B.proyectoId = A.proyectoId), tblestadofactibilidad as tbla
+    where
+      A.estadoFactibilidadId in (1,2) and tbla.estadoFactibilidadId = A.estadoFactibilidadId
+      and A.fechaSolicitud between '$fecha1' and '$fecha2';
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
     return $cantidadPlanos;
@@ -102,33 +105,34 @@
   {
     $cantidadPlanos = array();
     $sqlrt = "
-      select
-      	count(1) as cantidad_proyectos_despeje,
-          B.regionDescripcion as region
-      from
-      	tblsolicituddespeje tbldp
-      	inner join
-      	(
-      		select solicitudAprobacionId,proyectoId,estadoSolicitudAprobacion from tblsolicitudaprobacion
-      	) A
-      	ON A.solicitudAprobacionId = tbldp.tblsolicitudaprobacion_solicitudAprobacionId
-      	inner join
-      	(
-      		select
-      				tblr.regionDescripcion,
-      				tblp.proyectoId,
-      				tblp.proyectoNombre
-      			from
-      				tblproyectos tblp,
-      				tblregion tblr
-      			where
-      				tblp.regionProyecto = tblr.idRegion
-      	) B
-      	ON (B.proyectoId = A.proyectoId)
-      where
-      	tbldp.fechaRegistro between '$fecha1' and '$fecha2'
-        and tbldp.estadoDespejeId in (1,2)
-      group by B.regionDescripcion;
+    select
+      B.regionDescripcion as region,
+      B.proyectoId,
+      B.proyectoNombre,
+      tbla.estadoDespejeDescripcion
+    from
+      tblsolicituddespeje tbldp
+      inner join
+      (
+        select solicitudAprobacionId,proyectoId,estadoSolicitudAprobacion from tblsolicitudaprobacion
+      ) A
+      ON A.solicitudAprobacionId = tbldp.tblsolicitudaprobacion_solicitudAprobacionId
+      inner join
+      (
+        select
+            tblr.regionDescripcion,
+            tblp.proyectoId,
+            tblp.proyectoNombre
+          from
+            tblproyectos tblp,
+            tblregion tblr
+          where
+            tblp.regionProyecto = tblr.idRegion
+      ) B
+      ON (B.proyectoId = A.proyectoId), tblestadodespeje tbla
+    where
+      tbldp.fechaRegistro between '$fecha1' and '$fecha2'
+      and tbldp.estadoDespejeId in (1,2) and tbla.estadoDespejeId = tbldp.estadoDespejeId;
     ";
     $cantidadPlanos = obtenerRegistros($sqlrt);
     return $cantidadPlanos;

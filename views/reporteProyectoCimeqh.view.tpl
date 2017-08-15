@@ -87,15 +87,19 @@
                               <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Proyecto Nombre </th>
-                                    <th>Factibilidades</th>
+                                    <th>Proyecto Nombre</th>
+                                    <th>proyecto ID</th>
+                                    <th>Estado Actual</th>
+                                    <th>Region</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {{foreach factibilidades}}
                                   <tr>
-                                    <td>{{region}}</td>
-                                    <td>{{cantidad_proyectos_Factibilidad}}</td>
+                                    <td>{{proyectoNombre}}</td>
+                                    <td>{{proyectoId}}</td>
+                                    <td>{{estadoFactibilidadDescripcion}}</td>
+                                    <td>{{regionDescripcion}}</td>
                                   </tr>
                                   {{endfor factibilidades}}
                                 </tbody>
@@ -129,15 +133,19 @@
                               <table id="datatable-checkbox" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Regiones</th>
-                                    <th>Aprobacion</th>
+                                    <th>Proyecto Nombre</th>
+                                    <th>proyecto ID</th>
+                                    <th>Estado Actual</th>
+                                    <th>Region</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {{foreach aprobaciones}}
                                   <tr>
+                                    <td>{{proyectoNombre}}</td>
+                                    <td>{{proyectoId}}</td>
+                                    <td>{{estadoAprobacionDescripcion}}</td>
                                     <td>{{region}}</td>
-                                    <td>{{total_aprobacion}}</td>
                                   </tr>
                                   {{endfor aprobaciones}}
                                 </tbody>
@@ -171,15 +179,19 @@
                               <table id="datatable-fixed-header" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Regiones</th>
-                                    <th>Recepcion</th>
+                                    <th>Proyecto Nombre</th>
+                                    <th>proyecto ID</th>
+                                    <th>Estado Actual</th>
+                                    <th>Region</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {{foreach recepciones}}
                                   <tr>
+                                    <td>{{proyectoNombre}}</td>
+                                    <td>{{proyectoId}}</td>
+                                    <td>{{estadoRecepcionDescripcion}}</td>
                                     <td>{{region}}</td>
-                                    <td>{{cantidad_proyectos_recepcion}}</td>
                                   </tr>
                                   {{endfor recepciones}}
                                 </tbody>
@@ -213,15 +225,19 @@
                               <table id="datatable-keytable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Regiones</th>
-                                    <th>Despeje</th>
+                                    <th>Proyecto Nombre</th>
+                                    <th>proyecto ID</th>
+                                    <th>Estado Actual</th>
+                                    <th>Region</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {{foreach despejes}}
                                   <tr>
+                                    <td>{{proyectoNombre}}</td>
+                                    <td>{{proyectoId}}</td>
+                                    <td>{{estadoDespejeDescripcion}}</td>
                                     <td>{{region}}</td>
-                                    <td>{{cantidad_proyectos_despeje}}</td>
                                   </tr>
                                   {{endfor despejes}}
                                 </tbody>
@@ -252,18 +268,22 @@
                             </div>
                             <div class="x_content">
 
-                              <table id="datatable-responsive" class="table table-striped table-bordered">
+                              <table id="datatable-keytable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
-                                    <th>Regiones</th>
-                                    <th>Despeje</th>
+                                    <th>Proyecto Nombre</th>
+                                    <th>proyecto ID</th>
+                                    <th>Estado Actual</th>
+                                    <th>Region</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {{foreach despejes}}
                                   <tr>
+                                    <td>{{proyectoNombre}}</td>
+                                    <td>{{proyectoId}}</td>
+                                    <td>{{estadoDespejeDescripcion}}</td>
                                     <td>{{region}}</td>
-                                    <td>{{cantidad_proyectos_despeje}}</td>
                                   </tr>
                                   {{endfor despejes}}
                                 </tbody>

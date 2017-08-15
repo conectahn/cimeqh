@@ -12,7 +12,6 @@
       $aprobaciones = obtenerPlanosAprobacion($fecha1,$fecha2);
       $despejes = obtenerPlanosDespeje($fecha1,$fecha2);
       $recepciones = obtenerPlanosRecepcion($fecha1,$fecha2);
-      print_r($factibilidades);
       renderizar("reporteProyectoCimeqh",array("factibilidades"=>$factibilidades,"despejes"=>$despejes,"recepciones"=>$recepciones,"aprobaciones"=>$aprobaciones));
 
     }
