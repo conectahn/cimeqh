@@ -107,7 +107,9 @@
                         </li>
                         <li><a ><i class="fa fa-file-photo-o"></i>Reportes<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
+<!--
                         <li><a href="index.php?page=reporteFinancieroEnee">Reportes Financieros</a></li>
+-->
                         <li><a href="index.php?page=reporteProyectoEnee">Reportes de Gestion de Proyectos</a></li>
                         </ul>
                         </li>
