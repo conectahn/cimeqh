@@ -233,7 +233,7 @@
     return $diseños;
   }
 
-  function obtenerDisenosRecepcion($fecha1,$fecha2,$estadoSolicitud)
+  function obtenerDisenosRecepcion($fecha1,$fecha2)
   {
     /*************************************************************************************************************
       $estadoSolicitud debe ser 1 o 2 dado que se quiera ver los recibidos o aprobados respectivamente
@@ -241,13 +241,15 @@
     $diseños = array();
     $sqlrt = "
     select
-      count(1) as cantidad_proyectos_recepcion,
-        B.regionDescripcion
+      B.regionDescripcion as region,
+      B.proyectoId,
+      B.proyectoNombre,
+      tbla.estadoRecepcionDescripcion as estado
     from
       tblsolicitudrecepcion tblrp
       inner join
       (
-        select solicitudAprobacionId,proyectoId from tblsolicitudaprobacion
+        select solicitudAprobacionId,proyectoId,estadoSolicitudAprobacion from tblsolicitudaprobacion
       ) A
       ON A.solicitudAprobacionId = tblrp.solicitudAprobacionId
       inner join
@@ -262,11 +264,10 @@
           where
             tblp.regionProyecto = tblr.idRegion
       ) B
-      ON (B.proyectoId = A.proyectoId)
+      ON (B.proyectoId = A.proyectoId), tblestadorecepcion tbla
     where
       tblrp.fechaRegistroSolicitud between '$fecha1' and '$fecha2'
-      and A.solicitudRecepcioEstado = $estadoSolicitud
-    group by B.regionDescripcion;
+      and A.estadoSolicitudAprobacion in (1,2) and tblrp.solicitudRecepcioEstado = tbla.estadoRecepcionId;
     ";
     $diseños = obtenerRegistros($sqlrt);
     return $diseños;
@@ -276,7 +277,7 @@
     {
       $diseños = array();
       $sqlrt="
-      SELECT fa.proyectoId, p.proyectoNombre, e.estadoFactibilidadDescripcion,tble.regionDescripcion
+      SELECT fa.proyectoId, p.proyectoNombre, e.estadoFactibilidadDescripcion,tble.regionDescripcion as region
             FROM tblsolicitudfactibilidad fa, tblproyectos p, tblestadofactibilidad e,tblregion tble
             where fa.proyectoId=p.proyectoId and fa.estadoFactibilidadId=e.estadoFactibilidadId
             and fa.fechaSolicitud between '$fecha1' and '$fecha2' and fa.estadoFactibilidadId in (1,2) and tble.idRegion = p.regionProyecto;
@@ -285,37 +286,38 @@
       return $diseños;
     }
 
-    function obtenerDisenosDespeje($fecha1,$fecha2,$estadoSolicitud)
+    function obtenerDisenosDespeje($fecha1,$fecha2)
     {
       $diseños = array();
       $sqlrt = "
-        select
-          count(1) as cantidad_proyectos_despeje,
-            B.regionDescripcion
-        from
-          tblsolicituddespeje tbldp
-          inner join
-          (
-            select solicitudAprobacionId,proyectoId,estadoSolicitudAprobacion from tblsolicitudaprobacion
-          ) A
-          ON A.solicitudAprobacionId = tbldp.tblsolicitudaprobacion_solicitudAprobacionId
-          inner join
-          (
-            select
-                tblr.regionDescripcion,
-                tblp.proyectoId,
-                tblp.proyectoNombre
-              from
-                tblproyectos tblp,
-                tblregion tblr
-              where
-                tblp.regionProyecto = tblr.idRegion
-          ) B
-          ON (B.proyectoId = A.proyectoId)
-        where
-          tbldp.fechaRegistro between '$fecha1' and '$fecha1'
-          and A.estadoSolicitudAprobacion  = $estadoSolicitud
-        group by B.regionDescripcion;
+      select
+        B.regionDescripcion,
+        B.proyectoNombre,
+        B.proyectoId,
+        tbla.estadoDespejeDescripcion
+      from
+        tblsolicituddespeje tbldp
+        inner join
+        (
+          select solicitudAprobacionId,proyectoId,estadoSolicitudAprobacion from tblsolicitudaprobacion
+        ) A
+        ON A.solicitudAprobacionId = tbldp.tblsolicitudaprobacion_solicitudAprobacionId
+        inner join
+        (
+          select
+              tblr.regionDescripcion,
+              tblp.proyectoId,
+              tblp.proyectoNombre
+            from
+              tblproyectos tblp,
+              tblregion tblr
+            where
+              tblp.regionProyecto = tblr.idRegion
+        ) B
+        ON (B.proyectoId = A.proyectoId),tblestadodespeje tbla
+      where
+        tbldp.fechaRegistro between '$fecha1' and '$fecha1'
+        and tbldp.estadoDespejeId in (1,2) and tbla.estadoDespejeId = tbldp.estadoDespejeId;
       ";
       $diseños = obtenerRegistros($sqlrt);
       return $diseños;

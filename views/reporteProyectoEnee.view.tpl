@@ -97,7 +97,7 @@
                                     <td>{{proyectoNombre}}</td>
                                     <td>{{proyectoId}}</td>
                                     <td>{{estadoFactibilidadDescripcion}}</td>
-                                    <td>{{regionDescripcion}}</td>
+                                    <td>{{region}}</td>
                                   </tr>
                                   {{endfor factibilidades}}
                                 </tbody>
@@ -195,7 +195,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
                           <div class="x_panel">
                             <div class="x_title">
@@ -232,7 +232,7 @@
                                   <tr>
                                     <td>{{proyectoNombre}}</td>
                                     <td>{{proyectoId}}</td>
-                                    <td>{{estadoAprobacionDescripcion}}</td>
+                                    <td>{{estadoDespejeDescripcion}}</td>
                                     <td>{{regionDescripcion}}</td>
                                   </tr>
                                   {{endfor despejes}}
