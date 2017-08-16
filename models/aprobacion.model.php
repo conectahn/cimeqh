@@ -11,7 +11,7 @@ function registrarAprobacion($monto, $costo, $proyectoId,$usuarioIdentidad){
 `fechaRegistroSolicitud`)
 VALUES
 (%f,%f,5,%d,%s,now());";
-$insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
+//$insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId, $usuarioIdentidad);
 
   if(ejecutarNonQuery($insertSQL)){
             $ultimoID=getLastInserId();
@@ -22,7 +22,7 @@ $insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId);
             SET `codigoAprobacion` = '%s'
             WHERE `solicitudAprobacionId` = %d";
 
-            $insertSQL2 = sprintf($insertSQL2,valstr($codigo), $ultimoID);
+  //          $insertSQL2 = sprintf($insertSQL2,valstr($codigo), $ultimoID);
             ejecutarNonQuery($insertSQL2);
 
               return $ultimoID;

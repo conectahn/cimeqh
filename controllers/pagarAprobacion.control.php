@@ -16,7 +16,7 @@
   require 'pagar/lib/Stripe.php';
   $errores = array();
   $htmlDatos = array();
-  //print_r($htmlDatos);
+
 
   if (isset($_POST["btnPagarAprobacion"])) {
       redirectWithMessage("El pago se realizo con exito","?page=verProyectos");
@@ -26,7 +26,7 @@
 
     switch ($_POST["accion"]) {
       case 'INS':
-        $respuesta=registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
+      $respuesta=registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"],$_SESSION["userName"]);
 
         $files = $_FILES['userfile']['name'];
 
@@ -38,7 +38,7 @@
 
          //llamamos a la funcion upFiles y le pasamos el array de campos file del formulari
         if ($isUpload===FALSE) {
-           print_r($htmlDatos);
+           //print_r($htmlDatos);
            borrarAprobacion($respuesta);
            $alerta=redirectWithMessage("Error al subir el archivo ","index.php?page=aprobacionProyectos");
         }else {
@@ -47,7 +47,7 @@
           $htmlDatos["proyectoId"]=$_POST["proyectoId"];
           $htmlDatos["respuesta"]=$respuesta;
           $htmlDatos["imagenes"]=$files;
-          print_r($htmlDatos);
+          //print_r($htmlDatos);
          }
          //print_r($htmlDatos);
         break;
