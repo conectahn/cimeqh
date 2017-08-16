@@ -350,4 +350,29 @@
       $usuario = obtenerRegistros($sqlrt);
       return $usuario;
     }
+<<<<<<< HEAD
+=======
+
+    function totalesPorRegiones($fecha1,$fecha2)
+    {
+      $total = array();
+      $sqlrt ="
+      select sum(f.montoPagado)as monto,r.regionDescripcion as region from tblfacturas f, tblproyectos p,tblregion r
+      where p.proyectoId = f.proyectoId and p.regionProyecto = r.idRegion and f.fechaPago between '$fecha1' and '$fecha2' group by r.idRegion;
+      ";
+      $total = obtenerRegistros($sqlrt);
+      return $total;
+    }
+
+    function total($fecha1,$fecha2)
+    {
+      $total = "";
+      $sqlrt ="
+      select sum(A.monto) as totales from (select sum(f.montoPagado)as monto,r.regionDescripcion as region from tblfacturas f, tblproyectos p,tblregion r
+      where p.proyectoId = f.proyectoId and p.regionProyecto = r.idRegion and f.fechaPago between '$fecha1' and '$fecha2' group by r.idRegion) A;
+      ";
+      $total = obtenerRegistros($sqlrt);
+      return $total;
+    }
+>>>>>>> master
 ?>

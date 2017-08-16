@@ -124,8 +124,38 @@
                         </tr>
                         {{endfor grafica}}
                       </tbody>
+<<<<<<< HEAD
                     </table>
+=======
+                    </table><br>
+                    <h2>Ganancias totales por regiones entre {{fecha1}} y {{fecha2}}</h2>
+                    <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Regiones</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{foreach totalesRegiones}}
+                        <tr>
+                          <td>{{region}}</td>
+                          <td>{{monto}}</td>
+                        </tr>
+                        {{endfor totalesRegiones}}
+                      </tbody>
+                      <tfoot>
+                        {{foreach total}}
+                        <tr>
+                          <td>Total</td>
+                          <td>{{totales}}</td>
+                        </tr>
+                        {{endfor total}}
+                      </tfoot>
+>>>>>>> master
 
+                    </table>
+                    
                         <script type="text/javascript">
 
                     Highcharts.chart('container', {
