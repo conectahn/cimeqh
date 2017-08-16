@@ -10,7 +10,8 @@
       $factibilidades = obtenerIngresos($fecha1,$fecha2);
       $grafica=graficarCimeqhFinanzas($fecha1,$fecha2);
       $totalesRegiones = totalesPorRegiones($fecha1,$fecha2);
-      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades, "grafica"=>$grafica, "totalesRegiones"=>$totalesRegiones,"fecha1"=>$_POST["txtFecha1"],"fecha2"=>$_POST["txtFecha2"]));
+      $total = total($fecha1,$fecha2);
+      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades, "grafica"=>$grafica, "totalesRegiones"=>$totalesRegiones,"fecha1"=>$_POST["txtFecha1"],"fecha2"=>$_POST["txtFecha2"],"total"=>$total));
 
     }else {
       $fecha1 = date('Y-m-d', strtotime('-1 week'));
@@ -18,7 +19,8 @@
       $factibilidades = obtenerIngresos($fecha1,$fecha2);
       $grafica=graficarCimeqhFinanzas($fecha1,$fecha2);
       $totalesRegiones = totalesPorRegiones($fecha1,$fecha2);
-      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades,"grafica"=>$grafica, "totalesRegiones"=>$totalesRegiones,"fecha1"=>$fecha1,"fecha2"=>$fecha2));
+      $total = total($fecha1,$fecha2);
+      renderizar("reporteFinancieroCimeqh",array("factibilidades"=>$factibilidades,"grafica"=>$grafica, "totalesRegiones"=>$totalesRegiones,"fecha1"=>$fecha1,"fecha2"=>$fecha2,"total"=>$total));
     }
   }
 

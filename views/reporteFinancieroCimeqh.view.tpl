@@ -141,8 +141,17 @@
                         </tr>
                         {{endfor totalesRegiones}}
                       </tbody>
-                    </table>
+                      <tfoot>
+                        {{foreach total}}
+                        <tr>
+                          <td>Total</td>
+                          <td>{{totales}}</td>
+                        </tr>
+                        {{endfor total}}
+                      </tfoot>
 
+                    </table>
+                    
                         <script type="text/javascript">
 
                     Highcharts.chart('container', {
