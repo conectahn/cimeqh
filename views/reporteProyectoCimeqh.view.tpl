@@ -2,15 +2,15 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>General Elements</h3>
+                <h3>Reporte de proyectos por Servicios </h3>
               </div>
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" placeholder="Buscar...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button">ir</button>
                     </span>
                   </div>
                 </div>
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2><i class="fa fa-bars"></i> Tabs <small>Float left</small></h2>
+                    <h2><i class="fa fa-bars"></i> ingrese un rango de fechas</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -79,11 +79,10 @@
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                           <div class="x_panel">
                             <div class="x_title">
-                              <h2>Default Example <small>Users</small></h2>
+                              <h2>reporte de proyectos entre {{fecha1}} y {{fecha2}}</h2>
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-
                               <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                   <tr>
