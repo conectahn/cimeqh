@@ -42,8 +42,8 @@
                   <td>{{ingenieroNombre}}</td>
                   <td>{{usuarioNumeroColegiacion}}</td>
                   <td>{{estadoDespejeDescripcion}}</td>
-                  <td> <button id="btnOpciones12" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-{{solicitudAprobacionId}}" value="{{solicitudAprobacionId}}">Opciones</button>
-                    <div class="modal fade bs-example-modal-lg-{{solicitudAprobacionId}}" tabindex="-1" role="dialog" aria-hidden="true">
+                  <td> <button id="btnOpciones12" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-{{solicitudDespejeId}}" value="{{solicitudDespejeId}}">Opciones</button>
+                    <div class="modal fade bs-example-modal-lg-{{solicitudDespejeId}}" tabindex="-1" role="dialog" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                           <div class="modal-header">
@@ -90,8 +90,8 @@
                           <form method="post" action="index.php?page=solicitudDeCuentas">
                           <input id="usuarioIdentidad" type="hidden" name="usuarioIdentidad" value={{usuarioIdentidad}}>
                           <a href="index.php?page=posponerDespeje&tipo=pospuesto&accion=despeje&codigo={{solicitudDespejeId}}"><input type="button" name="btnPosponer" id="btnPosponer" class="btn btn-warning" value="Posponer Despeje">
-                          <a href="index.php?page=comentarios&tipo=rechazo&accion=despejeEnee&codigo={{solicitudDespejeId}}"><input type="button" name="btnRechazar" id="btnRechazar" class="btn btn-danger" value="Rechazar Factibilidad">
-                          <a href="index.php?page=comentarios&tipo=aceptado&accion=despejeEnee&codigo={{solicitudDespejeId}}"><input type="button" name="btnAceptar" id="btnAceptar" class="btn btn-success" value="Aceptar Factibilidad">
+                          <a href="index.php?page=comentarios&tipo=rechazo&accion=despejeEnee&codigo={{solicitudDespejeId}}"><input type="button" name="btnRechazar" id="btnRechazar" class="btn btn-danger" value="Rechazar Despeje">
+                          <a href="index.php?page=comentarios&tipo=aceptado&accion=despejeEnee&codigo={{solicitudDespejeId}}"><input type="button" name="btnAceptar" id="btnAceptar" class="btn btn-success" value="Aceptar Despeje">
                           </form>
                           </div>
                         </div>
