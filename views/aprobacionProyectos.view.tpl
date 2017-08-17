@@ -25,7 +25,7 @@
                 <div class="x_content">
                   <br>
 
-                    <form action="index.php?page=pagarAprobacion" id="defaultForm" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
+                    <form action="index.php?page=pagos" id="defaultForm" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="post">
                       <input type="hidden" name="proyectoId" id="proyectoId" value="{{proyectoId}}">
                       <input type="hidden" name="aprobacionId" id="aprobacionId" value="{{aprobacionId}}">
                       <input type="hidden" name="accion" id="accion" value="{{accion}}">

@@ -6,10 +6,9 @@
  */
   require_once("libs/template_engine.php");
   require_once("models/usuarios.model.php");
-
+  require_once("models/aprobacion.model.php");
 
   function run(){
-
 
   require 'pagar/lib/Stripe.php';
   $htmlDatos = array();

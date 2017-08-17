@@ -9,9 +9,7 @@
   require_once("models/aprobacion.model.php");
   require_once("models/multiUpload.model.php");
 
-
   function run(){
-
 
   require 'pagar/lib/Stripe.php';
   $errores = array();
