@@ -1,34 +1,26 @@
 <?php
   require_once("libs/dao.php");
 
-function registrarAprobacion($monto, $costo, $proyectoId,$usuarioIdentidad){
+function registrarAprobacion($monto, $costo, $proyectoId,$codigo,$idFactura){
   $insertSQL = "INSERT INTO `tblsolicitudaprobacion`
+(`solicitudAaprobacionMontoEstimado`,`solicitudAprobacionCosto`,`estadoSolicitudAprobacion`,
+  `proyectoId`,`codigoAprobacion`,`fechaRegistroSolicitud`,`idFactura`)
+VALUES (%f,%f,4,%d,'%s',now(),%d);";
+$insertSQL = sprintf($insertSQL,$monto,$costo,$proyectoId,$codigo,$idFactura);
+return ejecutarNonQueryConErrores($insertSQL);
+}
+/*
+INSERT INTO `tblsolicitudaprobacion`
 (`solicitudAaprobacionMontoEstimado`,
 `solicitudAprobacionCosto`,
 `estadoSolicitudAprobacion`,
 `proyectoId`,
 `usuarioIdentidad`,
-`fechaRegistroSolicitud`)
+`fechaRegistroSolicitud`,
+`idFactura`)
 VALUES
-(%f,%f,5,%d,%s,now());";
-//$insertSQL = sprintf($insertSQL,$monto, $costo, $proyectoId, $usuarioIdentidad);
-
-  if(ejecutarNonQuery($insertSQL)){
-            $ultimoID=getLastInserId();
-            $rand_num = rand(10000,99999); // Random integer number between 10,000 and 99,999
-            $codigo = /*base_convert($_SESSION["userName"],10,36).*/base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
-            $codigo= (string)$codigo;
-            $insertSQL2 = "UPDATE `tblsolicitudaprobacion`
-            SET `codigoAprobacion` = '%s'
-            WHERE `solicitudAprobacionId` = %d";
-
-  //          $insertSQL2 = sprintf($insertSQL2,valstr($codigo), $ultimoID);
-            ejecutarNonQuery($insertSQL2);
-
-              return $ultimoID;
-
-         }
-}
+(%f,%f,5,%d,%s,now(),'%s');
+*/
 
 function actualizarAprobacionEstado($id){
   $insertSQL = "UPDATE tblsolicitudaprobacion set `estadoSolicitudAprobacion`= 4;";

@@ -96,7 +96,7 @@
                     <div class="menu_section">
                       <h3>General</h3>
                       <ul class="nav side-menu">
-                        <li><a href="index.php?page=pagos"><i class="fa fa-user"></i>Realizar Pagos</a>
+                        <li><a href="index.php?page=pagos"><i class="fa fa-money"></i>Realizar Pagos</a>
                         <li><a><i class="fa fa-briefcase"></i>Proyectos <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li><a href="index.php?page=registroProyectos">Agregar Proyectos</a></li>

@@ -16,6 +16,15 @@ $solicitudes = obtenerRegistros($sqlstr);
 return $solicitudes;
 }
 
+function obtenerIdFactura($numeroFactua){
+$solicitudes = array();
+$sqlstr = "select idFacturas from tblfacturas where numeroFactua='$numeroFactua';";
+$sqlstr=sprintf($sqlstr,valstr($numeroFactua));
+$solicitudes = obtenerUnRegistro($sqlstr);
+return $solicitudes;
+}
+
+
 function agregarFactura($numeroFactua,$usuarioId,$concepto,$monto,$proyectoId){
 $sqlstr="INSERT INTO `cimeqh`.`tblfacturas`
 (`numeroFactua`,`idUsuario`,`idConcepto`,`fechaRegistro`,`montoPagado`,`proyectoId`)
