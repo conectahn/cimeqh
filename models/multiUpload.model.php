@@ -45,7 +45,8 @@ class Multiupload
                       $nombreArchivo=$_FILES["userfile"]["name"][$i];
                       switch ($accion) {
                         case 'aprobacion':
-                          $strsql = "INSERT INTO `tbldocumentosaprobacion`(`documentoDireccion`,`solicitudAprobacionId`,`documentoNombre`) VALUES('%s',%d,'%s');";
+                          $strsql = "INSERT INTO `tbldocumentosaprobacion`(`documentoDireccion`,`solicitudAprobacionId`,`documentoNombre`)
+                          VALUES('%s',%d,'%s');";
                           $strsql = sprintf($strsql,  $direccion, $Id,$nombreArchivo);
                           $resultado=0;
                           $resultado=  ejecutarNonQuery($strsql);
