@@ -11,9 +11,10 @@ if(isset($_POST['btnPagar'])){
 
 $check=$_POST["check"];
   foreach ($check as $key ) {
-  echo $key."<br>";
+  //echo $key."<br>";
+  $pagos=obtenerFacturaPorId($key);
   }
-  echo "<script>alert('hola')</script>";
+  renderizar("realizarPago", array('total' =>$pagos));
 }
 
 //$numeroFactua,$usuarioId,$concepto,$monto,$proyectoId
