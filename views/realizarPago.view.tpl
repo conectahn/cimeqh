@@ -191,7 +191,7 @@
       </script>
       <script type="text/javascript">
 
-                  Stripe.setPublishableKey('pk_test_pNSNeMvq6cUCWFj7BcJUYltG');
+                  Stripe.setPublishableKey('pk_test_s0Tbg5CbA5spLuQzca3WanX0');
 
                   function stripeResponseHandler(status, response) {
                       if (response.error) {
@@ -214,9 +214,12 @@
 
 
       </script>
-      <form action="index.php?page=pagarAprobacion" method="POST" id="payment-form" class="form-horizontal">
-        <input type="hidden" name="txtTotalTimbres" value="{{txtTotalTimbres}}">
+      <form action="index.php?page=realizarPago" method="POST" id="payment-form" class="form-horizontal">
+        <input type="hidden" name="txtTotalTimbres" value="{{totalPagar}}">
         <input type="hidden" name="respuesta" value="{{respuesta}}">
+        {{foreach facturas}}
+        <input type="text" name="respuesta" value="{{facturas}}">
+        {{endfor facturas}}
         <input type="hidden" name="accion" value="PAY">
 
         {{foreach imagenes}}
@@ -361,10 +364,10 @@
               <h3 class="panel-title">Factura</h3>
             </div>
             <div class="panel-body">
-              {{foreach total}}
-              {{montoPagado}}
-              {{endfor total}}
-              <p>Su tarjeta será cargada con la cantidad de {{txtTotalTimbres}} Lps. después de enviar el formulario.</p>
+              {{foreach pagos}}
+              <h1>{{facturas}}</h1>
+              {{endfor pagos}}
+              <p>Su tarjeta será cargada con la cantidad de Lps. {{totalPagar}} después de enviar el formulario.</p>
               <p>El valor a pagar es por motivo de los timbres requeridos para la aprobación de su proyecto:
                 <!--XXXXXXX--> </p>
             </div>

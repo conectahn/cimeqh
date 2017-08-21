@@ -124,9 +124,9 @@
                         </tr>
                         {{endfor grafica}}
                       </tbody>
-<<<<<<< HEAD
+
                     </table>
-=======
+
                     </table><br>
                     <h2>Ganancias totales por regiones entre {{fecha1}} y {{fecha2}}</h2>
                     <table id="datatable" class="table table-striped table-bordered">
@@ -152,10 +152,10 @@
                         </tr>
                         {{endfor total}}
                       </tfoot>
->>>>>>> master
+
 
                     </table>
-                    
+
                         <script type="text/javascript">
 
                     Highcharts.chart('container', {

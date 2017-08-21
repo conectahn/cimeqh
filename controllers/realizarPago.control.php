@@ -10,13 +10,8 @@
   $errores = array();
   $htmlDatos = array();
 
-
-  /*if (isset($_POST["btnPagarAprobacion"])) {
-      redirectWithMessage("El pago se realizo con exito","?page=verProyectos");
-  }*/
-
   if ($_POST) {
-        Stripe::setApiKey("sk_test_UDpydu1XVxuNRRRmOShf0iIl");
+        Stripe::setApiKey("sk_test_cg3QY2mbcJvek1EVBopLsavG");
 
         try {
         if (empty($_POST['street']) || empty($_POST['city']) || empty($_POST['zip']))
@@ -38,11 +33,8 @@
               <strong>Error!</strong> '.$e->getMessage().'
               </div>';
         }
-          break;
-      default:
-        # code...
-        break;
     }
-  }  
+    renderizar("realizarPago",array());
+  }
   run();
 ?>

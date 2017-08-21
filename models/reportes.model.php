@@ -350,8 +350,7 @@
       $usuario = obtenerRegistros($sqlrt);
       return $usuario;
     }
-<<<<<<< HEAD
-=======
+
 
     function totalesPorRegiones($fecha1,$fecha2)
     {
@@ -374,5 +373,5 @@
       $total = obtenerRegistros($sqlrt);
       return $total;
     }
->>>>>>> master
+
 ?>

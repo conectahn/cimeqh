@@ -2,40 +2,44 @@
 require_once("libs/template_engine.php");
 require_once("models/pagos.model.php");
 require_once("models/aprobacion.model.php");
+
 function run(){
 $pagos = array();
 $check  = array();
+$datos=array();
 $respuesta;
-
+$totalPagar=0;
+//Revismos si selecciono el boton de pagar
 if(isset($_POST['btnPagar'])){
+  //si lo presiono revisamos si paso un dato para pagar
+  if (isset($_POST["check"])) {
+    //si selecciono al menos un valor pasamos a pasar cada uno de los datos que se envian a un arreglo
+    $check=$_POST["check"];
+        foreach ($check as $key ) {
+          /*en este for each haremos los calculos respectivos, total a pagar, insertamos los
+          detalles de la factura a la tabla de costos, pasamos a pagado el estado de pago en la
+          tabla de factura y cambiamos de estado la aprobacion despeje etc dependiendo lo que
+          se este pagando*/
 
-$check=$_POST["check"];
-  foreach ($check as $key ) {
-  //echo $key."<br>";
-  $pagos=obtenerFacturaPorId($key);
+        //echo $key."<br>";
+        $pagos=obtenerFacturaPorId($key);
+        $totalPagar+=$pagos["montoPagado"];
+        }        
+        $pagos["totalPagar"]=$totalPagar;
+        $pagos["facturas"]=$check;
+        //renderizar("realizarPago", array('total'=>$totalPagar));
+        renderizar("realizarPago", $pagos);
+  }else{
+    //en caso que presiono el boton
+    //sin seleccionar al menos una casilla le mostrara el siguiente mensaje
+    redirectWithMessage("Favor seleccione por lo menos una opcion a pagar.","index.php?page=pagos");
   }
-  renderizar("realizarPago", array('total' =>$pagos));
+}else {
+  //finalmente en caso que no se haya presionado el boton mostrar
+  //la pantalla cargada con los pagos pendiente
+  $pagos=obtenerPagosPendientes($_SESSION["userName"]);
+  renderizar("pagos", array('pagos'=>$pagos));
 }
-
-//$numeroFactua,$usuarioId,$concepto,$monto,$proyectoId
-if(isset($_POST['btnSolicitarAprobacion'])){
-  //Generar Numero de Factura primero se genera un numero aleatorio
-  $rand_num = rand(10000,99999);
-  //codigo para crear un codigo alfanumerico
-  $numeroFactua = base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
-  $estado=2;
-  agregarFactura($numeroFactua,$_SESSION["userName"],$estado,$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
-  $respuesta=obtenerIdFactura($numeroFactua);
-  $rand_num = rand(10000,99999);
-  //codigo para crear un codigo alfanumerico
-  $rand_num = rand(10000,99999); // Random integer number between 10,000 and 99,999
-  $codigo = /*base_convert($_SESSION["userName"],10,36).*/base_convert(time(), 10, 36).base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
-  //$monto, $costo, $proyectoId,$codigo,$idFactura
-  $check=registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"],$codigo,$respuesta["idFacturas"]);
-}
-
-    $pagos=obtenerPagosPendientes($_SESSION["userName"]);
-    renderizar("pagos", array('pagos'=>$pagos));
   }
 
   run();
