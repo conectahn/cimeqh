@@ -3,16 +3,14 @@
   require_once("models/proyectos.model.php");
   require_once("models/aprobacion.model.php");
   require_once("models/multiUpload.model.php");
-
+  require 'pagar/lib/Stripe.php';
   function run(){
 
-  require 'pagar/lib/Stripe.php';
   $errores = array();
   $htmlDatos = array();
 
   if ($_POST) {
         Stripe::setApiKey("sk_test_cg3QY2mbcJvek1EVBopLsavG");
-
         try {
         if (empty($_POST['street']) || empty($_POST['city']) || empty($_POST['zip']))
             throw new Exception("Fill out all required fields.");
