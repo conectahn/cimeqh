@@ -77,9 +77,9 @@
                 <div class="left_col scroll-view">
                   <div class="navbar nav_title" style="border: 0;">
 
-                    <a href="index.php?page=home"><img src="images/cimeqh_.jpg"  class="img-circle profile_img" alt="CIMEQH"></a>
+                    <a href="index.php?page=home"><img src="images/ingeniero.jpg"  class="img-circle profile_img" alt="Ingeniero"></a>
 
-                  </div>
+                  </div><br><br><br><br><br><br><br>
 
                   <div class="clearfix"></div>
 
@@ -87,7 +87,7 @@
                   <div class="profile clearfix">
                     <div class="profile_info">
                       <span>Bienvenido</span>
-                      <h2 align="center">{{nombre}} {{apellido}}</h2>
+                      <h2>{{nombre}} {{apellido}}</h2>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -100,6 +100,7 @@
                     <div class="menu_section">
                       <h3>General</h3>
                       <ul class="nav side-menu">
+                        <li><a href="index.php?page=pagos"><i class="fa fa-money"></i>Realizar Pagos</a>
                         <li><a><i class="fa fa-briefcase"></i>Proyectos <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li><a href="index.php?page=registroProyectos">Agregar Proyectos</a></li>
