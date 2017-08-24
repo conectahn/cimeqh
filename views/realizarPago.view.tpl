@@ -216,6 +216,9 @@
     <form action="index.php?page=realizarPago" method="POST" id="payment-form" class="form-horizontal">
       <input type="hidden" name="txtTotalTimbres" value="{{totalPagar}}">
       <input type="hidden" name="respuesta" value="{{respuesta}}">
+      {{foreach facturas}}
+      <input type="hidden" name="idFactura[]" value="{{facturas}}">
+      {{endfor facturas}}      
       <input type="hidden" name="accion" value="PAY">
       <div class="row row-centered">
       <div class="col-md-4 col-md-offset-4">

@@ -5,10 +5,8 @@
  * Last Modification 2015-03-05 19:25:00
  */
   require_once("libs/template_engine.php");
-  require_once("models/proyectos.model.php");
+  require_once("models/pagos.model.php");
   require_once("models/aprobacion.model.php");
-  require_once("models/multiUpload.model.php");
-
 
   function run(){
 
@@ -19,7 +17,7 @@
 
   if ($_POST) {
 
-    switch ($_POST["accion"]) {
+    switch ($_POST["accion"]) {/*
       case 'INS':
         $respuesta=registrarAprobacion($_POST["txtMonto"],$_POST["txtTotalTimbres"],$_POST["proyectoId"]);
 
@@ -56,7 +54,7 @@
         header($header);
 
         break;
-
+*/
         case 'PAY':
         Stripe::setApiKey("sk_test_cg3QY2mbcJvek1EVBopLsavG");
 
@@ -70,8 +68,20 @@
                                       "card" => $_POST['stripeToken'],
                       "description" => $_POST['email']));
             $htmlDatos["success"]  = '<div class="alert alert-success">
-                      <strong>Success!</strong> Your payment was successful.
+                      <strong>Exito!</strong> Su Pago ha sido Efectuado con Éxito
               </div>';
+              $check=$_SESSION["facturaId"];
+              $_SESSION["facturaId"]="";
+                  foreach ($check as $key ) {
+                    /*en este for each haremos los calculos respectivos, total a pagar, insertamos los
+                    detalles de la factura a la tabla de costos, pasamos a pagado el estado de pago en la
+                    tabla de factura y cambiamos de estado la aprobacion despeje etc dependiendo lo que
+                    se este pagando*/
+                    pagoFactura($key);
+                    pagarTimbre($key);
+                  //echo $key."<br>";
+                  }
+
         }
         catch (Exception $e) {
           borrarAprobacion($_POST["respuesta"]);

@@ -261,4 +261,13 @@ return ejecutarNonQueryConErrores($insertSQL);
 }
 
 
+function pagarTimbre($idFactura){
+  $insertSQL = "UPDATE `cimeqh`.`tblsolicitudaprobacion`
+SET `estadoPago` = 1
+WHERE `idFactura` = %d;";
+$insertSQL = sprintf($insertSQL,$idFactura);
+
+return ejecutarNonQueryConErrores($insertSQL);
+}
+
  ?>

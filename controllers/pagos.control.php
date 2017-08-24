@@ -27,6 +27,7 @@ if(isset($_POST['btnPagar'])){
         }
         $pagos["totalPagar"]=$totalPagar;
         $pagos["facturas"]=$check;
+        $_SESSION["facturaId"]=$_POST["check"];
         //renderizar("realizarPago", array('total'=>$totalPagar));
         renderizar("realizarPago", $pagos,"layoutPago.view.tpl");
   }else{
