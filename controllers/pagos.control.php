@@ -24,11 +24,11 @@ if(isset($_POST['btnPagar'])){
         //echo $key."<br>";
         $pagos=obtenerFacturaPorId($key);
         $totalPagar+=$pagos["montoPagado"];
-        }        
+        }
         $pagos["totalPagar"]=$totalPagar;
         $pagos["facturas"]=$check;
         //renderizar("realizarPago", array('total'=>$totalPagar));
-        renderizar("realizarPago", $pagos);
+        renderizar("realizarPago", $pagos,"layoutPago.view.tpl");
   }else{
     //en caso que presiono el boton
     //sin seleccionar al menos una casilla le mostrara el siguiente mensaje
