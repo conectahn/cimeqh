@@ -123,7 +123,7 @@ $solicitudDespejeCuadrillas,$solicitudDespejeFecha){
                                                   <div class='col-md-12'>
                                                    <div class='form-group'>
                                                        <label for='form_message'>Comentarios *</label>
-                                                       <textarea id='comentario' placeholder='Describa Porque ha sido rechazado el proyecto' name='comentario' class='form-control' rows='4'></textarea>
+                                                       <textarea id='comentario' placeholder='Describa Porque ha sido rechazado o aceptado el proyecto' name='comentario' class='form-control' rows='4'></textarea>
                                                    </div>
                                                </div>
                           <div class='col-md-12'>
@@ -301,7 +301,7 @@ $solicitudDespejeCuadrillas,$solicitudDespejeFecha){
                                                   <div class='col-md-12'>
                                                    <div class='form-group'>
                                                        <label for='form_message'>Comentarios *</label>
-                                                       <textarea id='comentario' placeholder='Describa Porque ha sido rechazado el proyecto' name='comentario' class='form-control' rows='4'></textarea>
+                                                       <textarea id='comentario' placeholder='Describa Porque ha sido rechazado o aceptado el proyecto' name='comentario' class='form-control' rows='4'></textarea>
                                                    </div>
                                                </div>
                           <div class='col-md-12'>

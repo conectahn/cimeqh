@@ -5,6 +5,7 @@
   require_once("models/aprobacion.model.php");
   require_once("models/multiUpload.model.php");
   require_once("models/despeje.model.php");
+  require_once("models/pagos.model.php");
 
   function run(){
     if (mw_estaLogueado()) {
@@ -12,15 +13,24 @@
         if ($_SESSION["rol"]==4) {
           $respuesta="";
           $htmlDatos = array( );
+          $factura= array();
           $fecha="";
 
           if (isset($_POST["btnSolicitarDespeje"])) {
 
             switch ($_POST["accion"]) {
               case 'INS':
+              //registrarDespeje
                 $respuesta=registrarDespeje($_POST["txtTiempo"],
                 $_POST["txtCuadrillas"],$_POST["txtCantidadPersonal"],
                 $_POST["txtFecha"],$_POST["solicitudAprobacionId"]);
+                $factura=obtenerSolicitudAprobacionPorId($_POST["solicitudAprobacionId"]);
+                //registrarDespeje en la factura
+                $rand_num = rand(10000,99999);
+                //codigo para crear un codigo alfanumerico
+                $numeroFactua = base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
+                agregarFactura($numeroFactua,$_SESSION["userName"],3,0,$factura["proyectoId"]);
+                #$numeroFactua,$usuarioId,$concepto,$monto,$proyectoId
                 //$respuesta=$_POST["txtFecha"];
                 $files = $_FILES['userfile']['name'];
                 $upload = new Multiupload();

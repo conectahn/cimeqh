@@ -48,9 +48,9 @@
                   <td>{{solicitudDespejeFecha}}</td>
                   <td>{{estadoDespejeDescripcion}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-{{proyectoId}}">Ver</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-{{solicitudDespejeId}}">Ver</button>
 
-                    <div class="modal fade bs-example-modal-lg-{{proyectoId}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade bs-example-modal-lg-{{solicitudDespejeId}}" tabindex="-1" role="dialog" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 

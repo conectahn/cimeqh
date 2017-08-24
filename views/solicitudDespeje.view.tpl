@@ -71,7 +71,7 @@
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label for="txtCantidadPersonal">Cantidad de Personal a laborar *</label>
-                                                      <input id="txtCantidadPersonal" type="number" name="txtCantidadPersonal" class="form-control" placeholder="N° de identidad del propietario *">
+                                                      <input id="txtCantidadPersonal" type="number" name="txtCantidadPersonal" class="form-control" placeholder="Cantidad de personal a laborar">
                                                   </div>
                                               </div>
                                           </div>
