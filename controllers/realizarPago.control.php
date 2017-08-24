@@ -14,6 +14,7 @@
   require 'pagar/lib/Stripe.php';
   $errores = array();
   $htmlDatos = array();
+  $facturas= array();
 
   if ($_POST) {
 
@@ -77,9 +78,37 @@
                     detalles de la factura a la tabla de costos, pasamos a pagado el estado de pago en la
                     tabla de factura y cambiamos de estado la aprobacion despeje etc dependiendo lo que
                     se este pagando*/
-                    pagoFactura($key);
-                    pagarTimbre($key);
-                  //echo $key."<br>";
+                    $facturas=obtenerFacturaPorId($key);
+                    switch ($facturas["idConcepto"]) {
+                      case '1':
+                      //colegiatura
+                        break;
+
+                        case '2':
+                        //aprobacion
+                        pagarTimbre($key);
+                        pagoFactura($key);
+                          break;
+
+                          case '3':
+                        //Despeje
+                            break;
+
+                            case '4':
+                        //Recepcion
+                              break;
+
+                              case '5':
+                        //Factibilidad
+                                break;
+
+                                case '6':
+                        //Otros Pagos
+                                  break;
+                      default:
+
+                        break;
+                    }
                   }
 
         }

@@ -7,7 +7,6 @@ function run(){
 $pagos = array();
 $check  = array();
 $datos=array();
-$respuesta;
 $totalPagar=0;
 //Revismos si selecciono el boton de pagar
 if(isset($_POST['btnPagar'])){
@@ -28,6 +27,7 @@ if(isset($_POST['btnPagar'])){
         $pagos["totalPagar"]=$totalPagar;
         $pagos["facturas"]=$check;
         $_SESSION["facturaId"]=$_POST["check"];
+        $pagos["totalPagar"]=$totalPagar;
         //renderizar("realizarPago", array('total'=>$totalPagar));
         renderizar("realizarPago", $pagos,"layoutPago.view.tpl");
   }else{
