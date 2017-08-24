@@ -19,18 +19,17 @@
           if (isset($_POST["btnSolicitarDespeje"])) {
 
             switch ($_POST["accion"]) {
-              case 'INS':
-              //registrarDespeje
-                $respuesta=registrarDespeje($_POST["txtTiempo"],
-                $_POST["txtCuadrillas"],$_POST["txtCantidadPersonal"],
-                $_POST["txtFecha"],$_POST["solicitudAprobacionId"]);
+              case 'INS':              
                 $factura=obtenerSolicitudAprobacionPorId($_POST["solicitudAprobacionId"]);
                 //registrarDespeje en la factura
                 $rand_num = rand(10000,99999);
                 //codigo para crear un codigo alfanumerico
                 $numeroFactua = base_convert($rand_num, 10, 36).base_convert(getLastInserId(), 10, 36);
-                agregarFactura($numeroFactua,$_SESSION["userName"],3,0,$factura["proyectoId"]);
-                #$numeroFactua,$usuarioId,$concepto,$monto,$proyectoId
+                $respuesta=gregarFactura($numeroFactua,$_SESSION["userName"],3,0,$factura["proyectoId"]);
+                //registrarDespeje
+                  $respuesta=registrarDespeje($_POST["txtTiempo"],
+                  $_POST["txtCuadrillas"],$_POST["txtCantidadPersonal"],
+                  $_POST["txtFecha"],$_POST["solicitudAprobacionId"],);
                 //$respuesta=$_POST["txtFecha"];
                 $files = $_FILES['userfile']['name'];
                 $upload = new Multiupload();

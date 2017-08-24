@@ -2,12 +2,14 @@
   require_once("libs/template_engine.php");
   require_once("models/despeje.model.php");
   require_once("models/usuarios.model.php");
+  require_once("models/pagos.model.php");
 
   function run(){
 
     if (mw_estaLogueado()) {
       if ($_SESSION["estado"]==1) {
         $revisar = array();
+        $factura = array();
         switch ($_SESSION["rol"]) {
           case '2':
           if(isset($_POST["btnRechazar"])){
@@ -34,6 +36,8 @@
             agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],3,$_POST["costo"]);
           }elseif ($_POST["tipo"]=="aceptado") {
             agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],2,$_POST["costo"]);
+            $factura=obtenerSolicitudDespejePorId($_POST["codigoProyecto"])
+            cobroDespeje($_POST["costo"],$factura["idFacturas"]);
           }
           }
 
