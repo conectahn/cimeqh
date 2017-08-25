@@ -78,7 +78,7 @@ proyectoLatitud,proyectoLongitud,departamentoDescripcion,concat(usuarioPrimerNom
 usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',proyectoNombre,proyectoDescrpcion,
 usuarioNumeroColegiacion,proyectoDireccion,proyectoTelefonoPropietario,proyectoEmailPropietario,
 proyectoEmailPropietario,proyectoIdentidadPropietario,usuarioCelular,usuarioTelefono,proyectoCelularPropietario,
-proyectoTelefonoPropietario,proyectoDireccionPropietario,idFacturas
+proyectoTelefonoPropietario,proyectoDireccionPropietario
 FROM tblsolicituddespeje tblsd,tblsolicitudaprobacion tblsa, tblproyectos tblp, tblusuarios tblu,
 tbldepartamentos tblde, tblestadodespeje tbled
 where tblsd.tblsolicitudaprobacion_solicitudAprobacionId=tblsa.solicitudAprobacionId and
