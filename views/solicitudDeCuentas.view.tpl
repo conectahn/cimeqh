@@ -13,7 +13,7 @@
         </div>
         <div class="x_content">
           <p class="text-muted font-13 m-b-30">
-          
+
           </p>
 
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -44,7 +44,7 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">Datos del Proyecto</h4>
+                            <h4 class="modal-title" id="myModalLabel">Datos Generales del Ingeniero</h4>
                           </div>
                           <div class="modal-body">
                             <h4>Datos del Usuario</h4>
