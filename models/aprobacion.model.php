@@ -151,7 +151,7 @@ tblestadoaprobacion as ea
  where p.proyectoId=sa.proyectoId
  and p.usuarioIdentidad=u.usuarioIdentidad
  and sa.estadoSolicitudAprobacion=ea.estadoAprobacionId
- and p.departamentoId=d.departamentoId;";
+ and p.departamentoId=d.departamentoId and sa.estadoPago=1;";
     $solicitudes = obtenerRegistros($sqlstr);
     return $solicitudes;
 }
