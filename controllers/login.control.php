@@ -39,11 +39,12 @@
             mw_setEstaLogueado($userName, true,$usuario["rolId"],$usuario["estadoCuentaId"], $usuario["usuarioPrimerNombre"],$usuario["usuarioPrimerApellido"],$usuario["usuarioComentario"]);
             header("Location:index.php?page=home");
             die();
-          }else{
+          }elseif ($usuario["usuarioContrasenia"] == $pswd) {
             redirectWithMessage("Usuario o contraseña incorrectas.","?page=login");
           }
         }else{
           $errores[] = array("errmsg"=>"Credenciales Incorrectas");
+          redirectWithMessage("Usuario o contraseña incorrectas.","?page=login");
         }
     }
 
