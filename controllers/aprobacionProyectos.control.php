@@ -49,7 +49,7 @@
               }else {
                 print_r($isUpload);
                 echo $isUpload;
-              redirectWithMessage("Su aprobacion ha sido Solicitada favor pague los timbres correpondientes para seguir su procso","?page=pagos");
+              redirectWithMessage("Su aprobacion ha sido Solicitada favor pague los timbres correpondientes para seguir su proceso","?page=pagos");
               //$header="Location:index.php?page=aprobacionProyectos&respuesta=".$check;
             //  header($header);
               }
