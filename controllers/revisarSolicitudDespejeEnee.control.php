@@ -34,9 +34,9 @@
             if ($_POST["tipo"]=="rechazo") {
             agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],3,$_POST["costo"]);
           }elseif ($_POST["tipo"]=="aceptado") {
-            agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],2,$_POST["costo"]);
+            agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],5,$_POST["costo"]);
             $factura=obtenerSolicitudDespejePorId($_POST["codigoProyecto"]);
-            cobroDespeje($_POST["costo"],$factura["idFactura"]);            
+            cobroDespeje($_POST["costo"],$factura["idFactura"]);
           }
           }
 

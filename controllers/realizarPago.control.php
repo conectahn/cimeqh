@@ -92,6 +92,7 @@
 
                           case '3':
                         //Despeje
+                        pagoFactura($key);
                             break;
 
                             case '4':
