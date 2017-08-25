@@ -2,13 +2,13 @@
 
 require_once("libs/dao.php");
 
-function registrarDespeje($tiempo,$cuadrillas,$personal,$fecha,$aprobacionId){
+function registrarDespeje($tiempo,$cuadrillas,$personal,$fecha,$aprobacionId,$factura){
   $insertSQL = "INSERT INTO `cimeqh`.`tblsolicituddespeje`
   (`solicitudDespejeHoras`,`solicitudDespejeCuadrillas`,
     `solicitudDespejeCantidadPersonal`,`solicitudDespejeFecha`,
     `tblsolicitudaprobacion_solicitudAprobacionId`,`estadoDespejeId`,
-    `fechaRegistro`)VALUES(%d,%d,%d,'%s',%d,4,now());";
-     $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId);
+    `fechaRegistro`,`idFactura`)VALUES(%d,%d,%d,'%s',%d,4,now(),%d);";
+     $insertSQL = sprintf($insertSQL,$tiempo,$cuadrillas,$personal,$fecha,$aprobacionId,$factura);
      if(ejecutarNonQuery($insertSQL)){$ultimoID=getLastInserId();
        return $ultimoID;}
 }
@@ -78,7 +78,7 @@ proyectoLatitud,proyectoLongitud,departamentoDescripcion,concat(usuarioPrimerNom
 usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',proyectoNombre,proyectoDescrpcion,
 usuarioNumeroColegiacion,proyectoDireccion,proyectoTelefonoPropietario,proyectoEmailPropietario,
 proyectoEmailPropietario,proyectoIdentidadPropietario,usuarioCelular,usuarioTelefono,proyectoCelularPropietario,
-proyectoTelefonoPropietario,proyectoDireccionPropietario
+proyectoTelefonoPropietario,proyectoDireccionPropietario, tblsd.idFactura
 FROM tblsolicituddespeje tblsd,tblsolicitudaprobacion tblsa, tblproyectos tblp, tblusuarios tblu,
 tbldepartamentos tblde, tblestadodespeje tbled
 where tblsd.tblsolicitudaprobacion_solicitudAprobacionId=tblsa.solicitudAprobacionId and

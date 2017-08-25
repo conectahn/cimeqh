@@ -29,9 +29,9 @@ return ejecutarNonQueryConErrores($insertSQL);
 
 function cobroDespeje($monto,$facturaId){
   $insertSQL = "UPDATE `cimeqh`.`tblfacturas`
-SET `estadoPago` = '%f'
+SET `montoPagado` = '%f'
 WHERE `idFacturas` = %d;";
-$insertSQL = sprintf($insertSQL,$facturaId);
+$insertSQL = sprintf($insertSQL,$monto,$facturaId);
 
 return ejecutarNonQueryConErrores($insertSQL);
 }

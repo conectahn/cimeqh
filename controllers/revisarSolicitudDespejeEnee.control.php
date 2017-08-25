@@ -25,8 +25,7 @@
             $numeroId="";
             $estadoCuenta=1;
             $numeroId=$_POST["usuarioIdentidad"];
-            $respuesta=actualizarEstado($numeroId,$estadoCuenta);
-            echo $respuesta;
+            actualizarEstado($numeroId,$estadoCuenta);
           }
 
         //Agregar un comentario segun sea aprobada o rechazada la solicitud
@@ -37,7 +36,7 @@
           }elseif ($_POST["tipo"]=="aceptado") {
             agregarComentarioDespeje($_POST["codigoProyecto"],$_POST["comentario"],2,$_POST["costo"]);
             $factura=obtenerSolicitudDespejePorId($_POST["codigoProyecto"]);
-            cobroDespeje($_POST["costo"],$factura["idFacturas"]);
+            cobroDespeje($_POST["costo"],$factura["idFactura"]);            
           }
           }
 
