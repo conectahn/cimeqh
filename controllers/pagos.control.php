@@ -38,7 +38,7 @@ if(isset($_POST['btnPagar'])){
 }else {
   //finalmente en caso que no se haya presionado el boton mostrar
   //la pantalla cargada con los pagos pendiente
-  $pagos=obtenerPagosPendientes($_SESSION["userName"]);
+  $pagos=obtenerPagosPendientes($_SESSION["userName"]);  
   renderizar("pagos", array('pagos'=>$pagos));
 }
   }

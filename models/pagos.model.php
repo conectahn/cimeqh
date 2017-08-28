@@ -10,7 +10,8 @@ concat(usuarioPrimerNombre, ' ' ,usuarioSegundoNombre ,' ',
 usuarioPrimerApellido, ' ', usuarioSegundoApellido) 'ingenieroNombre',con.conceptoDescripcion,fac.idConcepto
 from tblfacturas as fac, tblusuarios as us, tblconceptos as con
 where fac.idUsuario=us.usuarioIdentidad and fac.idConcepto=con.idConecpto and fac.idUsuario='$usuarioId' and fac.estadoPago=0
-and fac.montoPagado>0;";
+and fac.montoPagado>0
+order by idFacturas desc;";
 $sqlstr=sprintf($sqlstr,valstr($usuarioId));
 $solicitudes = obtenerRegistros($sqlstr);
 

@@ -123,7 +123,7 @@
                                                                <div class="col-md-6">
                                                                    <div class="form-group">
                                                                        <label for="txtMonto">Monto Estimado del Proyecto</label>
-                                                                       <input id="txtMonto" type="text" name="txtMonto" class="form-control">
+                                                                       <input id="txtMonto" type="text" name="txtMonto" class="form-control" value="{{solicitudAaprobacionMontoEstimado}}">
                                                                    </div>
                                                                </div>
                                                                <div class="col-md-6">

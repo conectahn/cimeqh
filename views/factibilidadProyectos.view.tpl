@@ -120,7 +120,6 @@
                                                   <div class="form-group">
                                                       <label for="cmbVoltaje">Voltaje *</label>
                                                       <select ng-model="datos.departamento" name="cmbVoltaje" id="cmbVoltaje"  class="form-control margin ng-pristine ng-valid ui-corner-all formularios ng-touched">
-                                                      <option value="">Seleccione...</option>
                                                       {{foreach voltajes}}
                                                         <option value="{{voltajeId}}">{{voltajeDescripcion}}</option>
                                                       {{endfor voltajes}}
@@ -130,8 +129,7 @@
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label for="cmbConexion">Tipo de Conexión *</label>
-                                                      <select ng-model="datos.conexiones" name="cmbConexion" id="cmbConexion" class="form-control margin ng-pristine ng-valid ui-corner-all formularios ng-touched">
-                                                      <option value="">Seleccione...</option>
+                                                      <select ng-model="datos.conexiones" name="cmbConexion" id="cmbConexion" class="form-control margin ng-pristine ng-valid ui-corner-all formularios ng-touched">                                                      
                                                       {{foreach conexiones}}
                                                         <option value="{{conexionId}}">{{conexionDescripcion}}</option>
                                                       {{endfor conexiones}}
