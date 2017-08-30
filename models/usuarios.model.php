@@ -155,7 +155,7 @@
   $primerApellido, $segundoApellido,$numeroColegiacion, $userCelular,
   $userTelefono, $userDireccion, $userPassword, $estadoCuenta, $rolId, $email,
   $fecha){
-$strsql = "INSERT INTO `cimeqh`.`tblusuarios`
+$strsql = "INSERT INTO `tblusuarios`
 (`usuarioIdentidad`,`usuarioPrimerNombre`,`usuarioSegundoNombre`,`usuarioPrimerApellido`,
 `usuarioSegundoApellido`,`usuarioNumeroColegiacion`,`usuarioCelular`,`usuarioTelefono`,
 `usuarioDireccion`,`usuarioContrasenia`,`estadoCuentaId`,`rolId`,`usuarioCorreo`,

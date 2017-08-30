@@ -82,18 +82,17 @@ require_once("clases/class.phpmaileroauthgoogle.php");
       $asunto = 'Alerta de creación de cuenta.';
       $mail->Subject = "=?ISO-8859-1?B?".base64_encode($asunto)."=?=";
       $mail->Body    = "Su cuenta ha sido creada y se encuntra en proceso de verificación por el Cimeqh, será notificado cuando pase de este proceso mediante un nuevo correo.";
-      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+      $mail->AltBody = 'This is  the body in plain text for non-HTML mail clients';
       if($mail->send()) {
         print_r($respueta);
-
         redirectWithMessage("Su cuenta ha sido creada, esta debe ser verificada por el CIMEQH, se le notificara mediante un correo cuando su cuenta este activa.","?page=login");
       }
     }
 
 
     echo $respueta;
-    //redirectWithMessage("Su cuenta ya existe verifique su correo para enterarse si esta ha sido verificada por el CIMEQH.","?page=login");
-    redirectWithMessage("Su cuenta ha sido creada, esta debe ser verificada por el CIMEQH, se le notificara mediante un correo cuando su cuenta este activa.","?page=login");
+    redirectWithMessage("Su cuenta ya existe verifique su correo para enterarse si esta ha sido verificada por el CIMEQH.","?page=login");
+    //redirectWithMessage("Su cuenta ha sido creada, esta debe ser verificada por el CIMEQH, se le notificara mediante un correo cuando su cuenta este activa.","?page=login");
     header($location);
 
     }

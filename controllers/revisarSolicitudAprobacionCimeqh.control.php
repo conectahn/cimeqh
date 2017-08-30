@@ -47,7 +47,7 @@
         }
 
       }else {
-      redirectWithMessage("Su cuenta todavia no ha sido verificada por el CIMEQH.","?page=login");
+      redirectWithMessage("Su cuenta todavia no ha sido verificada por el CIMEQH.","?page=login");      
       }
     }else {
       mw_redirectToLogin("page=login");

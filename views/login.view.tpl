@@ -10,7 +10,7 @@
         <form method="post">
           <h1>Inicio de Sesión</h1>
           <div>
-            <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Número de Identidad" required="" />
+            <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Número de Identidad" required="" maxlength="13"/>
           </div>
           <div>
             <input type="password" name="txtPswd" id="txtPswd" class="form-control" placeholder="Contraseña" required="" />

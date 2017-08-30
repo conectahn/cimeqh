@@ -9,67 +9,66 @@
   function run(){
 
     if (mw_estaLogueado()) {
-      if ($_SESSION["estado"]==1) {
-        if ($_SESSION["rol"]==1 || $_SESSION["rol"]==2 || $_SESSION["rol"]==3
-        ||  $_SESSION["rol"]==4 || $_SESSION["rol"]==5
-        || $_SESSION["rol"]==6) {
-          switch ($_SESSION["rol"]) {
-            case '1':
-              renderizar("home", array(),"layoutCimeqh.view.tpl");
+
+      switch ($_SESSION["estado"]) {
+        case '1':
+        switch ($_SESSION["rol"]) {
+          case '1':
+            renderizar("home", array(),"layoutCimeqh.view.tpl");
+            echo $_SESSION["rol"];
+            break;
+
+            case '2':
+              renderizar("home",array(),"layoutEneeAdmin.view.tpl");
               echo $_SESSION["rol"];
               break;
 
-              case '2':
-                renderizar("home",array(),"layoutEneeAdmin.view.tpl");
+              case '3':
+                renderizar("home", array(),"layoutCimeqhAprobacion.view.tpl");
                 echo $_SESSION["rol"];
                 break;
 
-                case '3':
-                  renderizar("home", array(),"layoutCimeqhAprobacion.view.tpl");
+
+                case '4':
+                  renderizar("home",array());
                   echo $_SESSION["rol"];
                   break;
 
-
-                  case '4':
-                    renderizar("home",array());
+                  case '5':
+                    renderizar("home",array(),"layoutEnee.view.tpl");
                     echo $_SESSION["rol"];
                     break;
 
-                    case '5':
+                    case '6':
                       renderizar("home",array(),"layoutEnee.view.tpl");
                       echo $_SESSION["rol"];
                       break;
 
-                      case '6':
-                        renderizar("home",array(),"layoutEnee.view.tpl");
-                        echo $_SESSION["rol"];
-                        break;
-
-            default:
-              redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
-              break;
-          }
-/*
-          if ($_SESSION["rol"]==1) {
-              renderizar("home",array(),"layoutCimeqh.view.tpl");
-                echo $_SESSION["rol"];
-          }elseif ($_SESSION["rol"]==2) {
-            renderizar("home",array(),"layoutEnee.view.tpl");
-          }else {
-            renderizar("home",array());
-          }*/
-        }else {
-          redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
+          default:
+            redirectWithMessage("No cuenta con los privilegios de usuario adecuado para ver esta páagina.","?page=login");
+            break;
         }
-      }else if ($_SESSION["estado"]==4) {
-          redirectWithMessage("Su cuenta todavia no ha sido verificada por el CIMEQH.","?page=login");
-      }elseif ($_SESSION["estado"]==3) {
-        redirectWithMessage("Su cuenta ha sido supendida por: ".$_SESSION["comentario"],"?page=login");
+          break;
+
+          case '2':
+          redirectWithMessage("Lamentamos informarle que el cimeqh ha decidido rechazar su solicitud","index");
+            break;
+
+            case '3':
+            redirectWithMessage("Su cuenta ha sido supendida por: ".$_SESSION["comentario"],"?page=login");
+              break;
+
+
+              case '4':
+              redirectWithMessage("su cuenta aun no ha sido verificada por el CIMEQH","?page=login");              
+                break;
+
+        default:
+          mw_redirectToLogin("page=login");
+          break;
       }
-    }else {
-      mw_redirectToLogin("page=login");
-    }
 
   }
+}
   run();
 ?>
